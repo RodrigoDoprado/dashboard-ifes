@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       const data: Signin={email,password}
       try{
         await login(data)
-        .then((res)=>{setToken(res.data.token)})//1h7
+        .then((res)=>{setToken(res.data.token)})//1h
         return true
       }catch(e){return false}       
       
