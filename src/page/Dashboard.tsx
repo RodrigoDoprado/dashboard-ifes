@@ -1,11 +1,13 @@
 import { Helmet } from "react-helmet"
 import Navbar from "../componet/Navbar"
 import { useProduct } from "../hooks/products/useProduct"
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react"
+import { useCategory } from "../hooks/category/useCategory"
+import { useOffice } from "../hooks/office/useOffice"
 function Dashboard (){
 
   const{products}=useProduct()
-  
+  const{categorys}=useCategory()
+  const{offices}=useOffice()
   return(
         <>
         <Helmet><title>Dashboard</title></Helmet>
@@ -30,7 +32,7 @@ function Dashboard (){
                           <tr>
                           <th scope="row">{index+1}</th>
                           <td>{item.title}</td>
-                          <td>{item.category}</td>
+                          <td>{item.category.title}</td>
                           <td>@mdo</td>
                         </tr>
                         )
@@ -39,10 +41,48 @@ function Dashboard (){
                   </table>
                 </div>
                 <div className="col">
-                  Column
+                <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Configuração</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {categorys?.map((item,index) => {
+                        return (
+                          <tr>
+                          <th scope="row">{index+1}</th>
+                          <td>{item.title}</td>
+                          <td>@mdo</td>
+                        </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
                 </div>
                 <div className="col">
-                  Column
+                <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Configuração</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {offices?.map((item,index) => {
+                        return (
+                          <tr>
+                          <th scope="row">{index+1}</th>
+                          <td>{item.title}</td>
+                          <td>@mdo</td>
+                        </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

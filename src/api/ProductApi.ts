@@ -1,12 +1,12 @@
 import axios, { AxiosPromise } from "axios";
-import { Product } from "../interface/InterfaceProduct";
+import { ProductInterface } from "../interface/ProductInterface";
 
 
 const ProductApi = axios.create({
     baseURL: process.env.REACT_APP_HOST+"/HZ Hamburguer",
   })
 
-  export const getProductByName = async (): AxiosPromise<Product[]> => {
+  export const getProductByName = async (): AxiosPromise<ProductInterface[]> => {
     const res = await ProductApi.get('/products');
     return res;
   }
@@ -16,7 +16,7 @@ const ProductApi = axios.create({
     return res;
   };
   
-  export const createProduct = async (data: Product): AxiosPromise<any> => {
+  export const createProduct = async (data: ProductInterface): AxiosPromise<any> => {
         const response = await ProductApi.post("/",data);
         return response;
   };
@@ -25,7 +25,7 @@ const ProductApi = axios.create({
     await ProductApi.delete(`/${id}`);
   };
   
-  export const updateProduct = async(data: Product): AxiosPromise<any> => {
+  export const updateProduct = async(data: ProductInterface): AxiosPromise<any> => {
     const response = await ProductApi.put(`/${data.id}`, data);
     return response;
   };
