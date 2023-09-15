@@ -1,13 +1,13 @@
 import { Helmet } from "react-helmet"
-import Navbar from "../componet/Navbar"
 import ModalAluno from "../componet/ModalAluno"
 import { useGetStudent } from "../hooks/student/useGetStudent"
+import NavbarComponet from "../componet/NavbarComponet"
 function Student(){
   const {students, isSuccess} =useGetStudent()
   return(
         <>
           <Helmet><title>Aluno</title></Helmet>
-          <Navbar/>
+          <NavbarComponet/>
           <main className="main">
             <div className="container">
              <div className="row">

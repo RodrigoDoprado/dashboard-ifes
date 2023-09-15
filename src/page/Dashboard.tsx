@@ -1,9 +1,8 @@
 import { Helmet } from "react-helmet"
-import Navbar from "../componet/Navbar"
 import { useCategory } from "../hooks/category/useCategory"
 import { useOffice } from "../hooks/office/useOffice"
 import { useGetProduct } from "../hooks/products/useGetProduct"
-import ModalAluno from "../componet/ModalAluno"
+import NavbarComponet from "../componet/NavbarComponet"
 function Dashboard (){
 
   const{products}=useGetProduct()
@@ -13,7 +12,7 @@ function Dashboard (){
   return(
         <>
         <Helmet><title>Dashboard</title></Helmet>
-        <Navbar/>
+        <NavbarComponet/>
         <main className="main">
           <div className="container">
             <div className="row">
@@ -21,8 +20,6 @@ function Dashboard (){
                 <div className="col my-5">
                   <div className="gap-5 d-flex mb-3">
                     <h3>Produtos</h3>
-                    <ModalAluno/>
-                    {/* <button className="btn btn-outline-dark btn-lg fw-bolder">Novo</button>   */}
                   </div>
                   <table className="table">
                     <thead>
