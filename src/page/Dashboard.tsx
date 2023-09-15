@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet"
 import Navbar from "../componet/Navbar"
-import { useProduct } from "../hooks/products/useProduct"
 import { useCategory } from "../hooks/category/useCategory"
 import { useOffice } from "../hooks/office/useOffice"
+import { useGetProduct } from "../hooks/products/useGetProduct"
+import ModalAluno from "../componet/ModalAluno"
 function Dashboard (){
 
-  const{products}=useProduct()
+  const{products}=useGetProduct()
   const{categorys}=useCategory()
   const{offices}=useOffice()
   
@@ -20,7 +21,8 @@ function Dashboard (){
                 <div className="col my-5">
                   <div className="gap-5 d-flex mb-3">
                     <h3>Produtos</h3>
-                    <button className="btn btn-outline-dark btn-lg fw-bolder">Novo</button>  
+                    <ModalAluno/>
+                    {/* <button className="btn btn-outline-dark btn-lg fw-bolder">Novo</button>   */}
                   </div>
                   <table className="table">
                     <thead>

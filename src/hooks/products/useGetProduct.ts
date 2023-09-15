@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
-import { getProductByName } from "../../api/ProductApi"
+import { getProducts } from "../../api/ProductApi"
 
-export function useProduct(){
+export function useGetProduct(){
     const query = useQuery({
-        queryFn: getProductByName,
+        queryFn: getProducts,
         queryKey: ['product-data'],
         retry: 2
     })

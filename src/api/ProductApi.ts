@@ -6,7 +6,7 @@ const ProductApi = axios.create({
     baseURL: process.env.REACT_APP_HOST+"/HZ Hamburguer",
   })
 
-  export const getProductByName = async (): AxiosPromise<ProductInterface[]> => {
+  export const getProducts = async (): AxiosPromise<ProductInterface[]> => {
     const res = await ProductApi.get('/products');
     return res;
   }
