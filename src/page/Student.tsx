@@ -3,7 +3,7 @@ import ModalAluno from "../componet/ModalAluno"
 import { useGetStudent } from "../hooks/student/useGetStudent"
 import NavbarComponet from "../componet/NavbarComponet"
 function Student(){
-  const {students, isSuccess} =useGetStudent()
+  const {students} =useGetStudent()
   return(
         <>
           <Helmet><title>Aluno</title></Helmet>
@@ -39,7 +39,7 @@ function Student(){
                         </tr>
                       </thead>
                       <tbody>
-                        {isSuccess? students?.map((item,index) => {
+                        {students?.map((item,index) => {
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>
@@ -57,19 +57,7 @@ function Student(){
                               </td>
                             </tr>
                           )
-                        }):
-                          <>
-                            <tr>
-                              <th scope="row">{1}</th>
-                              <td>- - -</td>
-                              <td>- - -</td>
-                              <td>- - -</td>
-                              <td>- - -</td>
-                              <td>- - -</td>
-                              <td>Error Conexão com Api</td>
-                            </tr>
-                          </>
-                        }
+                        })}
                       </tbody>
                     </table>
                   </div>

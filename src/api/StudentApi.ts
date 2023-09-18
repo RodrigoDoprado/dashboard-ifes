@@ -3,11 +3,11 @@ import { StudentInterface } from "../interface/StudentInterface";
 
 
 const studentApi = axios.create({
-    baseURL: process.env.REACT_APP_HOST,
+    baseURL: process.env.REACT_APP_HOST+"/HZ Hamburguer",
   })
 
   export const getStudents = async (): AxiosPromise<StudentInterface[]> => {
-    const res = await studentApi.get('/studes');
+    const res = await studentApi.get('/products');
     return res;
   }
 
