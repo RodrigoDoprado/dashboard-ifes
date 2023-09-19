@@ -1,14 +1,12 @@
-import { useContext } from "react"
-import { AuthContext } from "./AuthContext"
 import Dashboard from "../page/Dashboard"
 
 export const PagePublic = ({ children }: { children: JSX.Element }) => {
-  const { authenticated } = useContext(AuthContext)
-
+  // const { authenticated } = useContext(AuthContext)
+  const usercookies = localStorage.getItem("token")
   // if (loading) {
   //   return <Loading />
   // }
 
-  if (authenticated) {return <Dashboard />}
+  if (usercookies) {return <Dashboard />}
   return children
 }

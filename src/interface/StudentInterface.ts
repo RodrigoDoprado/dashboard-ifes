@@ -1,6 +1,8 @@
 export interface StudentInterface{
     id?: string,
-    fristName: string,
+    enroll?: string, // matricula
+    firstName?: string,
+    lastName?:string,
     avatar?: string,
-    course?: string
+    course?: any // curso
 }

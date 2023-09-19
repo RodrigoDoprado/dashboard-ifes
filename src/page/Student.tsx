@@ -3,7 +3,7 @@ import ModalAluno from "../componet/ModalAluno"
 import { useGetStudent } from "../hooks/student/useGetStudent"
 import NavbarComponet from "../componet/NavbarComponet"
 function Student(){
-  const {students} =useGetStudent()
+  const {students} = useGetStudent()
   return(
         <>
           <Helmet><title>Aluno</title></Helmet>
@@ -43,15 +43,15 @@ function Student(){
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>
-                              <td>20181tadst0259</td>
-                              <td>{item.fristName}</td>
-                              <td>{item.course}</td>
+                              <td>{item.enroll}</td>
+                              <td>{item.firstName+" "+item.lastName}</td>
+                              <td>{item.course.acronym}</td>
                               <td>Matutino</td>
                               <td>Cursando</td>
                               <td>
                                 <div className="gap-1 d-flex">
                                   {/* <button className="btn btn-outline-primary">editar</button> */}
-                                  <ModalAluno/>
+                                  <ModalAluno idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} AvatarInteface={item.avatar}/>
                                   <button className="btn btn-outline-danger">deletar</button>  
                                 </div>
                               </td>

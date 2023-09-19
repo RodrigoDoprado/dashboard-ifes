@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
 import { AuthContext } from "./AuthContext"
-import { login, sair } from "../api/SigninApi"
 import { getUser } from "../api/UserApi"
 import { UserData } from "../interface/UserData"
-import { Signin } from "../interface/SigninData"
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<UserData | null>(null)
@@ -23,18 +21,25 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }
 
     const signin = async (email: string, password: string) => {
-      const data: Signin={email,password}
-      try{
-        await login(data)
-        .then((res)=>{setToken(res.data.token)})//1h
-        return true
-      }catch(e){return false}       
+      // const data: Signin={email,password}
+      // try{
+      //   await login(data)
+        // .then((res)=>{
+          if(email!=""&&password!=""){
+            setToken("tokenestavalidado")
+            return true
+          }
+          return false
+          
+        // })//1h
+      //   return true
+      // }catch(e){return false}       
       
   }
 
   const signout =async ()=> {
     setToken("")
-    await sair().then((res)=>{setUser(res.data.employee)})
+    // await sair().then((res)=>{setUser(res.data.employee)})
   }
 
   const setToken = (token: string) => {
