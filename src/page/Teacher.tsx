@@ -24,7 +24,7 @@ function Teacher(){
                     </form>
                   </div>
                    {/* Button trigger modal  */}
-                  <div className="px-5"></div>
+                  <div className="px-lg-5"></div>
                     <ModalTeacherComponet/>
                   </div>
                   <div className="table-responsive">
@@ -32,6 +32,7 @@ function Teacher(){
                       <thead>
                         <tr>
                         <th scope="col"></th>
+                        <th scope="col">Matricula</th>
                           <th scope="col">Nome</th>
                           <th scope="col">Configuração</th>
                         </tr>
@@ -41,6 +42,7 @@ function Teacher(){
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>
+                              <td>{item.enroll}</td>
                               <td>{item.firstName+" "+item.lastName}</td>
                               <td>
                                 <div className="gap-1 d-flex">
