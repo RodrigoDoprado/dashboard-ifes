@@ -5,6 +5,7 @@ import { PagePrivate } from "./context/PagePrivate"
 import { PagePublic } from "./context/PagePublic"
 import Student from "./page/Student"
 import Teacher from "./page/Teacher"
+import Course from "./page/Course"
 
 function RouterPage (){
     return (
@@ -15,6 +16,7 @@ function RouterPage (){
           <Route path="/dashboard" element={<PagePrivate><Dashboard /></PagePrivate>} />
           <Route path="/aluno" element={<PagePrivate><Student /></PagePrivate>} />
           <Route path="/professor" element={<PagePrivate><Teacher /></PagePrivate>} />
+          <Route path="/curso" element={<PagePrivate><Course /></PagePrivate>} />
         </Routes>
       )
 }

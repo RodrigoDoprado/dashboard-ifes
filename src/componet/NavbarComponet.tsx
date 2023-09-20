@@ -27,6 +27,9 @@ function NavbarComponet(){
               <li className="nav-item">
                 <a className="nav-link" href="/professor">Professor</a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/curso">Curso</a>
+              </li>
             </ul>
             <ul className="navbar-nav gap-5 py-lg-2 px-lg-5" >
               <li className="nav-item dropdown">
