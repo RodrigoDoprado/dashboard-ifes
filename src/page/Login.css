@@ -1,0 +1,12 @@
+.login-body {
+    background-color: var(--bs-primary); /* Substitua pela cor desejada */
+  }
+  
+#login {
+  margin: 20vh 0 0 0;
+}
+
+#login .card{
+  width: 45vh;
+  background-image:linear-gradient(250deg, var(--bs-secondary), var(--bs-primary));
+}
