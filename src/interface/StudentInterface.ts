@@ -6,5 +6,5 @@ export interface StudentInterface{
     firstName?: string,
     lastName?:string,
     avatar?: string,
-    course?: CourseInterface // curso
+    course?: any // curso
 }
