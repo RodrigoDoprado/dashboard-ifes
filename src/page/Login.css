@@ -8,5 +8,6 @@
 
 #login .card{
   width: 45vh;
-  background-image:linear-gradient(250deg, var(--bs-secondary), var(--bs-primary));
+  background-image:linear-gradient(0deg, var(--bs-secondary), var(--bs-primary));
+  /* box-shadow: 0 7px 15px var(--bs-secondary) */
 }

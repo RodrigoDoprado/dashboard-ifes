@@ -41,7 +41,7 @@ function Login (){
                                     <div className="mb-3">
                                         <input className="form-control p-3" type="password" name="password" id="password" placeholder="Senha:" required value={password} onChange={event =>setPassword(event.target.value)}/>
                                     </div>
-                                    <button className="btn btn-outline-secondary text-light px-3 fw-bolder" type="submit">Avança</button>
+                                    <button className="btn btn-outline-primary text-light px-3 fw-bolder" type="submit">Avança</button>
                                 </form>
                             </div>
                             {/* <div className="card-footer"></div>  */}
