@@ -25,7 +25,7 @@ function NavbarComponet(){
                 <a className="nav-link" href="/aluno">Alunos</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+                <a className="nav-link" href="/professor">Professor</a>
               </li>
             </ul>
             <ul className="navbar-nav gap-5 py-lg-2 px-lg-5" >

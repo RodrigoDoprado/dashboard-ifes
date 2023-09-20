@@ -14,8 +14,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const validateToken = async () => {
     const usercookies = localStorage.getItem("token")
     if(usercookies){
-      getUser(usercookies)
-      .then((res)=>{setUser(res.data.employee)})
+      // getUser(usercookies)
+      // .then((res)=>{setUser(res.data.employee)})
     }
     setLoading(false)
   }
