@@ -2,10 +2,17 @@ import { Helmet } from "react-helmet"
 import NavbarComponet from "../componet/NavbarComponet"
 import { useGetCourse } from "../hooks/course/useGetCourse"
 import ModalCourseComponet from "../componet/ModalCourseComponet"
+import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
 
 
 function Course(){
   const {courses}=useGetCourse()
+
+  const courseDelete=useDeleteCourse()
+
+  const handledeleteCourse=(id: string | undefined)=>{
+    courseDelete.mutate(id)
+  }
   return(
         <>
           <Helmet><title>Cursos</title></Helmet>
@@ -48,7 +55,7 @@ function Course(){
                                 <div className="gap-1 d-flex">
                                   {/* <button className="btn btn-outline-primary">editar</button> */}
                                   <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym}/>
-                                  <button className="btn btn-outline-danger">deletar</button>  
+                                  <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}>deletar</button>  
                                 </div>
                               </td>
                             </tr>

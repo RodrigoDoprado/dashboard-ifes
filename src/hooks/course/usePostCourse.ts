@@ -7,7 +7,7 @@ export function usePostCourse(){
         mutationFn: createCourse,
         retry: 2,
         onSuccess: () => {
-            queryClient.invalidateQueries(['student-data'])
+            queryClient.invalidateQueries(['course-data'])
         }
     })
 

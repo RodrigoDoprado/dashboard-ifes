@@ -1,4 +1,4 @@
-import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { usePostStudent } from '../hooks/student/usePostStudent';
@@ -66,7 +66,7 @@ useEffect(() => {
             </div>
             <div className="mb-3 d-inline-flex gap-5">
               <label htmlFor="inputAvatar">Cuso:</label>
-              <select className="border border-primary form-select" aria-label="Default select example" required>
+              <select className="border border-primary form-select" name="course" required value={course} onChange={event =>setCourse(event.target.value)}>
                 <option selected>...</option>
                 {courses?.map((item) => {return(<option value={item.id}>{item.acronym}</option>)})}
               </select>

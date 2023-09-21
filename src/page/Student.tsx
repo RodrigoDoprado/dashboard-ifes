@@ -2,11 +2,19 @@ import { Helmet } from "react-helmet"
 import NavbarComponet from "../componet/NavbarComponet"
 import { useGetStudent } from "../hooks/student/useGetStudent"
 import ModalStudentComponet from "../componet/ModalStudentComponet"
+import { StudentInterface } from "../interface/StudentInterface"
+import { useDeleteStudent } from "../hooks/student/useDeleteStudent"
 
 
 
 function Student(){
+  
   const {students} = useGetStudent()
+  const studentDelete=useDeleteStudent()
+
+  const handledeleteStudent=(id: string | undefined)=>{
+    studentDelete.mutate(id)
+  }
   return(
         <>
           <Helmet><title>Aluno</title></Helmet>
@@ -55,7 +63,7 @@ function Student(){
                                 <div className="gap-1 d-flex">
                                   {/* <button className="btn btn-outline-primary">editar</button> */}
                                   <ModalStudentComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} courseInteface={item.course?.acronym}/>
-                                  <button className="btn btn-outline-danger">deletar</button>  
+                                  <button className="btn btn-outline-danger" onClick={() => handledeleteStudent(item.id)}>deletar</button>  
                                 </div>
                               </td>
                             </tr>

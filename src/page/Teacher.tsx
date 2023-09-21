@@ -2,10 +2,17 @@ import { Helmet } from "react-helmet"
 import NavbarComponet from "../componet/NavbarComponet"
 import ModalTeacherComponet from "../componet/ModalTeacherComponet"
 import { useGetTeacher } from "../hooks/teacher/useGetTeacher"
+import { useDeleteTeacher } from "../hooks/teacher/useDeleteTeacher"
 
 
 function Teacher(){
   const {teachers} = useGetTeacher()
+
+  const teacherDelete=useDeleteTeacher()
+
+  const handledeleteTeacher=(id: string | undefined)=>{
+    teacherDelete.mutate(id)
+  }
   return(
         <>
           <Helmet><title>Professor</title></Helmet>
@@ -48,7 +55,7 @@ function Teacher(){
                                 <div className="gap-1 d-flex">
                                   {/* <button className="btn btn-outline-primary">editar</button> */}
                                   <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar}/>
-                                  <button className="btn btn-outline-danger">deletar</button>  
+                                  <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}>deletar</button>  
                                 </div>
                               </td>
                             </tr>

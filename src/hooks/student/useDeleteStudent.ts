@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { updateCourse } from "../../api/CourseApi";
+import { deleteStudent } from "../../api/StudentApi";
 
 
-export function usePutCourse(){
+export function useDeleteStudent(){
     const queryClient = useQueryClient();
     const mutate = useMutation({
-        mutationFn: updateCourse,
+        mutationFn: deleteStudent,
         retry: 2,
         onSuccess: () => {
-            queryClient.invalidateQueries(['course-data'])
+            queryClient.invalidateQueries(['student-data'])
         }
     })
 

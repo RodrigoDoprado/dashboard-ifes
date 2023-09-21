@@ -7,6 +7,8 @@ function Login (){
     const {signin} = useContext(AuthContext)
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
+
+    
     const handleLogin = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
         if(await signin(email, password)){window.location.href = window.location.href}else{alert("Email ou Senha Invalido")}
