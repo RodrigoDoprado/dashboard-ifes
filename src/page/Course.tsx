@@ -8,7 +8,7 @@ import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
 function Course(){
   const {courses}=useGetCourse()
 
-  const courseDelete=useDeleteCourse()
+  const courseDelete=useDeleteCourse() 
 
   const handledeleteCourse=(id: string | undefined)=>{
     courseDelete.mutate(id)
