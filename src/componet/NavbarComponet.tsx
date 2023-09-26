@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext"
 function NavbarComponet(){
   const {signout}=useContext(AuthContext)
   const logout =async ()=>{
-    await signout()
+     signout()
   }
     return(
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">

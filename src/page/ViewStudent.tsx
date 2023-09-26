@@ -4,21 +4,17 @@ import { useParams } from "react-router-dom";
 import { useGetStudent } from "../hooks/student/useGetStudent";
 
 function ViewStudent(){
-    const { studentId } = useParams();
-    const {student}=useGetStudent(studentId)
+    const {enroll}  = useParams();
+    const {student}=useGetStudent(enroll)
    
     return(
         <>
             <Helmet><title>Aluno</title></Helmet>
             <NavbarComponet/>
-            <h1>Pagina do visão dos dados do Aluno</h1>
-            {student?.map((item: { firstName: string }) => {
-                return(
-                    <>
-                        <h1>{item.firstName}</h1>
-                    </>
-                )
-            })}
+            <h1>{student?.firstName+" "+student?.lastName}</h1>
+            <img src={student?.avatar} alt={student?.firstName+" "+student?.lastName}/>
+            <h1>Matricula: {student?.enroll}</h1>
+            <h1>Curso: {student?.course.title}</h1>
         </>
     )
 }

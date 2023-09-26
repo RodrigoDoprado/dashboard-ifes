@@ -18,11 +18,11 @@ function RouterPage (){
           <Route path="/auth/login" element={<PagePublic><Login /></PagePublic>} />
           <Route path="/dashboard" element={<PagePrivate><Dashboard /></PagePrivate>} />
           <Route path="/alunos" element={<PagePrivate><Student /></PagePrivate>} />
-          <Route path="/alunos/:matricula" element={<PagePrivate><ViewStudent /></PagePrivate>} />
+          <Route path="/aluno/:enroll" element={<PagePrivate><ViewStudent /></PagePrivate>} />
           <Route path="/professores" element={<PagePrivate><Teacher /></PagePrivate>} />
-          <Route path="/professores/:matricula" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
+          <Route path="/professor/:enroll" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
           <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} />
-          <Route path="/cursos/:sigla" element={<PagePrivate><ViewCourse /></PagePrivate>} />
+          <Route path="/curso/:acronym" element={<PagePrivate><ViewCourse /></PagePrivate>} />
         </Routes>
       )
 }

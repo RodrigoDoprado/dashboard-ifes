@@ -3,17 +3,24 @@ import NavbarComponet from "../componet/NavbarComponet"
 import ModalStudentComponet from "../componet/ModalStudentComponet"
 import { useDeleteStudent } from "../hooks/student/useDeleteStudent"
 import { useGetAllStudent } from "../hooks/student/useGetAllStudent"
+import { useState } from "react"
 
 
 
 function Student(){
   
+  const [search,setSearch]=useState("")
   const {students} = useGetAllStudent()
   const studentDelete=useDeleteStudent()
 
   const handledeleteStudent=(id: string | undefined)=>{
     studentDelete.mutate(id)
   }
+
+  const handleSearch=()=>{
+    alert(search)
+  }
+
   return(
         <>
           <Helmet><title>Aluno</title></Helmet>
@@ -27,8 +34,8 @@ function Student(){
                     <h3 className="px-lg-5">Alunos</h3>
                     <div className="d-none d-sm-block">
                     <form className="d-flex px-lg-5" >
-                      <input className="border border-primary form-control me-2 px-5" type="search" placeholder="Busca aluno" aria-label="Search"/>
-                      <button className="btn btn-outline-dark" type="submit">Busca</button>
+                      <input className="border border-primary form-control me-2 px-5" type="search" placeholder="Busca aluno" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
+                      <button className="btn btn-outline-dark" type="submit" onClick={handleSearch}>Busca</button>
                     </form>
                   </div>
                    {/* Button trigger modal  */}
@@ -39,7 +46,8 @@ function Student(){
                     <table className="table">
                       <thead>
                         <tr>
-                        <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
                           <th scope="col">Matricula</th>
                           <th scope="col">Nome</th>
                           <th scope="col">Curso</th>
@@ -53,14 +61,15 @@ function Student(){
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>
+                              <td><img src={item.avatar} alt={item.firstName+""+item.lastName} width="45" height="35"/></td>
                               <td>{item.enroll}</td>
-                              <td>{item.firstName+" "+item.lastName}</td>
+                              <td>{item.firstName+""+item.lastName}</td>
                               <td>{item.course?.acronym}</td>
                               <td>Matutino</td>
                               <td>Cursando</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  <a className="btn btn-outline-primary" href={`/alunos/${item.enroll}`}>view</a>
+                                  {/* <a className="btn btn-outline-primary" href={`/aluno/${item.enroll}`}>view</a> */}
                                   <ModalStudentComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} courseInteface={item.course?.acronym}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteStudent(item.id)}>deletar</button>  
                                 </div>

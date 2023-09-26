@@ -11,24 +11,24 @@ import { StudentInterface } from "../interface/StudentInterface";
     return res;
   }
 
-  export const getStudent = async (id: any) => {
-    const res = await studentApi.get(`/${id}`);
+  export const getStudent = async (enroll: string | undefined): AxiosPromise<any> => {
+    const res = await studentApi.get(`/student/${enroll}`);
     return res;
   };
   
   export const createStudent = async (data: StudentInterface): AxiosPromise<any> => {
-    const response = await studentApi.post("/student",data);
-    return response;
+    const res = await studentApi.post("/student",data);
+    return res;
   };
 
   export const updateStudent = async(data: StudentInterface): AxiosPromise<any> => {
-    const response = await studentApi.put(`/student/${data.id}`, data);
-    return response;
+    const res = await studentApi.put(`/student/${data.id}`, data);
+    return res;
   };
   
   export const deleteStudent = async(id: any) => {
-    const response = await studentApi.delete(`/student/${id}`);
-    return response;
+    const res = await studentApi.delete(`/student/${id}`);
+    return res;
   };
   
   

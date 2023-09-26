@@ -39,6 +39,7 @@ function Course(){
                       <thead>
                         <tr>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                         <th scope="col">Sigla</th>
                         <th scope="col">Titulo</th>
                           <th scope="col">Configuração</th>
@@ -49,11 +50,12 @@ function Course(){
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>
+                              <td><img src={item.avatar} alt={item.title} width="45" height="35"/></td>
                               <td>{item.acronym}</td>
                               <td>{item.title}</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  <a className="btn btn-outline-primary" href={`/cursos/${item.acronym}`}>view</a>
+                                  {/* <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>view</a> */}
                                   <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}>deletar</button>  
                                 </div>

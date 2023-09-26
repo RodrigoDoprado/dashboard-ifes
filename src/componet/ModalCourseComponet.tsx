@@ -27,9 +27,11 @@ function ModalCourseComponet({idInteface, titleInteface,acronymInteface}:data) {
     if(idInteface){
       const couseData: CourseInterface = {title,acronym,id:idInteface}
       courseUpdate.mutate(couseData)
+      window.location.href = window.location.href
     }else{
       const couseData: CourseInterface = {title,acronym}
       courseCreate.mutate(couseData)
+      window.location.href = window.location.href
     }
 }
 
