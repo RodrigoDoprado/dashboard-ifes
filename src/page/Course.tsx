@@ -28,7 +28,7 @@ function Course(){
                     <div className="d-none d-sm-block">
                     <form className="d-flex px-lg-5" >
                       <input className="border border-primary form-control me-2 " type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                      <button className="btn btn-outline-dark" type="submit">Busca</button>
+                      <button className="btn btn-outline-dark" type="submit">Busca</button> 
                     </form>
                   </div>
                    {/* Button trigger modal  */}
