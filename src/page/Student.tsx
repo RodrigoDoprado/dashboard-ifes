@@ -32,7 +32,7 @@ function Student(){
                     </form>
                   </div>
                    {/* Button trigger modal  */}
-                  <div className="px-lg-5"></div>
+                  <div className="px-4"></div>
                     <ModalStudentComponet/>
                   </div>
                   <div className="table-responsive">

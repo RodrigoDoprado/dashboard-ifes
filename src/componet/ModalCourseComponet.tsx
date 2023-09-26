@@ -45,16 +45,16 @@ useEffect(() => {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Alterar Curso</>:<>Novo Curso</>}</Modal.Title></Modal.Header>
         <Modal.Body>
-          <form className='d-grid'>
-            <div className="mb-3 d-inline-flex gap-3">
-              <label htmlFor="inputAvatar">Title:</label>
+          <form>
+            <div className="mb-3">
+              <label htmlFor="inputTitle">Title:</label>
                 <input className="border border-primary form-control" type="text" name="title" required value={title} onChange={event =>setTitle(event.target.value)}/>
             </div>
-            <div className="mb-3 d-inline-flex gap-3">
-              <label htmlFor="inputAvatar">Sigla:</label>
+            <div className="mb-3">
+              <label htmlFor="inputAcronym">Sigla:</label>
                 <input className="border border-primary form-control" type="text" name="acronym" required value={acronym} onChange={event =>setAcronym(event.target.value)}/>
             </div>
-            <div className="d-grid d-inline-flex gap-5 px-5 mt-3">
+            <div className="d-grid d-inline-flex gap-5 px-4 mt-3">
               <Button variant="primary" className='px-5' onClick={handleStudent}>Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div>
