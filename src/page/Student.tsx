@@ -60,7 +60,7 @@ function Student(){
                               <td>Cursando</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  <a className="btn btn-outline-primary" href={`/aluno/${item.enroll}`}>view</a>
+                                  <a className="btn btn-outline-primary" href={`/alunos/${item.enroll}`}>view</a>
                                   <ModalStudentComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} courseInteface={item.course?.acronym}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteStudent(item.id)}>deletar</button>  
                                 </div>

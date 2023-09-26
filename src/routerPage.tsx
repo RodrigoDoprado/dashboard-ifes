@@ -20,9 +20,9 @@ function RouterPage (){
           <Route path="/alunos" element={<PagePrivate><Student /></PagePrivate>} />
           <Route path="/alunos/:matricula" element={<PagePrivate><ViewStudent /></PagePrivate>} />
           <Route path="/professores" element={<PagePrivate><Teacher /></PagePrivate>} />
-          <Route path="/professor/:matricula" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
+          <Route path="/professores/:matricula" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
           <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} />
-          <Route path="/curso/:sigla" element={<PagePrivate><ViewCourse /></PagePrivate>} />
+          <Route path="/cursos/:sigla" element={<PagePrivate><ViewCourse /></PagePrivate>} />
         </Routes>
       )
 }

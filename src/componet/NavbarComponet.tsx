@@ -22,13 +22,13 @@ function NavbarComponet(){
                 <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/aluno">Alunos</a>
+                <a className="nav-link" href="/alunos">Alunos</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/professor">Professor</a>
+                <a className="nav-link" href="/professores">Professores</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/curso">Curso</a>
+                <a className="nav-link" href="/cursos">Cursos</a>
               </li>
             </ul>
             <ul className="navbar-nav gap-5 py-lg-2 px-lg-5" >

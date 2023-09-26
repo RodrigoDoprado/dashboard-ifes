@@ -53,7 +53,7 @@ function Teacher(){
                               <td>{item.firstName+" "+item.lastName}</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a>
+                                  <a className="btn btn-outline-primary" href={`/professores/${item.enroll}`}>view</a>
                                   <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}>deletar</button>  
                                 </div>
