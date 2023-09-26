@@ -3,13 +3,14 @@ import NavbarComponet from "../componet/NavbarComponet"
 import ModalTeacherComponet from "../componet/ModalTeacherComponet"
 import { useGetTeacher } from "../hooks/teacher/useGetTeacher"
 import { useDeleteTeacher } from "../hooks/teacher/useDeleteTeacher"
+import { useState } from "react"
 
 
 function Teacher(){
+
+  const [search,setSearch]=useState("")
   const {teachers} = useGetTeacher()
-
   const teacherDelete=useDeleteTeacher()
-
   const handledeleteTeacher=(id: string | undefined)=>{
     teacherDelete.mutate(id)
   }
@@ -25,8 +26,8 @@ function Teacher(){
                   <div className="gap-5 px-5 d-inline-flex mb-5">
                     <h3 className="px-lg-2">Professores</h3>
                     <div className="d-none d-sm-block">
-                    <form className="d-flex px-5" >
-                      <input className="border border-primary form-control me-2 px-5" type="search" placeholder="Busca professor" aria-label="Search"/>
+                    <form className="d-flex px-lg-5" >
+                      <input className="border border-primary form-control me-2 " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                       <button className="btn btn-outline-dark" type="submit">Busca</button>
                     </form>
                   </div>
@@ -46,7 +47,9 @@ function Teacher(){
                         </tr>
                       </thead>
                       <tbody>
-                        {teachers?.map((item,index) => {
+                        {teachers?.filter((student)=>
+                          student.firstName?.toLocaleLowerCase().includes(search))
+                          .map((item,index) => {
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>

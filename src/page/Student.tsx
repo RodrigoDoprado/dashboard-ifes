@@ -16,11 +16,6 @@ function Student(){
   const handledeleteStudent=(id: string | undefined)=>{
     studentDelete.mutate(id)
   }
-
-  const handleSearch=()=>{
-    alert(search)
-  }
-
   return(
         <>
           <Helmet><title>Aluno</title></Helmet>
@@ -34,8 +29,8 @@ function Student(){
                     <h3 className="px-lg-5">Alunos</h3>
                     <div className="d-none d-sm-block">
                     <form className="d-flex px-lg-5" >
-                      <input className="border border-primary form-control me-2 px-5" type="search" placeholder="Busca aluno" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                      <button className="btn btn-outline-dark" type="submit" onClick={handleSearch}>Busca</button>
+                      <input className="border border-primary form-control me-2 " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
+                      <button className="btn btn-outline-dark" type="submit">Busca</button>
                     </form>
                   </div>
                    {/* Button trigger modal  */}
@@ -57,7 +52,9 @@ function Student(){
                         </tr>
                       </thead>
                       <tbody>
-                        {students?.map((item,index) => {
+                        {students?.filter((student)=>
+                          student.firstName?.toLowerCase().includes(search))
+                          .map((item,index) => {
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>

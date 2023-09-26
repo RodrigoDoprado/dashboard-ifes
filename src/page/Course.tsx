@@ -3,13 +3,14 @@ import NavbarComponet from "../componet/NavbarComponet"
 import { useGetCourse } from "../hooks/course/useGetCourse"
 import ModalCourseComponet from "../componet/ModalCourseComponet"
 import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
+import { useState } from "react"
 
 
 function Course(){
+
+  const [search,setSearch]=useState("")
   const {courses}=useGetCourse()
-
   const courseDelete=useDeleteCourse()
-
   const handledeleteCourse=(id: string | undefined)=>{
     courseDelete.mutate(id)
   }
@@ -25,8 +26,8 @@ function Course(){
                   <div className="gap-5 px-5 d-inline-flex mb-5">
                     <h3 className="px-lg-2">Cursos</h3>
                     <div className="d-none d-sm-block">
-                    <form className="d-flex px-5" >
-                      <input className="border border-primary form-control me-2 px-5" type="search" placeholder="Busca curso" aria-label="Search"/>
+                    <form className="d-flex px-lg-5" >
+                      <input className="border border-primary form-control me-2 " type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                       <button className="btn btn-outline-dark" type="submit">Busca</button>
                     </form>
                   </div>
@@ -46,7 +47,9 @@ function Course(){
                         </tr>
                       </thead>
                       <tbody>
-                        {courses?.map((item,index) => {
+                        {courses?.filter((course)=>
+                          course.acronym?.toLocaleLowerCase().includes(search))
+                          .map((item,index) => {
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>
