@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
-import { getStudent } from "../../api/StudentApi"
+import { getStudents } from "../../api/StudentApi"
 
-export function useGetStudent(studentId: string | undefined){
+export function useGetAllStudent(){
     const query = useQuery({
-        queryFn: getStudent,
+        queryFn: getStudents,
         queryKey: ['student-data'],
         retry: 2
     })
     return{
         ...query,
-        student: query.data?.data
+        students: query.data?.data
     }
 }

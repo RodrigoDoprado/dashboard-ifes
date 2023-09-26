@@ -8,7 +8,7 @@ import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
 function Course(){
   const {courses}=useGetCourse()
 
-  const courseDelete=useDeleteCourse() 
+  const courseDelete=useDeleteCourse()
 
   const handledeleteCourse=(id: string | undefined)=>{
     courseDelete.mutate(id)
@@ -53,7 +53,7 @@ function Course(){
                               <td>{item.title}</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  {/* <button className="btn btn-outline-primary">editar</button> */}
+                                  <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>view</a>
                                   <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}>deletar</button>  
                                 </div>

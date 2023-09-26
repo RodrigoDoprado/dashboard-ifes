@@ -21,7 +21,7 @@ function Teacher(){
             <div className="container">
              <div className="row">
                 {/* <h1 className="my-5">Alunos</h1> */}
-                <div className="co-sm-12 my-5">
+                <div className="col-sm-12 my-5">
                   <div className="gap-5 px-5 d-inline-flex mb-5">
                     <h3 className="px-lg-2">Professores</h3>
                     <div className="d-none d-sm-block">
@@ -53,7 +53,7 @@ function Teacher(){
                               <td>{item.firstName+" "+item.lastName}</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  {/* <button className="btn btn-outline-primary">editar</button> */}
+                                  <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a>
                                   <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}>deletar</button>  
                                 </div>

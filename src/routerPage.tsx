@@ -6,6 +6,9 @@ import { PagePublic } from "./context/PagePublic"
 import Student from "./page/Student"
 import Teacher from "./page/Teacher"
 import Course from "./page/Course"
+import ViewCourse from "./page/ViewCourse"
+import ViewStudent from "./page/ViewStudent"
+import ViewTeacher from "./page/ViewTeacher"
 
 function RouterPage (){
     return (
@@ -14,9 +17,12 @@ function RouterPage (){
           <Route path="/" element={<PagePublic><Login /></PagePublic>} />
           <Route path="/auth/login" element={<PagePublic><Login /></PagePublic>} />
           <Route path="/dashboard" element={<PagePrivate><Dashboard /></PagePrivate>} />
-          <Route path="/aluno" element={<PagePrivate><Student /></PagePrivate>} />
-          <Route path="/professor" element={<PagePrivate><Teacher /></PagePrivate>} />
-          <Route path="/curso" element={<PagePrivate><Course /></PagePrivate>} />
+          <Route path="/alunos" element={<PagePrivate><Student /></PagePrivate>} />
+          <Route path="/alunos/:matricula" element={<PagePrivate><ViewStudent /></PagePrivate>} />
+          <Route path="/professores" element={<PagePrivate><Teacher /></PagePrivate>} />
+          <Route path="/professor/:matricula" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
+          <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} />
+          <Route path="/curso/:sigla" element={<PagePrivate><ViewCourse /></PagePrivate>} />
         </Routes>
       )
 }

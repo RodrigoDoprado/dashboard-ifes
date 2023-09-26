@@ -1,15 +1,14 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componet/NavbarComponet"
-import { useGetStudent } from "../hooks/student/useGetStudent"
 import ModalStudentComponet from "../componet/ModalStudentComponet"
-import { StudentInterface } from "../interface/StudentInterface"
 import { useDeleteStudent } from "../hooks/student/useDeleteStudent"
+import { useGetAllStudent } from "../hooks/student/useGetAllStudent"
 
 
 
 function Student(){
   
-  const {students} = useGetStudent()
+  const {students} = useGetAllStudent()
   const studentDelete=useDeleteStudent()
 
   const handledeleteStudent=(id: string | undefined)=>{
@@ -23,17 +22,17 @@ function Student(){
             <div className="container">
              <div className="row">
                 {/* <h1 className="my-5">Alunos</h1> */}
-                <div className="co-sm-12 my-5">
+                <div className="col-sm-12 my-5">
                   <div className="gap-5 px-5 d-inline-flex mb-5">
                     <h3 className="px-lg-5">Alunos</h3>
                     <div className="d-none d-sm-block">
-                    <form className="d-flex px-5" >
+                    <form className="d-flex px-lg-5" >
                       <input className="border border-primary form-control me-2 px-5" type="search" placeholder="Busca aluno" aria-label="Search"/>
                       <button className="btn btn-outline-dark" type="submit">Busca</button>
                     </form>
                   </div>
                    {/* Button trigger modal  */}
-                  <div className="px-5"></div>
+                  <div className="px-lg-5"></div>
                     <ModalStudentComponet/>
                   </div>
                   <div className="table-responsive">
@@ -61,7 +60,7 @@ function Student(){
                               <td>Cursando</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  {/* <button className="btn btn-outline-primary">editar</button> */}
+                                  <a className="btn btn-outline-primary" href={`/aluno/${item.enroll}`}>view</a>
                                   <ModalStudentComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} courseInteface={item.course?.acronym}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteStudent(item.id)}>deletar</button>  
                                 </div>
