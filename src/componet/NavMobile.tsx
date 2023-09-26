@@ -47,7 +47,7 @@ function NavMobile() {
                   <a className="nav-link fw-bolder" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</a>
                 </li>
               </ul>
-              <ul className="navbar-nav me-auto my-4" >
+              <ul className="navbar-nav me-auto my-4 px-2" >
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     User
