@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { AuthContext } from '../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faGraduationCap, faChalkboardUser, faBook, faX, faRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 
 function NavMobile() {
 
@@ -17,42 +19,43 @@ function NavMobile() {
       <Button variant="primary" className="navbar-toggler" onClick={handleShow}>
         <span className="navbar-toggler-icon"></span>
       </Button>
-
+      
       <Offcanvas show={show} onHide={handleClose} className="bg-primary">
         <nav className="navbar-dark my-5">
           <div className="container">
-            <Offcanvas.Header closeButton>
+            <Offcanvas.Header>
               <Offcanvas.Title>
                 <a className="navbar-brand d-inline-flex gap-1" href="/dashboard">
                   <img src="../../assets/ifes.png" style={{width:"45px", height:"45px"}}/>
                   <h5 className="mt-2">IFES</h5>
                 </a>
               </Offcanvas.Title>
+              <FontAwesomeIcon icon={faX} className='text-light' onClick={handleClose} style={{fontSize:"1.8em",cursor: "pointer"}}/>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item my-3">
-                  <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
+              <ul className="navbar-nav me-auto">
+                <li className="nav-item my-4">
+                  <a className="nav-link active fw-bolder" aria-current="page" href="/dashboard"><FontAwesomeIcon className='px-2' icon={faHouse} size="sm" />Dashboard</a>
                 </li>
-                <li className="nav-item my-3">
-                  <a className="nav-link" href="/alunos">Alunos</a>
+                <li className="nav-item my-4">
+                  <a className="nav-link fw-bolder" href="/alunos"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</a> 
                 </li>
-                <li className="nav-item my-3">
-                  <a className="nav-link" href="/professores">Professores</a>
+                <li className="nav-item my-4">
+                  <a className="nav-link fw-bolder" href="/professores"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</a>
                 </li>
-                <li className="nav-item my-3">
-                  <a className="nav-link" href="/cursos">Cursos</a>
+                <li className="nav-item my-4">
+                  <a className="nav-link fw-bolder" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</a>
                 </li>
               </ul>
-              <ul className="navbar-nav gap-5 py-lg-2 px-lg-5" >
+              <ul className="navbar-nav me-auto my-4" >
                 <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a className="nav-link dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     User
                   </a>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Perfil</a></li>
+                    <li><a className="dropdown-item fw-bolder" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Perfil</a></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" href="/" onClick={logout}>Sair</a></li>
+                    <li><a className="dropdown-item fw-bolder" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
                   </ul>
                 </li>
             </ul>

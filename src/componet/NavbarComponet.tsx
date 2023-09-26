@@ -19,22 +19,22 @@ function NavbarComponet(){
             <span className="navbar-toggler-icon"></span>
           </button> */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 px-lg-5">
+              <li className="nav-item px-lg-2 fw-bolder">
                 <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item px-lg-2 fw-bolder">
                 <a className="nav-link" href="/alunos">Alunos</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item px-lg-2 fw-bolder">
                 <a className="nav-link" href="/professores">Professores</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item px-lg-2 fw-bolder">
                 <a className="nav-link" href="/cursos">Cursos</a>
               </li>
             </ul>
             <ul className="navbar-nav gap-5 py-lg-2 px-lg-5" >
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown fw-bolder">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     User
                   </a>
