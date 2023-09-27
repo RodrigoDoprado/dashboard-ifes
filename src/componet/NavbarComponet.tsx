@@ -9,7 +9,7 @@ function NavbarComponet(){
   }
     return(
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container">
+        <div className="container-fluid">
           <a className="navbar-brand d-inline-flex gap-1" href="/dashboard">
             <img src="../assets/ifes.png" style={{width:"45px", height:"45px"}}/>
             <h5 className="mt-2">IFES</h5>
@@ -33,7 +33,7 @@ function NavbarComponet(){
                 <a className="nav-link" href="/cursos">Cursos</a>
               </li>
             </ul>
-            <ul className="navbar-nav gap-5 py-lg-2 px-lg-5" >
+            <ul className="navbar-nav px-lg-5 col-sm-2" >
               <li className="nav-item dropdown fw-bolder">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     User

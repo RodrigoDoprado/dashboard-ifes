@@ -4,6 +4,8 @@ import { useGetCourse } from "../hooks/course/useGetCourse"
 import ModalCourseComponet from "../componet/ModalCourseComponet"
 import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
 import { useState } from "react"
+import { faBook } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
 function Course(){
@@ -20,21 +22,18 @@ function Course(){
           <NavbarComponet/>
           <main className="main">
             <div className="container">
-             <div className="row">
-                {/* <h1 className="my-5">Alunos</h1> */}
-                <div className="co-sm-12 my-5">
-                  <div className="gap-5 px-5 d-inline-flex mb-5">
-                    <h3 className="px-lg-2">Cursos</h3>
-                    <div className="d-none d-sm-block">
-                    <form className="d-flex px-lg-5" >
-                      <input className="border border-primary form-control me-2 " type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                      <button className="btn btn-outline-dark" type="submit">Busca</button> 
-                    </form>
-                  </div>
-                   {/* Button trigger modal  */}
-                  <div className="px-lg-5"></div>
-                    <ModalCourseComponet/>
-                  </div>
+              <div className="row my-5">
+                <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h3>
+              </div>
+              <div className="col-sm d-flex my-5">
+                <div className="px-5 position-absolute-left"><ModalCourseComponet/></div>
+                <form className="d-flex gap-2" >
+                  <input className="border border-primary form-control " type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
+                  <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>
+                </form>
+              </div>
+              <div className="row">      
+                <div className="col-sm">
                   <div className="table-responsive">
                     <table className="table">
                       <thead>
