@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { AuthContext } from "../context/AuthContext";
 import "./Login.css"
 
-function Login (){
+function Login(){
     const {signin} = useContext(AuthContext)
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")

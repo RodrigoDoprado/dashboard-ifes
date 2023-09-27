@@ -49,7 +49,7 @@ useEffect(() => {
         <Modal.Body>
           <form>
             <div className="mb-3">
-              <label htmlFor="inputTitle">Title:</label>
+              <label htmlFor="inputTitle">Titulo:</label>
                 <input className="border border-primary form-control" type="text" name="title" required value={title} onChange={event =>setTitle(event.target.value)}/>
             </div>
             <div className="mb-3">

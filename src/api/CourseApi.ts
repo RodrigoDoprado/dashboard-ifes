@@ -17,13 +17,13 @@ const courseApi = axios.create({
   };
   
   export const createCourse = async (data: CourseInterface): AxiosPromise<any> => {
-        const response = await courseApi.post("/course",data);
-        return response;
+        const res = await courseApi.post("/course",data);
+        return res;
   };
 
   export const updateCourse = async(data: CourseInterface): AxiosPromise<any> => {
-    const response = await courseApi.put(`/course/${data.id}`, data);
-    return response;
+    const res = await courseApi.put(`/course/${data.id}`, data);
+    return res;
   };
   
   export const deleteCourse = async(id: any) => {

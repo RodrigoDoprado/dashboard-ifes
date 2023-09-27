@@ -32,6 +32,9 @@ function NavbarComponet(){
               <li className="nav-item px-lg-2 fw-bolder">
                 <a className="nav-link" href="/cursos">Cursos</a>
               </li>
+              <li className="nav-item px-lg-2 fw-bolder">
+                <a className="nav-link" href="/materias">Matérias</a>
+              </li>
             </ul>
             <ul className="navbar-nav px-lg-5 col-sm-2" >
               <li className="nav-item dropdown fw-bolder">

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componet/NavbarComponet"
 import Cards from "../componet/Cards"
-function Dashboard (){
+function Dashboard(){
   
   return(
         <>

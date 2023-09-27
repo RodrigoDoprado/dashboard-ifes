@@ -34,20 +34,23 @@ function NavMobile() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <ul className="navbar-nav me-auto">
-                <li className="nav-item my-4">
+                <li className="nav-item my-2">
                   <a className="nav-link active fw-bolder" aria-current="page" href="/dashboard"><FontAwesomeIcon className='px-2' icon={faHouse} size="sm" />Dashboard</a>
                 </li>
-                <li className="nav-item my-4">
+                <li className="nav-item my-2">
                   <a className="nav-link fw-bolder" href="/alunos"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</a> 
                 </li>
-                <li className="nav-item my-4">
+                <li className="nav-item my-2">
                   <a className="nav-link fw-bolder" href="/professores"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</a>
                 </li>
-                <li className="nav-item my-4">
+                <li className="nav-item my-2">
                   <a className="nav-link fw-bolder" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</a>
                 </li>
+                <li className="nav-item my-2">
+                  <a className="nav-link fw-bolder" href="/materias"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Matérias</a>
+                </li>
               </ul>
-              <ul className="navbar-nav me-auto my-4 px-2" >
+              <ul className="navbar-nav me-auto my-2 px-2" >
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     User
