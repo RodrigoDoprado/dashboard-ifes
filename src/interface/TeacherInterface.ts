@@ -5,4 +5,5 @@ export interface TeacherInterface{
     firstName?: string,
     lastName?:string,
     avatar?: string,
+    subject?: any //materias
 }

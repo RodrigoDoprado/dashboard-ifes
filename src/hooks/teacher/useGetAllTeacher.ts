@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { getTeachers } from "../../api/TeacherApi"
 
-export function useGetTeacher(){
+export function useGetAllTeacher(){
     const query = useQuery({
         queryFn: getTeachers,
         queryKey: ['teacher-data'],

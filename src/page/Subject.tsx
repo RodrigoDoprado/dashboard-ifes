@@ -3,13 +3,13 @@ import NavbarComponet from "../componet/NavbarComponet"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ModalSubjectComponet from "../componet/ModalSubjectComponet"
-import { useGetSubject } from "../hooks/subject/useGetSubject"
+import { useGetAllSubject } from "../hooks/subject/useGetAllSubject"
 import { useDeleteSubject } from "../hooks/subject/useDeleteSubject"
 import { faBook } from "@fortawesome/free-solid-svg-icons"
 
 function Subject(){
     const [search,setSearch]=useState("")
-    const {subjects} = useGetSubject()
+    const {subjects} = useGetAllSubject()
     const subjectDelete= useDeleteSubject()
 
     const handledeleteSubject=(id: string | undefined)=>{

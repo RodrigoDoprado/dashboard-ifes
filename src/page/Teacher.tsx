@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componet/NavbarComponet"
 import ModalTeacherComponet from "../componet/ModalTeacherComponet"
-import { useGetTeacher } from "../hooks/teacher/useGetTeacher"
+import { useGetAllTeacher } from "../hooks/teacher/useGetAllTeacher"
 import { useDeleteTeacher } from "../hooks/teacher/useDeleteTeacher"
 import { useState } from "react"
 import { faChalkboardUser } from "@fortawesome/free-solid-svg-icons"
@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 function Teacher(){
 
   const [search,setSearch]=useState("")
-  const {teachers} = useGetTeacher()
+  const {teachers} = useGetAllTeacher()
   const teacherDelete=useDeleteTeacher()
   const handledeleteTeacher=(id: string | undefined)=>{
     teacherDelete.mutate(id)
@@ -23,7 +23,7 @@ function Teacher(){
           <main className="main">
             <div className="container">
               <div className="row my-5">
-                <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professor</h3>
+                <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h3>
               </div>
               <div className="col-sm d-flex my-5">
                 <div className="px-5 position-absolute-left"><ModalTeacherComponet/></div>
@@ -58,7 +58,7 @@ function Teacher(){
                               <td>
                                 <div className="gap-1 d-flex">
                                   {/* <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a> */}
-                                  <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar}/>
+                                  <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} subjectInteface={item.subject?.title}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}>deletar</button>  
                                 </div>
                               </td>

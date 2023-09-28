@@ -3,4 +3,5 @@ export interface CourseInterface{
     avatar?: string,
     title?: string,
     acronym?:string //sigla
+    teacher?: any //professor orientador
 }

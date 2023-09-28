@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { getSubjects } from "../../api/SubjectApi"
 
-export function useGetSubject(){
+export function useGetAllSubject(){
     const query = useQuery({
         queryFn: getSubjects,
         queryKey: ['subject-data'],
