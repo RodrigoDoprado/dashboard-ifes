@@ -58,7 +58,7 @@ function Course(){
                               <td>
                                 <div className="gap-1 d-flex">
                                   {/* <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>view</a> */}
-                                  <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName}/>
+                                  <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName} subjectInteface={item.subject?.title}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}>deletar</button>  
                                 </div>
                               </td>

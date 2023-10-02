@@ -26,7 +26,7 @@ function Teacher(){
                 <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h3>
               </div>
               <div className="col-sm d-flex my-5">
-                <div className="px-5 position-absolute-left"><ModalTeacherComponet/></div>
+                <div className="px-5 position-absolute-left"><ModalTeacherComponet subjectInteface={""}/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                   <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>
