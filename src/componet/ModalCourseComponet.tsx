@@ -66,7 +66,7 @@ useEffect(() => {
     {idInteface?<Button variant="outline-primary" onClick={handleShow}>editar</Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Curso</Button>}
       
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton><Modal.Title>{idInteface?<>Alterar Curso</>:<>Novo Curso</>}</Modal.Title></Modal.Header>
+        <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Curso</>:<>Novo Curso</>}</Modal.Title></Modal.Header>
         <Modal.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">

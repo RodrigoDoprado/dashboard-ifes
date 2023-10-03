@@ -5,14 +5,14 @@ import { usePostTeacher } from '../hooks/teacher/usePostTeacher';
 import { TeacherInterface } from '../interface/TeacherInterface';
 import { usePutTeacher } from '../hooks/teacher/usePutTeacher';
 import { useGetAllSubject } from '../hooks/subject/useGetAllSubject';
-import { Col, Form, InputGroup, Row } from 'react-bootstrap';
+import { Col, Form, Row } from 'react-bootstrap';
 
 type data ={
   idInteface?: string,
   firstNameInteface?: string,
   lastNameInteface?: string,
   avatarInteface?: string,
-  subjectInteface: string,
+  subjectsInteface?: string,
 }
 
 function ModalTeacherComponet({
@@ -20,7 +20,7 @@ function ModalTeacherComponet({
     firstNameInteface, 
     lastNameInteface,
     avatarInteface,
-    subjectInteface
+    subjectsInteface
   }:data) {
     
   const [show, setShow] = useState(false);
@@ -31,11 +31,11 @@ function ModalTeacherComponet({
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
-  const [subject, setSubject] = useState("");
+  const [subjects, setSubjects] = useState("");
 
   const teacherCreate=usePostTeacher()
   const teacherUpdate=usePutTeacher()
-  const {subjects}=useGetAllSubject()
+  const subjectsGet=useGetAllSubject()
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -48,11 +48,11 @@ function ModalTeacherComponet({
 
     if (form.checkValidity() === true) {
       if(idInteface){
-        const teacherData: TeacherInterface = {firstName,lastName,avatar,subject,id:idInteface}
+        const teacherData: TeacherInterface = {firstName,lastName,avatar,subjects,id:idInteface}
         teacherUpdate.mutate(teacherData)
         // window.location.href = window.location.href
       }else{
-        const teacherData: TeacherInterface = {firstName,lastName,avatar,subject}
+        const teacherData: TeacherInterface = {firstName,lastName,avatar,subjects}
         teacherCreate.mutate(teacherData)
         // window.location.href = window.location.href
       }
@@ -68,7 +68,7 @@ useEffect(() => {
     {idInteface?<Button variant="outline-primary" onClick={handleShow}>editar</Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Professor</Button>}
       
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton><Modal.Title>{idInteface?<>Alterar Professor</>:<>Novo Professor</>}</Modal.Title></Modal.Header>
+        <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Professor</>:<>Novo Professor</>}</Modal.Title></Modal.Header>
         <Modal.Body>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
@@ -89,15 +89,15 @@ useEffect(() => {
               </Form.Group>
               <div className="mb-3">
                 <label htmlFor="inputSubjects">Materias:</label>
-                <select className="form-select" name="subject" required value={subject} onChange={event =>setSubject(event.target.value)}>
-                  <option selected>{subjectInteface}</option>
-                  {subjects?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
+                <select className="form-select" name="subjects" required value={subjects} onChange={event =>setSubjects(event.target.value)}>
+                  <option selected>{subjectsInteface}</option>
+                  {subjectsGet.subjects?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
                   {/* .filter((sub)=>sub.title?.toLocaleLowerCase().includes(subjectInteface)) */}
                 </select>
                 <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
               </div>
             </Row>
-            <div className='px-5 gap-5 d-inline-flex'>
+            <div className='px-lg-5 gap-5 d-inline-flex'>
               <Button variant="primary" type="submit" className='px-5'>Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div> 

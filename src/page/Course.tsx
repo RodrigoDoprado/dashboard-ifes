@@ -25,8 +25,8 @@ function Course(){
               <div className="row my-5">
                 <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h3>
               </div>
-              <div className="col-sm d-flex my-5">
-                <div className="px-5 position-absolute-left"><ModalCourseComponet/></div>
+              <div className="col-sm d-flex my-5 gap-4">
+                <div className="px-lg-5 position-absolute-left"><ModalCourseComponet/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                   <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>

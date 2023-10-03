@@ -23,10 +23,10 @@ function Teacher(){
           <main className="main">
             <div className="container">
               <div className="row my-5">
-                <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h3>
+                <h3 className="px-lg-5"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h3>
               </div>
-              <div className="col-sm d-flex my-5">
-                <div className="px-5 position-absolute-left"><ModalTeacherComponet subjectInteface={""}/></div>
+              <div className="col-sm d-flex my-5 gap-4">
+                <div className="px-lg-5 position-absolute-left"><ModalTeacherComponet/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                   <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>
@@ -58,7 +58,7 @@ function Teacher(){
                               <td>
                                 <div className="gap-1 d-flex">
                                   {/* <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a> */}
-                                  <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} subjectInteface={item.subject?.title}/>
+                                  <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} subjectsInteface={item.subjects?.title}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}>deletar</button>  
                                 </div>
                               </td>
