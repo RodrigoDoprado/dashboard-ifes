@@ -75,7 +75,7 @@ useEffect(() => {
               <Form.Group as={Col} md="12" controlId="validationCustom01">
                 <Form.Label>Sigla:</Form.Label>
                 <Form.Control required type="text" value={acronym} onChange={event =>setAcronym(event.target.value)}/>
-                <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
             </Row>
             <div className='px-5 gap-5 d-inline-flex'>

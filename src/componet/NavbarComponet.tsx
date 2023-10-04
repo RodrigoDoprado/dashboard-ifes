@@ -42,7 +42,7 @@ function NavbarComponet(){
                     User
                   </a>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Perfil</a></li>
+                    <li><a className="dropdown-item" href="#">Meus Dados</a></li>
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item" href="/" onClick={logout}>Sair</a></li>
                   </ul>

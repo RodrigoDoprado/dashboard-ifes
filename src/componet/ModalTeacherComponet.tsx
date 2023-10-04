@@ -85,7 +85,7 @@ useEffect(() => {
               <Form.Group as={Col} md="12" controlId="validationCustom01">
                 <Form.Label>Sobre Nome:</Form.Label>
                 <Form.Control required type="text" value={lastName} onChange={event =>setLastName(event.target.value)}/>
-                <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
               <div className="mb-3">
                 <label htmlFor="inputSubjects">Materias:</label>

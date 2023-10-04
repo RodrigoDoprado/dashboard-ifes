@@ -87,7 +87,7 @@ useEffect(() => {
                   <option selected>{courseInteface}</option>
                   {courses?.map((item) => {return(<option value={item.id}>{item.acronym}</option>)})}
                 </select>
-                <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </div>
             </Row>
             
