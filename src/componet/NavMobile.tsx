@@ -46,9 +46,6 @@ function NavMobile() {
                 <li className="nav-item my-2">
                   <a className="nav-link fw-bolder" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</a>
                 </li>
-                <li className="nav-item my-2">
-                  <a className="nav-link fw-bolder" href="/materias"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Matérias</a>
-                </li>
               </ul>
               <ul className="navbar-nav me-auto my-2 px-2" >
                 <li className="nav-item dropdown">
@@ -56,7 +53,7 @@ function NavMobile() {
                     User
                   </a>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item fw-bolder" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Perfil</a></li>
+                    <li><a className="dropdown-item fw-bolder" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Meus Dados</a></li>
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item fw-bolder" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
                   </ul>

@@ -6,6 +6,8 @@ import { StudentInterface } from '../interface/StudentInterface';
 import { usePutStudent } from '../hooks/student/usePutStudent';
 import { useGetCourse } from '../hooks/course/useGetCourse';
 import { Col, Form, Row } from 'react-bootstrap';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type data ={
   idInteface?: string,
@@ -18,7 +20,7 @@ type data ={
 function ModalStudentComponet({idInteface, firstNameInteface, lastNameInteface,avatarInteface,courseInteface}:data) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShow(true); 
   const [validated, setValidated] = useState(false);
 
   const [firstName, setFirstName] = useState(firstNameInteface);
@@ -59,7 +61,7 @@ useEffect(() => {
 
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}>editar</Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Aluno</Button>}
+    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Aluno</Button>}
       
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Aluno</>:<>Novo Aluno</>}</Modal.Title></Modal.Header>
@@ -91,7 +93,7 @@ useEffect(() => {
               </div>
             </Row>
             
-            <div className='px-5 gap-5 d-inline-flex'>
+            <div className='px-lg-5 gap-5 d-inline-flex'>
               <Button variant="primary" type="submit" className='px-5'>Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div>

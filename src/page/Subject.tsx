@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ModalSubjectComponet from "../componet/ModalSubjectComponet"
 import { useGetAllSubject } from "../hooks/subject/useGetAllSubject"
 import { useDeleteSubject } from "../hooks/subject/useDeleteSubject"
-import { faBook } from "@fortawesome/free-solid-svg-icons"
+import { faBook, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 function Subject(){
     const [search,setSearch]=useState("")
@@ -24,11 +24,11 @@ function Subject(){
                 <div className="row my-5">
                   <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Matérias</h3>
                 </div>
-                <div className="col-sm d-flex my-5 gap-4">
+                <div className="col-sm d-flex my-5 gap-3">
                   <div className="px-lg-5 position-absolute-left"><ModalSubjectComponet/></div>
                   <form className="d-flex gap-2" >
                     <input className="border border-primary form-control " type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                    <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>
+                    <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                   </form>
                 </div>
                 <div className="row">      
@@ -58,7 +58,7 @@ function Subject(){
                                   <div className="gap-1 d-flex">
                                     {/* <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a> */}
                                     <ModalSubjectComponet idInteface={item.id} titleInteface={item.title} avatarInteface={item.avatar} acronymInteface={item.acronym}/>
-                                    <button className="btn btn-outline-danger" onClick={() => handledeleteSubject(item.id)}>deletar</button>  
+                                    <button className="btn btn-outline-danger" onClick={() => handledeleteSubject(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                   </div>
                                 </td>
                               </tr>

@@ -4,7 +4,7 @@ import { useGetCourse } from "../hooks/course/useGetCourse"
 import ModalCourseComponet from "../componet/ModalCourseComponet"
 import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
 import { useState } from "react"
-import { faBook } from "@fortawesome/free-solid-svg-icons"
+import { faBook, faEye, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
@@ -29,7 +29,7 @@ function Course(){
                 <div className="px-lg-5 position-absolute-left"><ModalCourseComponet/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                  <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>
+                  <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </form>
               </div>
               <div className="row">      
@@ -57,9 +57,9 @@ function Course(){
                               <td>{item.title}</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  {/* <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>view</a> */}
-                                  <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName} subjectInteface={item.subjects?.title} avatarInteface={item.avatar}/>
-                                  <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}>deletar</button>  
+                                  <a className="btn btn-outline-dark" href={`/curso/${item.acronym}`}><FontAwesomeIcon icon={faEye} /></a>
+                                  <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName} avatarInteface={item.avatar}/>
+                                  <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>
                               </td>
                             </tr>

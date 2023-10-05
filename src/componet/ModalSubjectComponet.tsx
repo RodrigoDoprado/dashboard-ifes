@@ -5,6 +5,8 @@ import { SubjectInterface } from '../interface/SubjectInterface';
 import { usePostSubject } from '../hooks/subject/usePostSubject';
 import { usePutSubject } from '../hooks/subject/usePutSubject';
 import { Col, Form, Row } from 'react-bootstrap';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type data ={
   idInteface?: string,
@@ -55,7 +57,7 @@ useEffect(() => {
 
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}>editar</Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Nova Matéria</Button>}
+    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Nova Matéria</Button>}
       
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Matéria</>:<>Nova Matéria</>}</Modal.Title></Modal.Header>
@@ -78,7 +80,7 @@ useEffect(() => {
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <div className='px-5 gap-5 d-inline-flex'>
+            <div className='px-lg-5 gap-5 d-inline-flex'>
               <Button variant="primary" className='px-5' type="submit">Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div>

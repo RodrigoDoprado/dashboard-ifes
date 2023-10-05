@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
 import NavMobile from "./NavMobile"
+import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function NavbarComponet(){
   const {signout}=useContext(AuthContext)
@@ -32,9 +34,6 @@ function NavbarComponet(){
               <li className="nav-item px-lg-2 fw-bolder">
                 <a className="nav-link" href="/cursos">Cursos</a>
               </li>
-              <li className="nav-item px-lg-2 fw-bolder">
-                <a className="nav-link" href="/materias">Matérias</a>
-              </li>
             </ul>
             <ul className="navbar-nav px-lg-5 col-sm-2" >
               <li className="nav-item dropdown fw-bolder">
@@ -42,9 +41,9 @@ function NavbarComponet(){
                     User
                   </a>
                   <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Meus Dados</a></li>
+                    <li><a className="dropdown-item" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Meus Dados</a></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" href="/" onClick={logout}>Sair</a></li>
+                    <li><a className="dropdown-item" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
                   </ul>
                 </li>
             </ul>

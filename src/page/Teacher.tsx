@@ -4,7 +4,7 @@ import ModalTeacherComponet from "../componet/ModalTeacherComponet"
 import { useGetAllTeacher } from "../hooks/teacher/useGetAllTeacher"
 import { useDeleteTeacher } from "../hooks/teacher/useDeleteTeacher"
 import { useState } from "react"
-import { faChalkboardUser } from "@fortawesome/free-solid-svg-icons"
+import { faChalkboardUser, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
@@ -18,18 +18,18 @@ function Teacher(){
   }
   return(
         <>
-          <Helmet><title>Professor</title></Helmet>
+          <Helmet><title>Professor</title></Helmet> 
           <NavbarComponet/>
           <main className="main">
             <div className="container">
               <div className="row my-5">
                 <h3 className="px-lg-5"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h3>
               </div>
-              <div className="col-sm d-flex my-5 gap-4">
+              <div className="col-sm d-flex my-5 gap-3">
                 <div className="px-lg-5 position-absolute-left"><ModalTeacherComponet/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                  <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>
+                  <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </form>
               </div>
               <div className="row">      
@@ -60,8 +60,8 @@ function Teacher(){
                               <td>
                                 <div className="gap-1 d-flex">
                                   {/* <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a> */}
-                                  <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar} subjectsInteface={item.subjects?.title}/>
-                                  <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}>deletar</button>  
+                                  <ModalTeacherComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar}/>
+                                  <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>
                               </td>
                             </tr>

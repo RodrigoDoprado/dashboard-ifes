@@ -4,7 +4,7 @@ import ModalStudentComponet from "../componet/ModalStudentComponet"
 import { useDeleteStudent } from "../hooks/student/useDeleteStudent"
 import { useGetAllStudent } from "../hooks/student/useGetAllStudent"
 import { useState } from "react"
-import { faGraduationCap } from "@fortawesome/free-solid-svg-icons"
+import { faGraduationCap, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
@@ -27,11 +27,11 @@ function Student(){
               <div className="row my-5">
                 <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</h3>
               </div>
-              <div className="col-sm d-flex my-5 gap-4">
+              <div className="col-sm d-flex my-5 gap-3">
                 <div className="px-lg-5 position-absolute-left"><ModalStudentComponet/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                  <button className="btn btn-outline-dark d-none d-sm-block">Busca</button>
+                  <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </form>
               </div>
               <div className="row">      
@@ -67,7 +67,7 @@ function Student(){
                                 <div className="gap-1 d-flex">
                                   {/* <a className="btn btn-outline-primary" href={`/aluno/${item.enroll}`}>view</a> */}
                                   <ModalStudentComponet idInteface={item.id} firstNameInteface={item.firstName} lastNameInteface={item.lastName} avatarInteface={item.avatar}  courseInteface={item.course?.acronym}/>  
-                                  <button className="btn btn-outline-danger" onClick={() => handledeleteStudent(item.id)}>deletar</button>  
+                                  <button className="btn btn-outline-danger" onClick={() => handledeleteStudent(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>
                               </td>
                             </tr>

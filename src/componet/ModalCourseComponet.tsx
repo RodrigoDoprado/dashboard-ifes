@@ -5,8 +5,9 @@ import { usePostCourse } from '../hooks/course/usePostCourse';
 import { usePutCourse } from '../hooks/course/usePutCourse';
 import { CourseInterface } from '../interface/CourseInterface';
 import { useGetAllTeacher } from '../hooks/teacher/useGetAllTeacher';
-import { useGetAllSubject } from '../hooks/subject/useGetAllSubject';
 import { Col, Form, Row } from 'react-bootstrap';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type data ={
   idInteface?: string,
@@ -14,10 +15,16 @@ type data ={
   titleInteface?: string
   acronymInteface?: string
   teacherInteface?: string
-  subjectInteface?: string
 }
 
-function ModalCourseComponet({idInteface,avatarInteface, titleInteface,acronymInteface,teacherInteface,subjectInteface}:data) {
+function ModalCourseComponet({
+  idInteface,
+  avatarInteface, 
+  titleInteface,
+  acronymInteface,
+  teacherInteface
+}:data) {
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,12 +34,11 @@ function ModalCourseComponet({idInteface,avatarInteface, titleInteface,acronymIn
   const [title, setTitle] = useState(titleInteface);
   const [acronym, setAcronym] = useState(acronymInteface);
   const [teacher, setTeacher] = useState("");
-  const [subjects, setSubjects] = useState("");
 
   const courseCreate=usePostCourse()
   const courseUpdate=usePutCourse()
   const {teachers}=useGetAllTeacher()
-  const subjectGet=useGetAllSubject()
+ 
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -45,11 +51,11 @@ function ModalCourseComponet({idInteface,avatarInteface, titleInteface,acronymIn
 
     if (form.checkValidity() === true) {
       if(idInteface){
-        const couseData: CourseInterface = {title,acronym,teacher,subjects,id:idInteface,avatar}
+        const couseData: CourseInterface = {title,acronym,teacher,id:idInteface,avatar}
         courseUpdate.mutate(couseData)
         // window.location.href = window.location.href
       }else{
-        const couseData: CourseInterface = {title,acronym,teacher,subjects,avatar}
+        const couseData: CourseInterface = {title,acronym,teacher,avatar}
         courseCreate.mutate(couseData)
         // window.location.href = window.location.href
       }
@@ -63,7 +69,7 @@ useEffect(() => {
 
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}>editar</Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Curso</Button>}
+    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Curso</Button>}
       
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Curso</>:<>Novo Curso</>}</Modal.Title></Modal.Header>
@@ -94,16 +100,7 @@ useEffect(() => {
               </select>
               <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
             </div>
-            <div className="mb-3">
-              <label htmlFor="inputSubjects">Materias:</label>
-              <select className="form-select" name="subject" required value={subjects} onChange={event =>setSubjects(event.target.value)}>
-                <option selected>{subjectInteface}</option>
-                {subjectGet.subjects?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
-                {/* .filter((sub)=>sub.title?.toLocaleLowerCase().includes(subjectInteface)) */}
-              </select>
-              <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
-            </div>
-            <div className='px-5 gap-5 d-inline-flex'>
+            <div className='px-lg-5 gap-5 d-inline-flex'>
               <Button variant="primary" className='px-5' type="submit">Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div>

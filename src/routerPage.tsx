@@ -24,7 +24,6 @@ function RouterPage (){
           <Route path="/professor/:enroll" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
           <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} />
           <Route path="/curso/:acronym" element={<PagePrivate><ViewCourse /></PagePrivate>} />
-          <Route path="/materias" element={<PagePrivate><Subject /></PagePrivate>} />
         </Routes>
       )
 }
