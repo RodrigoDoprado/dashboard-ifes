@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componet/NavbarComponet"
-import ModalTeacherComponet from "../componet/ModalTeacherComponet"
+import NavbarComponet from "../componets/NavbarComponet"
+import ModalTeacherComponet from "../componets/ModalTeacherComponet"
 import { useGetAllTeacher } from "../hooks/teacher/useGetAllTeacher"
 import { useDeleteTeacher } from "../hooks/teacher/useDeleteTeacher"
 import { useState } from "react"

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componet/NavbarComponet"
+import NavbarComponet from "../componets/NavbarComponet"
 import { useParams } from "react-router-dom";
 import { useGetStudent } from "../hooks/student/useGetStudent";
 

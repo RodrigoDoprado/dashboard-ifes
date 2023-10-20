@@ -9,7 +9,6 @@ import Course from "./page/Course"
 import ViewCourse from "./page/ViewCourse"
 import ViewStudent from "./page/ViewStudent"
 import ViewTeacher from "./page/ViewTeacher"
-import Subject from "./page/Subject"
 
 function RouterPage (){
     return (

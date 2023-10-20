@@ -4,5 +4,4 @@ export interface CourseInterface{
     title?: string,
     acronym?:string //sigla
     teacher?: any //professor orientador
-    subjects?: any // materias
 }

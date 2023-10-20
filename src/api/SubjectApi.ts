@@ -6,8 +6,8 @@ const subjectApi = axios.create({
     baseURL: process.env.REACT_APP_HOST,
   })
 
-  export const getSubjects = async (): AxiosPromise<SubjectInterface[]> => {
-    const res = await subjectApi.get('/subjects');
+  export const getSubjects = async (title:any): AxiosPromise<SubjectInterface[]> => {
+    const res = await subjectApi.get(`/subjects/${title}`);
     return res;
   }
 

@@ -4,10 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 import { usePostStudent } from '../hooks/student/usePostStudent';
 import { StudentInterface } from '../interface/StudentInterface';
 import { usePutStudent } from '../hooks/student/usePutStudent';
-import { useGetCourse } from '../hooks/course/useGetCourse';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
 
 type data ={
   idInteface?: string,
@@ -30,7 +30,7 @@ function ModalStudentComponet({idInteface, firstNameInteface, lastNameInteface,a
   
   const studentCreate=usePostStudent()
   const studentUpdate=usePutStudent()
-  const {courses}=useGetCourse()
+  const {courses}=useGetAllCourse()
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;

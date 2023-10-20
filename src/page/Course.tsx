@@ -1,17 +1,17 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componet/NavbarComponet"
-import { useGetCourse } from "../hooks/course/useGetCourse"
-import ModalCourseComponet from "../componet/ModalCourseComponet"
+import NavbarComponet from "../componets/NavbarComponet"
+import ModalCourseComponet from "../componets/ModalCourseComponet"
 import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
 import { useState } from "react"
 import { faBook, faEye, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useGetAllCourse } from "../hooks/course/useGetAllCourse"
 
 
 function Course(){
 
   const [search,setSearch]=useState("")
-  const {courses}=useGetCourse()
+  const {courses}=useGetAllCourse()
   const courseDelete=useDeleteCourse()
   const handledeleteCourse=(id: string | undefined)=>{
     courseDelete.mutate(id)
@@ -58,7 +58,7 @@ function Course(){
                               <td>
                                 <div className="gap-1 d-flex">
                                   <a className="btn btn-outline-dark" href={`/curso/${item.acronym}`}><FontAwesomeIcon icon={faEye} /></a>
-                                  <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName} avatarInteface={item.avatar}/>
+                                  <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName+" "+item.teacher?.lastName} avatarInteface={item.avatar}/>
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>
                               </td>

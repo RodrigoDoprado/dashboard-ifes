@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componet/NavbarComponet"
+import NavbarComponet from "../componets/NavbarComponet"
 
 function ViewTeacher(){
     return(

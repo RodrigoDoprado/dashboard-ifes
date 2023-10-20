@@ -1,23 +1,15 @@
-import { Helmet } from "react-helmet"
-import NavbarComponet from "../componet/NavbarComponet"
-import { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalSubjectComponet from "../componet/ModalSubjectComponet"
-import { useGetAllSubject } from "../hooks/subject/useGetAllSubject"
-import { useDeleteSubject } from "../hooks/subject/useDeleteSubject"
-import { faBook, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 function Subject(){
-    const [search,setSearch]=useState("")
-    const {subjects} = useGetAllSubject()
-    const subjectDelete= useDeleteSubject()
+    // const [search,setSearch]=useState("")
+    // const {subjects} = useGetAllSubject()
+    // const subjectDelete= useDeleteSubject()
 
-    const handledeleteSubject=(id: string | undefined)=>{
-        subjectDelete.mutate(id)
-    }
+    // const handledeleteSubject=(id: string | undefined)=>{
+    //     subjectDelete.mutate(id)
+    // }
     return(
           <>
-            <Helmet><title>Materia</title></Helmet>
+            {/* <Helmet><title>Materia</title></Helmet>
             <NavbarComponet/>
             <main className="main">
               <div className="container">
@@ -55,9 +47,9 @@ function Subject(){
                                 <td>{item.acronym}</td>
                                 <td>{item.title}</td>
                                 <td>
-                                  <div className="gap-1 d-flex">
+                                  <div className="gap-1 d-flex"> */}
                                     {/* <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a> */}
-                                    <ModalSubjectComponet idInteface={item.id} titleInteface={item.title} avatarInteface={item.avatar} acronymInteface={item.acronym}/>
+                                    {/* <ModalSubjectComponet idInteface={item.id} titleInteface={item.title} avatarInteface={item.avatar} acronymInteface={item.acronym}/>
                                     <button className="btn btn-outline-danger" onClick={() => handledeleteSubject(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                   </div>
                                 </td>
@@ -70,7 +62,7 @@ function Subject(){
                   </div>
                 </div>
               </div>
-            </main>
+            </main> */}
         </>
     )
 }

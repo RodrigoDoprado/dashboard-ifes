@@ -11,8 +11,8 @@ const courseApi = axios.create({
     return res;
   }
 
-  export const getCourse = async (id: any) => {
-    const res = await courseApi.get(`/${id}`);
+  export const getCourse = async (enroll: any) => {
+    const res = await courseApi.get(`/course/${enroll}`);
     return res;
   };
   
