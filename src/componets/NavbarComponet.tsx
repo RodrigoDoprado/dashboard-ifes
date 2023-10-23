@@ -32,7 +32,7 @@ function NavbarComponet(){
                 <a className="nav-link" href="/professores">Professores</a>
               </li>
               <li className="nav-item px-lg-2 fw-bolder">
-                <a className="nav-link" href="/cursos">Cursos</a>
+                <a className="nav-link" href="/dashboard/#curso">Cursos</a>
               </li>
             </ul>
             <ul className="navbar-nav px-lg-5 col-sm-2" >

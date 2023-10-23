@@ -58,7 +58,7 @@ useEffect(() => {
 
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Nova Matéria</Button>}
+    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<a className="btn btn-lg btn-light" onClick={handleShow}>Novo Materia</a>}
       
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Matéria</>:<>Nova Matéria</>}</Modal.Title></Modal.Header>

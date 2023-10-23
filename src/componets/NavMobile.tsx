@@ -44,7 +44,7 @@ function NavMobile() {
                   <a className="nav-link fw-bolder" href="/professores"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</a>
                 </li>
                 <li className="nav-item my-2">
-                  <a className="nav-link fw-bolder" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</a>
+                  <a className="nav-link fw-bolder" href="/dashboard/#curso"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</a>
                 </li>
               </ul>
               <ul className="navbar-nav me-auto my-2 px-2" >

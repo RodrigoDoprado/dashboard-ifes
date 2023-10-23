@@ -5,6 +5,7 @@ import {Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legen
 import {Bar} from "react-chartjs-2"
 import { useState } from "react"
 import { UserData } from "../Data"
+import Course from "./Course"
 
 ChartJs.register(
   BarElement,
@@ -48,6 +49,10 @@ function Dashboard(){
               <div className="col-sm-6"> 
                 <Bar data={data} options={option} />
               </div>
+              <div className="col-sm-12" id="curso">
+                <Course/>
+              </div>
+              <div className="col-sm-12 my-5"></div>
             </div>
           </div>
           </main>

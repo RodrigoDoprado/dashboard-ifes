@@ -18,21 +18,24 @@ function ViewCourse(){
             <Helmet><title>Grade do Curso - {acronym}</title></Helmet>
             <NavbarComponet/>
             <main className="main">
+                {/* <!-- Header--> */}
+                <header className="bg-primary bg-gradient text-white">
+                    <div className="container px-4 text-center">
+                        <p className="fw-bolder h2">Grade Curicular</p>
+                        <p className="fw-bolder h4 mt-5">{course?.title}</p>
+                        <p className="h5 lead">Professor Coordenador: {course?.teacher?.firstName+" "+course?.teacher?.lastName}</p>
+                        <ModalPeriodComponet couserInteface={course?.id}/>
+                        <ModalSubjectComponet/>
+                    </div>
+                </header>
                 <div className="container">
-                    <div className="row">
-                        <div className="d-flex mt-5 gap-4">
-                            <div>
-                                <p className="h3">Grade Curicular do Curso {course?.title}</p> 
-                                <p className="h4">Professor Coordenador: {course?.teacher?.firstName+" "+course?.teacher?.lastName}</p>
-                            </div>
-                            <ModalPeriodComponet couserInteface={course?.id}/>
-                        </div>
+                    <div className="row mt-5">
                         {periods?.map((item) => {
                           return (
-                            <div className="col-sm-6 my-5">
-                                <div className="col-sm d-flex my-5 gap-4">
+                            <div className="col-sm-6">
+                                <div className="col-sm d-flex">
                                     <p className="h3">{item.title}</p>
-                                    <div className="px-lg-5 position-absolute-left"><ModalSubjectComponet/></div>
+                                    <div className="px-lg-5 position-absolute-left"></div>
                                 </div> 
                                 <TableCourse titlePeriodInteface={item.title}/>
                             </div>
