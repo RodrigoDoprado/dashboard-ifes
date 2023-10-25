@@ -5,11 +5,17 @@ import { useGetAllSubject } from "../hooks/subject/useGetAllSubject"
 import ModalSubjectComponet from "./ModalSubjectComponet"
 
 type data ={
+    idPeriodInteface: any,
     titlePeriodInteface: any,
+    acronymCourseInteface: any
 }
 
-function TableCourse({titlePeriodInteface}:data){
-    const {subjects}=useGetAllSubject(titlePeriodInteface)
+function TableSubjectComponet({
+  idPeriodInteface,
+  titlePeriodInteface,
+  acronymCourseInteface
+}:data){
+    const {subjects}=useGetAllSubject(idPeriodInteface)
     const subjectDelete=useDeleteSubject()
     
     const handledeleteSubject=(id: string | undefined)=>{
@@ -21,7 +27,7 @@ function TableCourse({titlePeriodInteface}:data){
                 <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col"></th>
+                        {/* <th scope="col"></th> */}
                         <th scope="col"></th>
                         <th scope="col">Sigla</th>
                         <th scope="col">Matéria</th>
@@ -30,10 +36,10 @@ function TableCourse({titlePeriodInteface}:data){
                       </tr>
                     </thead>
                     <tbody>
-                    {subjects?.map((item,index) => {
+                    {subjects?.map((item) => {
                           return (
                             <tr>
-                              <th scope="row">{index+1}</th>
+                              {/* <th scope="row">{index+1}</th> */}
                               <td><img src={item.avatar} alt={item.title} width="45" height="35"/></td>
                               <td>{item.acronym}</td>
                               <td>{item.title}</td>
@@ -41,7 +47,14 @@ function TableCourse({titlePeriodInteface}:data){
                               <td>
                                 <div className="gap-1 d-flex">
                                   {/* <a className="btn btn-outline-dark" href={`/curso/${item.acronym}`}><FontAwesomeIcon icon={faEye} /></a> */}
-                                  <ModalSubjectComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} avatarInteface={item.avatar} periodInteface={titlePeriodInteface}/>
+                                  <ModalSubjectComponet 
+                                    idInteface={item.id} 
+                                    titleInteface={item.title} 
+                                    acronymInteface={acronymCourseInteface} 
+                                    avatarInteface={item.avatar} 
+                                    idPeriodInteface={idPeriodInteface} 
+                                    titlePeriodInteface={titlePeriodInteface}
+                                  />
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteSubject(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>
                               </td>
@@ -54,4 +67,4 @@ function TableCourse({titlePeriodInteface}:data){
         </>    
     )
 }
-export default TableCourse
+export default TableSubjectComponet

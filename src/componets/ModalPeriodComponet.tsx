@@ -56,7 +56,18 @@ useEffect(() => {
 
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<a className="btn btn-lg btn-light" onClick={handleShow}>Novo Periodo</a>}
+      {idInteface?
+        <Button 
+          variant="outline-primary" 
+          onClick={handleShow}>
+            <FontAwesomeIcon icon={faPenToSquare} />
+        </Button>:
+        <a 
+          className="h5 btn btn-outline-light btn-lg" 
+          onClick={handleShow}>
+            Novo Periodo
+        </a>
+      }
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Periodo</>:<>Novo Periodo</>}</Modal.Title></Modal.Header>
         <Modal.Body>

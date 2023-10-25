@@ -5,7 +5,7 @@ import { useGetCourse } from "../hooks/course/useGetCourse";
 import { useGetAllPeriod } from "../hooks/period/useGetAllCourse";
 import ModalPeriodComponet from "../componets/ModalPeriodComponet";
 import ModalSubjectComponet from "../componets/ModalSubjectComponet";
-import TableCourse from "../componets/TableCourse";
+import TableSubjectComponet from "../componets/TableSubjectComponet";
 
 
 function ViewCourse(){ 
@@ -23,8 +23,8 @@ function ViewCourse(){
                     <div className="container px-4 text-center">
                         <p className="fw-bolder h2">Grade Curicular</p>
                         <p className="fw-bolder h4 mt-5">{course?.title}</p>
-                        <p className="h5 lead">Professor Coordenador: {course?.teacher?.firstName+" "+course?.teacher?.lastName}</p>
-                        <ModalPeriodComponet couserInteface={course?.id}/>
+                        <p className="h5 lead mb-5">Professor Coordenador: {course?.teacher?.firstName+" "+course?.teacher?.lastName}</p>
+                        <ModalPeriodComponet couserInteface={course?.id}/> &nbsp; &nbsp; 
                         <ModalSubjectComponet/>
                     </div>
                 </header>
@@ -32,12 +32,13 @@ function ViewCourse(){
                     <div className="row mt-5">
                         {periods?.map((item) => {
                           return (
-                            <div className="col-sm-6">
-                                <div className="col-sm d-flex">
-                                    <p className="h3">{item.title}</p>
-                                    <div className="px-lg-5 position-absolute-left"></div>
-                                </div> 
-                                <TableCourse titlePeriodInteface={item.title}/>
+                            <div className="col-sm-6 mb-5">
+                                <p className="h5">{item.title}</p>
+                                <TableSubjectComponet 
+                                    idPeriodInteface={item.id} 
+                                    titlePeriodInteface={item.title}
+                                    acronymCourseInteface={acronym}
+                                />
                             </div>
                           )
                         })}

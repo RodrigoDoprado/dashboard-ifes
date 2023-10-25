@@ -91,8 +91,7 @@ useEffect(() => {
                 <Form.Control required type="text" value={acronym} onChange={event =>setAcronym(event.target.value)}/>
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
-            </Row>
-            <div className="mb-3">
+              <div className="mb-3">
               <label htmlFor="inputTeacher">Orientador:</label>
               <select className="form-select" name="teacher" required value={teacher} onChange={event =>setTeacher(event.target.value)}>
                 <option selected>{teacherInteface}</option>
@@ -100,6 +99,7 @@ useEffect(() => {
               </select>
               <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
             </div>
+            </Row>
             <div className='px-lg-5 gap-5 d-inline-flex'>
               <Button variant="primary" className='px-5' type="submit">Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>

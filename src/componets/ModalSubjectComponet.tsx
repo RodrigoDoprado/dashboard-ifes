@@ -7,16 +7,26 @@ import { usePutSubject } from '../hooks/subject/usePutSubject';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useGetAllPeriod } from '../hooks/period/useGetAllCourse';
+import { access } from 'fs';
 
 type data ={
   idInteface?: string,
   titleInteface?: string,
-  acronymInteface?: string,
+  acronymInteface?: any,
   avatarInteface?: string,
-  periodInteface?: string,
+  idPeriodInteface?: any,
+  titlePeriodInteface?: string,
 }
 
-function ModalSubjectComponet({idInteface, titleInteface,avatarInteface,acronymInteface,periodInteface}:data) {
+function ModalSubjectComponet({
+  idInteface, 
+  titleInteface,
+  avatarInteface,
+  acronymInteface,
+  titlePeriodInteface,
+  idPeriodInteface
+}:data) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -25,9 +35,11 @@ function ModalSubjectComponet({idInteface, titleInteface,avatarInteface,acronymI
   const [title, setTitle] = useState(titleInteface);
   const [acronym, setAcronym] = useState(acronymInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
-
+  const [period, setPeriod] = useState(idPeriodInteface);
+  console.log(acronymInteface)
   const subjectCreate=usePostSubject()
   const subjectUpdate=usePutSubject()
+  const {periods}=useGetAllPeriod(acronymInteface) 
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -40,11 +52,11 @@ function ModalSubjectComponet({idInteface, titleInteface,avatarInteface,acronymI
 
     if (form.checkValidity() === true) {
       if(idInteface){
-        const subjectData: SubjectInterface = {period:periodInteface ,title,avatar,acronym,id:idInteface}
+        const subjectData: SubjectInterface = {period,title,avatar,acronym,id:idInteface}
         subjectUpdate.mutate(subjectData)
         // window.location.href = window.location.href
       }else{
-        const subjectData: SubjectInterface = {period:periodInteface ,title,avatar,acronym}
+        const subjectData: SubjectInterface = {period,title,avatar,acronym}
         subjectCreate.mutate(subjectData)
         // window.location.href = window.location.href
       }
@@ -58,7 +70,18 @@ useEffect(() => {
 
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<a className="btn btn-lg btn-light" onClick={handleShow}>Novo Materia</a>}
+      {idInteface?
+        <Button 
+          variant="outline-primary" 
+          onClick={handleShow}>
+          <FontAwesomeIcon icon={faPenToSquare} />
+        </Button>:
+        <a 
+        className="h5 btn btn-outline-light btn-lg" 
+        onClick={handleShow}>
+          Novo Matéria
+        </a>
+      }
       
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Matéria</>:<>Nova Matéria</>}</Modal.Title></Modal.Header>
@@ -80,6 +103,14 @@ useEffect(() => {
                 <Form.Control required type="text" value={acronym} onChange={event =>setAcronym(event.target.value)}/>
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
+              <div className="mb-3">
+                <label htmlFor="inputPeriod">Semestre:</label>
+                <select className="form-select" name="period" required value={period} onChange={event =>setPeriod(event.target.value)}>
+                  <option selected>{titlePeriodInteface}</option>
+                  {periods?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
+                </select>
+                <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
+              </div>
             </Row>
             <div className='px-lg-5 gap-5 d-inline-flex'>
               <Button variant="primary" className='px-5' type="submit">Salvar</Button>
