@@ -43,16 +43,9 @@ function Dashboard(){
           <div className="container">
             <div className="row">
               <h1 className="my-5">Dashboard</h1>
-              <div className="col-sm-6">
-                <Cards/>
-              </div>
               <div className="col-sm-6"> 
                 <Bar data={data} options={option} />
               </div>
-              <div className="col-sm-12" id="curso">
-                <Course/>
-              </div>
-              <div className="col-sm-12 my-5"></div>
             </div>
           </div>
           </main>

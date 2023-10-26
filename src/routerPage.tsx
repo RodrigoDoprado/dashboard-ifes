@@ -21,7 +21,7 @@ function RouterPage (){
           <Route path="/aluno/:enroll" element={<PagePrivate><ViewStudent /></PagePrivate>} />
           <Route path="/professores" element={<PagePrivate><Teacher /></PagePrivate>} />
           <Route path="/professor/:enroll" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
-          {/* <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} /> */}
+          <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} />
           <Route path="/curso/:acronym" element={<PagePrivate><ViewCourse /></PagePrivate>} />
         </Routes>
       )

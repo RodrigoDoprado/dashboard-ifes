@@ -32,13 +32,13 @@ function NavbarComponet(){
                 <a className="nav-link" href="/professores">Professores</a>
               </li>
               <li className="nav-item px-lg-2 fw-bolder">
-                <a className="nav-link" href="/dashboard/#curso">Cursos</a>
+                <a className="nav-link" href="/cursos">Cursos</a>
               </li>
             </ul>
             <ul className="navbar-nav px-lg-5 col-sm-2" >
               <li className="nav-item dropdown fw-bolder">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    User
+                  <FontAwesomeIcon icon={faUser} size="lg"/>
                   </a>
                   <ul className="dropdown-menu">
                     <li><a className="dropdown-item" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Meus Dados</a></li>

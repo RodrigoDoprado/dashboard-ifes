@@ -25,10 +25,10 @@ function Student(){
           <main className="main">
             <div className="container">
               <div className="row my-5">
-                <h3 className="px-5"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</h3>
+                <h3><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</h3>
               </div>
               <div className="col-sm d-flex my-5 gap-3">
-                <div className="px-lg-5 position-absolute-left"><ModalStudentComponet/></div>
+                <div className="position-absolute-left"><ModalStudentComponet/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                   <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>

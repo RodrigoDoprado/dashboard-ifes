@@ -35,27 +35,27 @@ function NavMobile() {
             <Offcanvas.Body>
               <ul className="navbar-nav me-auto">
                 <li className="nav-item my-2">
-                  <a className="nav-link active fw-bolder" aria-current="page" href="/dashboard"><FontAwesomeIcon className='px-2' icon={faHouse} size="sm" />Dashboard</a>
+                  <a className="nav-link active fw-bolder" aria-current="page" href="/dashboard"><FontAwesomeIcon className='px-2' icon={faHouse} size="lg" />Dashboard</a>
                 </li>
                 <li className="nav-item my-2">
-                  <a className="nav-link fw-bolder" href="/alunos"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</a> 
+                  <a className="nav-link fw-bolder" href="/alunos"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="lg" />Alunos</a> 
                 </li>
                 <li className="nav-item my-2">
-                  <a className="nav-link fw-bolder" href="/professores"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</a>
+                  <a className="nav-link fw-bolder" href="/professores"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="lg" />Professores</a>
                 </li>
                 <li className="nav-item my-2">
-                  <a className="nav-link fw-bolder" href="/dashboard/#curso"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</a>
+                  <a className="nav-link fw-bolder" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="lg" />Cursos</a>
                 </li>
               </ul>
               <ul className="navbar-nav me-auto my-2 px-2" >
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    User
+                  <FontAwesomeIcon icon={faUser} size="lg"/>&nbsp; &nbsp;User
                   </a>
                   <ul className="dropdown-menu">
                     <li><a className="dropdown-item fw-bolder" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Meus Dados</a></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item fw-bolder" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
+                    <li><a className="dropdown-item fw-bolder" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="sm" />Sair</a></li>
                   </ul>
                 </li>
             </ul>
