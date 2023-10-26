@@ -9,7 +9,7 @@ import TableSubjectComponet from "../componets/TableSubjectComponet";
 
 
 function ViewCourse(){ 
-    const {acronym}  = useParams();
+    const {acronym} = useParams();
     const {course}=useGetCourse(acronym)
     const {periods}=useGetAllPeriod(acronym)
    
@@ -37,7 +37,7 @@ function ViewCourse(){
                                 <TableSubjectComponet 
                                     idPeriodInteface={item.id} 
                                     titlePeriodInteface={item.title}
-                                    acronymCourseInteface={acronym}
+                                    acronymCourseInteface={acronym} 
                                 />
                             </div>
                           )

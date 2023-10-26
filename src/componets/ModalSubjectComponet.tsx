@@ -8,15 +8,15 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGetAllPeriod } from '../hooks/period/useGetAllCourse';
-import { access } from 'fs';
 
 type data ={
   idInteface?: string,
   titleInteface?: string,
-  acronymInteface?: any,
+  acronymInteface?: string,
   avatarInteface?: string,
   idPeriodInteface?: any,
   titlePeriodInteface?: string,
+  acronymCourse?: any
 }
 
 function ModalSubjectComponet({
@@ -25,7 +25,8 @@ function ModalSubjectComponet({
   avatarInteface,
   acronymInteface,
   titlePeriodInteface,
-  idPeriodInteface
+  idPeriodInteface,
+  acronymCourse
 }:data) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -36,10 +37,9 @@ function ModalSubjectComponet({
   const [acronym, setAcronym] = useState(acronymInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
   const [period, setPeriod] = useState(idPeriodInteface);
-  console.log(acronymInteface)
   const subjectCreate=usePostSubject()
   const subjectUpdate=usePutSubject()
-  const {periods}=useGetAllPeriod(acronymInteface) 
+  const {periods}=useGetAllPeriod("TADS") 
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -79,7 +79,7 @@ useEffect(() => {
         <a 
         className="h5 btn btn-outline-light btn-lg" 
         onClick={handleShow}>
-          Novo Matéria
+          Nova Matéria
         </a>
       }
       

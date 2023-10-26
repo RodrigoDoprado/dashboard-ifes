@@ -7,7 +7,7 @@ import ModalSubjectComponet from "./ModalSubjectComponet"
 type data ={
     idPeriodInteface: any,
     titlePeriodInteface: any,
-    acronymCourseInteface: any
+    acronymCourseInteface?: string
 }
 
 function TableSubjectComponet({
@@ -46,14 +46,14 @@ function TableSubjectComponet({
                               <td>Anderson Coelho</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  {/* <a className="btn btn-outline-dark" href={`/curso/${item.acronym}`}><FontAwesomeIcon icon={faEye} /></a> */}
                                   <ModalSubjectComponet 
                                     idInteface={item.id} 
                                     titleInteface={item.title} 
-                                    acronymInteface={acronymCourseInteface} 
+                                    acronymInteface={item.acronym} 
                                     avatarInteface={item.avatar} 
                                     idPeriodInteface={idPeriodInteface} 
                                     titlePeriodInteface={titlePeriodInteface}
+                                    acronymCourse={acronymCourseInteface}
                                   />
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteSubject(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>
