@@ -5,7 +5,7 @@ export function useGetAllTeacher(){
     const query = useQuery({
         queryFn: getTeachers,
         queryKey: ['teacher-data'],
-        retry: 2
+        retry: 4
     })
     return{
         ...query,

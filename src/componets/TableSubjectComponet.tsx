@@ -6,14 +6,12 @@ import ModalSubjectComponet from "./ModalSubjectComponet"
 
 type data ={
     idPeriodInteface: any,
-    titlePeriodInteface: any,
-    acronymCourseInteface?: string
+    titlePeriodInteface: any
 }
 
 function TableSubjectComponet({
   idPeriodInteface,
-  titlePeriodInteface,
-  acronymCourseInteface
+  titlePeriodInteface
 }:data){
     const {subjects}=useGetAllSubject(idPeriodInteface)
     const subjectDelete=useDeleteSubject()
@@ -53,7 +51,6 @@ function TableSubjectComponet({
                                     avatarInteface={item.avatar} 
                                     idPeriodInteface={idPeriodInteface} 
                                     titlePeriodInteface={titlePeriodInteface}
-                                    acronymCourse={acronymCourseInteface}
                                   />
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteSubject(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>

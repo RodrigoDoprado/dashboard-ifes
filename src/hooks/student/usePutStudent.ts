@@ -6,7 +6,7 @@ export function usePutStudent(){
     const queryClient = useQueryClient();
     const mutate = useMutation({
         mutationFn: updateStudent,
-        retry: 2,
+        retry: 4,
         onSuccess: () => {
             queryClient.invalidateQueries(['student-data'])
         }

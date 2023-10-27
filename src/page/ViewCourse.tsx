@@ -37,7 +37,6 @@ function ViewCourse(){
                                 <TableSubjectComponet 
                                     idPeriodInteface={item.id} 
                                     titlePeriodInteface={item.title}
-                                    acronymCourseInteface={acronym} 
                                 />
                             </div>
                           )

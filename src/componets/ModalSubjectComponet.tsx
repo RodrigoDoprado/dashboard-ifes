@@ -8,6 +8,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGetAllPeriod } from '../hooks/period/useGetAllCourse';
+import { useParams } from 'react-router-dom';
 
 type data ={
   idInteface?: string,
@@ -16,7 +17,6 @@ type data ={
   avatarInteface?: string,
   idPeriodInteface?: any,
   titlePeriodInteface?: string,
-  acronymCourse?: any
 }
 
 function ModalSubjectComponet({
@@ -26,20 +26,19 @@ function ModalSubjectComponet({
   acronymInteface,
   titlePeriodInteface,
   idPeriodInteface,
-  acronymCourse
 }:data) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [validated, setValidated] = useState(false);
-
+  const {acronym} = useParams();
   const [title, setTitle] = useState(titleInteface);
-  const [acronym, setAcronym] = useState(acronymInteface);
+  const [acronymSubject, setAcronymSubject] = useState(acronymInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
   const [period, setPeriod] = useState(idPeriodInteface);
   const subjectCreate=usePostSubject()
   const subjectUpdate=usePutSubject()
-  const {periods}=useGetAllPeriod("TADS") 
+  const {periods}=useGetAllPeriod(acronym) 
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -52,11 +51,11 @@ function ModalSubjectComponet({
 
     if (form.checkValidity() === true) {
       if(idInteface){
-        const subjectData: SubjectInterface = {period,title,avatar,acronym,id:idInteface}
+        const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject,id:idInteface}
         subjectUpdate.mutate(subjectData)
         // window.location.href = window.location.href
       }else{
-        const subjectData: SubjectInterface = {period,title,avatar,acronym}
+        const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject}
         subjectCreate.mutate(subjectData)
         // window.location.href = window.location.href
       }
@@ -100,7 +99,7 @@ useEffect(() => {
               </Form.Group>
               <Form.Group as={Col} md="12" controlId="validationCustom01">
                 <Form.Label>Sigla:</Form.Label>
-                <Form.Control required type="text" value={acronym} onChange={event =>setAcronym(event.target.value)}/>
+                <Form.Control required type="text" value={acronymSubject} onChange={event =>setAcronymSubject(event.target.value)}/>
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
               <div className="mb-3">

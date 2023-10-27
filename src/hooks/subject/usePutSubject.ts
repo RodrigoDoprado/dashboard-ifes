@@ -6,7 +6,7 @@ export function usePutSubject(){
     const queryClient = useQueryClient();
     const mutate = useMutation({
         mutationFn: updateSubject,
-        retry: 2,
+        retry: 4,
         onSuccess: () => {
             queryClient.invalidateQueries(['subject-data'])
         }

@@ -5,7 +5,7 @@ export function useGetAllSubject(id: string | undefined){
     const query = useQuery({
         queryFn: ()=>getSubjects(id),
         queryKey: ['subject-data',id],
-        retry: 2
+        retry: 4
     })
     return{
         ...query,

@@ -6,7 +6,7 @@ export function useGetAllPeriod(acronym: string | undefined){
     const query = useQuery({
         queryFn: ()=>getPeriods(acronym),
         queryKey: ['period-data',acronym],
-        retry: 2
+        retry: 4
     })
     return{
         ...query,
