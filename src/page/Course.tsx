@@ -38,7 +38,7 @@ function Course(){
                   .map((item,index) => {
                   return (
                     <div className="col-sm-4">
-                      <div className="card mb-3" style={{width: "13rem"}}>
+                      <div className="card mb-3"> {/*style={{width: "13rem"}}*/}
                         <div className="card-body">
                           <h5 className="card-title">{item.title}</h5>
                           <div className="gap-1 d-flex">
