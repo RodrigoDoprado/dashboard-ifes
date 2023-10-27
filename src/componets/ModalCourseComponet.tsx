@@ -53,11 +53,11 @@ function ModalCourseComponet({
       if(idInteface){
         const couseData: CourseInterface = {title,acronym,teacher,id:idInteface,avatar}
         courseUpdate.mutate(couseData)
-        // window.location.href = window.location.href
+        window.location.href = window.location.href
       }else{
         const couseData: CourseInterface = {title,acronym,teacher,avatar}
         courseCreate.mutate(couseData)
-        // window.location.href = window.location.href
+        window.location.href = window.location.href
       }
     }
 }

@@ -47,11 +47,11 @@ function ModalTeacherComponet({
       if(idInteface){
         const teacherData: TeacherInterface = {firstName,lastName,avatar,id:idInteface}
         teacherUpdate.mutate(teacherData)
-        // window.location.href = window.location.href
+        window.location.href = window.location.href
       }else{
         const teacherData: TeacherInterface = {firstName,lastName,avatar}
         teacherCreate.mutate(teacherData)
-        // window.location.href = window.location.href
+        window.location.href = window.location.href
       }
     }
   }

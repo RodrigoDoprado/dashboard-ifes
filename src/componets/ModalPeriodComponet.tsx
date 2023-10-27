@@ -40,11 +40,11 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
       if(idInteface){
         const periodData: PeriodInterface = {course: couserInteface,title,id:idInteface}
         periodUpdate.mutate(periodData)
-        // window.location.href = window.location.href
+        window.location.href = window.location.href
       }else{
         const periodData: PeriodInterface = {title,course: couserInteface}
         periodCreate.mutate(periodData)
-        // window.location.href = window.location.href
+        window.location.href = window.location.href
       }
     }
 }
