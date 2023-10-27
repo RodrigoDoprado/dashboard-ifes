@@ -45,11 +45,11 @@ function ModalStudentComponet({idInteface, firstNameInteface, lastNameInteface,a
       if(idInteface){
         const studentData: StudentInterface = {firstName,lastName,avatar,course,id:idInteface}
         studentUpdate.mutate(studentData)
-        window.location.href = window.location.href
+        // window.location.href = window.location.href
       }else{
         const studentData: StudentInterface = {firstName,lastName,course,avatar}
         studentCreate.mutate(studentData)
-        window.location.href = window.location.href
+        // window.location.href = window.location.href
       }
     }
 }

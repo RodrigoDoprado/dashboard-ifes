@@ -53,11 +53,11 @@ function ModalSubjectComponet({
       if(idInteface){
         const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject,id:idInteface}
         subjectUpdate.mutate(subjectData)
-        window.location.href = window.location.href
+        // window.location.href = window.location.href
       }else{
         const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject}
         subjectCreate.mutate(subjectData)
-        window.location.href = window.location.href
+        // window.location.href = window.location.href
       }
     }
 }
