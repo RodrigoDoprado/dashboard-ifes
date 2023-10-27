@@ -37,7 +37,7 @@ function Course(){
                   course.title?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {
                   return (
-                    <div className="col-sm-4 my-3">
+                    <div className="col-sm-4 mb-3">
                       <div className="card" style={{width: "12rem"}}>
                         <div className="card-body">
                           <h5 className="card-title">{item.title}</h5>
