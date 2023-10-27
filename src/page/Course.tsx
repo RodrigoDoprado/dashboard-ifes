@@ -34,11 +34,11 @@ function Course(){
               </div>
               <div className="row">      
                 {courses?.filter((course)=>
-                  course.acronym?.toLocaleLowerCase().includes(search))
+                  course.title?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {
                   return (
-                    <div className="col-sm-12">
-                      <div className="card" style={{width: "14rem"}}>
+                    <div className="col-sm-12 my-4">
+                      <div className="card" style={{width: "12rem"}}>
                         <div className="card-body">
                           <h5 className="card-title">{item.title}</h5>
                           <div className="gap-1 d-flex">
