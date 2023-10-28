@@ -45,11 +45,11 @@ function ModalStudentComponet({idInteface, firstNameInteface, lastNameInteface,a
       if(idInteface){
         const studentData: StudentInterface = {firstName,lastName,avatar,course,id:idInteface}
         studentUpdate.mutate(studentData)
-        window.location.href = window.location.href
+        // window.location.href = window.location.href
       }else{
         const studentData: StudentInterface = {firstName,lastName,course,avatar}
         studentCreate.mutate(studentData)
-        window.location.href = window.location.href
+        // window.location.href = window.location.href
       }
     }
 }
@@ -87,7 +87,7 @@ useEffect(() => {
                 <label htmlFor="inputCourse">Cuso:</label>
                 <select className="form-select" name="course" required value={course} onChange={event =>setCourse(event.target.value)}>
                   <option selected>{courseInteface}</option>
-                  {courses?.map((item) => {return(<option value={item.id}>{item.acronym}</option>)})}
+                  {courses?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
                 </select>
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </div>

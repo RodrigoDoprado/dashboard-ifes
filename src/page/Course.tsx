@@ -34,7 +34,7 @@ function Course(){
               </div>
               <div className="row">      
                 {courses?.filter((course)=>
-                  course.acronym?.toLocaleLowerCase().includes(search))
+                  course.title?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {
                   return (
                     <div className="col-sm-3">
