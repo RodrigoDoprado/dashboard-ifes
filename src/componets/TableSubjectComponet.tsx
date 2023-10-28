@@ -22,7 +22,7 @@ function TableSubjectComponet({
     return(
         <> 
             <div className="table-responsive">
-                <table className="table">
+                <table className="table table-borderless">
                     <thead>
                       <tr>
                         {/* <th scope="col"></th> */}

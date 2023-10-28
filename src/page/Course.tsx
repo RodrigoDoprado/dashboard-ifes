@@ -37,8 +37,8 @@ function Course(){
                   course.acronym?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {
                   return (
-                    <div className="col-sm-12">
-                      <div className="card" style={{width: "14rem"}}>
+                    <div className="col-sm-3">
+                      <div className="card" style={{width: "13rem"}}>
                         <div className="card-body">
                           <h5 className="card-title">{item.title}</h5>
                           <div className="gap-1 d-flex">
