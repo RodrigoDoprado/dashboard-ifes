@@ -57,7 +57,7 @@ useEffect(() => {
   return (
     <>
       {idInteface?
-        <a 
+        <a className='btn btn-outline-dark'
           onClick={handleShow}>
           <p className="h5">{titleInteface}&nbsp;<FontAwesomeIcon icon={faPenToSquare} /></p>
         </a>:

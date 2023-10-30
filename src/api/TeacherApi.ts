@@ -11,8 +11,8 @@ const teacherApi = axios.create({
     return res;
   }
 
-  export const getTeacher = async (id: any) => {
-    const res = await teacherApi.get(`/${id}`);
+  export const getTeacher = async (enroll: any) => {
+    const res = await teacherApi.get(`/teacher/${enroll}`);
     return res;
   };
   

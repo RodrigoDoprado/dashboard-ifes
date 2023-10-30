@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function NavbarComponet(){
   const {signout}=useContext(AuthContext)
-  const logout =async ()=>{
+  const logout = ()=>{
      signout()
   }
     return(
