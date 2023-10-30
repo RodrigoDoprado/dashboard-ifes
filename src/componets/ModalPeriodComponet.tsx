@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Col, Form, Row } from 'react-bootstrap';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PeriodInterface } from '../interface/PeriodInterface';
 import { usePostPeriod } from '../hooks/period/usePostCourse';
 import { usePutPeriod } from '../hooks/period/usePutCourse';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type data ={
   idInteface?: string,
@@ -57,11 +57,10 @@ useEffect(() => {
   return (
     <>
       {idInteface?
-        <Button 
-          variant="outline-primary" 
+        <a 
           onClick={handleShow}>
-            <FontAwesomeIcon icon={faPenToSquare} />
-        </Button>:
+          <p className="h5">{titleInteface}&nbsp;<FontAwesomeIcon icon={faPenToSquare} /></p>
+        </a>:
         <a 
           className="h5 btn btn-outline-light btn-lg" 
           onClick={handleShow}>

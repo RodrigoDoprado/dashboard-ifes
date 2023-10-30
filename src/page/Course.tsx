@@ -20,32 +20,40 @@ function Course(){
         <>
           <Helmet><title>Dashboard</title></Helmet>
           <NavbarComponet/>
-          <main className="main">
-            <div className="container"> 
-              <div className="row my-5">
+          <header className="header">
+            <div className="container my-5">   
+              <div className="row">
                <h3><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h3>
               </div>
-              <div className="col-sm d-flex my-5 gap-3">  
+              <div className="col-sm d-flex my-3 gap-3">  
                 <div className="position-absolute-left"><ModalCourseComponet/></div>
                 <form className="d-flex gap-2 px-lg-5" >
                   <input className="border border-primary form-control" type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                   <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </form>
               </div>
-              <div className="row">      
+            </div> 
+          </header>
+          <section className="py-5">
+            <div className="container">
+              <div className="row gx-lg-9 row-cols-2 row-cols-md-4 justify-content">      
                 {courses?.filter((course)=>
                   course.title?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {
                   return (
-                    <div className="col-sm-3">
-                      <div className="card" style={{width: "13rem"}}>
-                        <div className="card-body">
-                          <h5 className="card-title">{item.title}</h5>
-                          <div className="gap-1 d-flex">
-                            <a className="btn btn-outline-dark" href={`/curso/${item.acronym}`}><FontAwesomeIcon icon={faEye} /></a>
-                            <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName+" "+item.teacher?.lastName} avatarInteface={item.avatar}/>
-                            <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
+                    <div className="col mb-5">
+                      <div className="card">
+                        <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>
+                          <div className="card-body">
+                          {/* <img className="card-img-top"src={item.avatar}alt={item.title}/> */}
+                            <h5 className="card-title">{item.title}</h5>
                           </div>
+                        </a>
+                        <div className="card-footer">
+                          <div className="gap-1 d-flex">
+                              <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName+" "+item.teacher?.lastName} avatarInteface={item.avatar}/>
+                              <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -53,7 +61,7 @@ function Course(){
                 })}
               </div>
             </div>
-          </main>
+          </section>
       </>
     )
 }

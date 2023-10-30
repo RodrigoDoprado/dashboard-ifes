@@ -33,22 +33,20 @@ function NavMobile() {
               <FontAwesomeIcon icon={faX} className='text-light' onClick={handleClose} style={{fontSize:"1.8em",cursor: "pointer"}}/>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <ul className="navbar-nav me-auto">
-                <li className="nav-item my-2">
+              <ul className="navbar-nav me-auto px-5">
+                <li className="nav-item my-3">
                   <a className="nav-link active fw-bolder" aria-current="page" href="/dashboard"><FontAwesomeIcon className='px-2' icon={faHouse} size="lg" />Dashboard</a>
                 </li>
-                <li className="nav-item my-2">
+                <li className="nav-item my-3">
                   <a className="nav-link fw-bolder" href="/alunos"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="lg" />Alunos</a> 
                 </li>
-                <li className="nav-item my-2">
+                <li className="nav-item my-3">
                   <a className="nav-link fw-bolder" href="/professores"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="lg" />Professores</a>
                 </li>
-                <li className="nav-item my-2">
+                <li className="nav-item my-3">
                   <a className="nav-link fw-bolder" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="lg" />Cursos</a>
                 </li>
-              </ul>
-              <ul className="navbar-nav me-auto my-2 px-2" >
-                <li className="nav-item dropdown">
+                <li className="nav-item dropdown my-3 px-2">
                   <a className="nav-link dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <FontAwesomeIcon icon={faUser} size="lg"/>&nbsp; &nbsp;User
                   </a>
@@ -58,7 +56,7 @@ function NavMobile() {
                     <li><a className="dropdown-item fw-bolder" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="sm" />Sair</a></li>
                   </ul>
                 </li>
-            </ul>
+              </ul>
             </Offcanvas.Body>
           </div>
         </nav>
