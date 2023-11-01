@@ -51,7 +51,14 @@ function Course(){
                         </a>
                         <div className="card-footer">
                           <div className="gap-1 d-flex">
-                              <ModalCourseComponet idInteface={item.id} titleInteface={item.title} acronymInteface={item.acronym} teacherInteface={item.teacher?.firstName+" "+item.teacher?.lastName} avatarInteface={item.avatar}/>
+                              <ModalCourseComponet 
+                                idInteface={item.id} 
+                                titleInteface={item.title} 
+                                acronymInteface={item.acronym} 
+                                teacherNameInteface={item.teacher?.firstName+" "+item.teacher?.lastName} 
+                                avatarInteface={item.avatar}
+                                teacherIdInteface={item.teacher?.id}
+                              />
                               <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                             </div>
                         </div>

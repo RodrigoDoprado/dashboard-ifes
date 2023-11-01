@@ -6,7 +6,7 @@ export function useDeleteCourse(){
     const queryClient = useQueryClient();
     const mutate = useMutation({
         mutationFn: deleteCourse,
-        retry: 4,
+        retry: 2,
         onSuccess: () => {
             queryClient.invalidateQueries(['course-data'])
         }

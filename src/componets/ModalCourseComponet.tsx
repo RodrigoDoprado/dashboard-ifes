@@ -14,7 +14,8 @@ type data ={
   avatarInteface?: string
   titleInteface?: string
   acronymInteface?: string
-  teacherInteface?: string
+  teacherNameInteface?: string
+  teacherIdInteface?: string
 }
 
 function ModalCourseComponet({
@@ -22,7 +23,8 @@ function ModalCourseComponet({
   avatarInteface, 
   titleInteface,
   acronymInteface,
-  teacherInteface
+  teacherIdInteface,
+  teacherNameInteface
 }:data) {
 
   const [show, setShow] = useState(false);
@@ -33,7 +35,7 @@ function ModalCourseComponet({
   const [avatar, setAvatar] = useState(avatarInteface);
   const [title, setTitle] = useState(titleInteface);
   const [acronym, setAcronym] = useState(acronymInteface);
-  const [teacher, setTeacher] = useState("");
+  const [teacher, setTeacher] = useState(teacherIdInteface);
 
   const courseCreate=usePostCourse()
   const courseUpdate=usePutCourse()
@@ -51,13 +53,11 @@ function ModalCourseComponet({
 
     if (form.checkValidity() === true) {
       if(idInteface){
-        const couseData: CourseInterface = {title,acronym,teacher,id:idInteface,avatar}
+        const couseData: CourseInterface = {title,acronym,avatar,teacher,id:idInteface}
         courseUpdate.mutate(couseData)
-        // window.location.href = window.location.href
       }else{
         const couseData: CourseInterface = {title,acronym,teacher,avatar}
         courseCreate.mutate(couseData)
-        // window.location.href = window.location.href
       }
     }
 }
@@ -94,7 +94,7 @@ useEffect(() => {
               <div className="mb-3">
               <label htmlFor="inputTeacher">Orientador:</label>
               <select className="form-select" name="teacher" required value={teacher} onChange={event =>setTeacher(event.target.value)}>
-                <option selected>{teacherInteface}</option>
+                <option value={teacherIdInteface}>{teacherNameInteface}</option>
                 {teachers?.map((item) => {return(<option value={item.id}>{item.firstName+" "+item.lastName}</option>)})}
               </select>
               <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>

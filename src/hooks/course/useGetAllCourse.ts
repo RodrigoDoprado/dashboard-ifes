@@ -5,7 +5,7 @@ export function useGetAllCourse(){
     const query = useQuery({
         queryFn: getCourses,
         queryKey: ['course-data'],
-        retry: 4
+        retry: 2
     })
     return{
         ...query,

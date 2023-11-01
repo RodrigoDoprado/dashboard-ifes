@@ -14,10 +14,18 @@ type data ={
   firstNameInteface?: string,
   lastNameInteface?: string,
   avatarInteface?: string,
-  courseInteface?: string
+  courseTitleInteface?: string
+  courseIdInteface?: string
 }
 
-function ModalStudentComponet({idInteface, firstNameInteface, lastNameInteface,avatarInteface,courseInteface}:data) {
+function ModalStudentComponet({
+  idInteface, 
+  firstNameInteface, 
+  lastNameInteface,
+  avatarInteface,
+  courseTitleInteface,
+  courseIdInteface
+}:data) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true); 
@@ -26,7 +34,7 @@ function ModalStudentComponet({idInteface, firstNameInteface, lastNameInteface,a
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
-  const [course, setCourse] = useState("");
+  const [course, setCourse] = useState(courseIdInteface);
   
   const studentCreate=usePostStudent()
   const studentUpdate=usePutStudent()
@@ -86,7 +94,7 @@ useEffect(() => {
               <div className="mb-3">
                 <label htmlFor="inputCourse">Cuso:</label>
                 <select className="form-select" name="course" required value={course} onChange={event =>setCourse(event.target.value)}>
-                  <option selected>{courseInteface}</option>
+                  <option value={courseIdInteface}>{courseTitleInteface}</option>
                   {courses?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
                 </select>
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
