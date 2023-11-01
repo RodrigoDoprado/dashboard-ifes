@@ -6,7 +6,7 @@ export function usePutPeriod(){
     const queryClient = useQueryClient();
     const mutate = useMutation({
         mutationFn: updatePeriod,
-        retry: 4,
+        retry: 2,
         onSuccess: () => {
             queryClient.invalidateQueries(['period-data'])
         }
