@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componets/NavbarComponet"
 import ModalStudentComponet from "../componets/ModalStudentComponet"
-import { useDeleteStudent } from "../hooks/student/useDeleteStudent"
 import { useEffect, useState } from "react"
 import { faGraduationCap, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -10,9 +9,9 @@ import { StudentInterface } from "../interface/StudentInterface"
 import { toast } from "react-toastify"
 
 
-
 function Student(){
   const [students, setStudents] = useState<StudentInterface[]>([]);
+  const [search,setSearch]=useState("")
 
   useEffect(() => {
     getAllStudent();
@@ -25,12 +24,8 @@ function Student(){
     }
   };
 
-  const [search,setSearch]=useState("")
-  const studentDelete=useDeleteStudent()
   const handledeleteStudent = async (id: string | undefined) => {
-    if (
-      window.confirm("Deseja Excluir o Aluno?")
-    ) {
+    if (window.confirm("Deseja Excluir o Aluno?")) {
       const response = await deleteStudent(id);
       if (response.status === 200) {
         toast.success(response.data);

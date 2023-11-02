@@ -49,7 +49,6 @@ function ModalStudentComponet({
       setCourses(response.data);
     }
   };
-  // const {courses}=useGetAllCourse()
 
   const addUser = async (data: StudentInterface) => {
     const response = await createStudent(data)
