@@ -8,6 +8,10 @@ import { useGetAllTeacher } from '../hooks/teacher/useGetAllTeacher';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TeacherInterface } from '../interface/TeacherInterface';
+import { getTeachers } from '../api/TeacherApi';
+import { toast } from 'react-toastify';
+import { createCourse, updateCourse } from '../api/CourseApi';
 
 type data ={
   idInteface?: string,
@@ -36,10 +40,33 @@ function ModalCourseComponet({
   const [title, setTitle] = useState(titleInteface);
   const [acronym, setAcronym] = useState(acronymInteface);
   const [teacher, setTeacher] = useState(teacherIdInteface);
+  const [teachers, setTeachers] = useState<TeacherInterface[]>([]);
 
-  const courseCreate=usePostCourse()
-  const courseUpdate=usePutCourse()
-  const {teachers}=useGetAllTeacher()
+  useEffect(() => {
+    getAllTeacher()
+    handleClose();
+  }, [])
+
+  const getAllTeacher = async () => {
+    const response = await getTeachers()
+    if (response.status === 200) {
+      setTeachers(response.data);
+    }
+  };
+
+  const addUser = async (data: CourseInterface) => {
+    const response = await createCourse(data)
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
+
+  const updateUser = async (data: CourseInterface) => {
+    const response = await updateCourse(data);
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
  
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
@@ -50,22 +77,16 @@ function ModalCourseComponet({
     }
     
     setValidated(true);
-
-    if (form.checkValidity() === true) {
-      if(idInteface){
-        const couseData: CourseInterface = {title,acronym,avatar,teacher,id:idInteface}
-        courseUpdate.mutate(couseData)
-      }else{
-        const couseData: CourseInterface = { title, acronym, teacher, avatar}
-        courseCreate.mutate(couseData)
-      }
+    if (!idInteface) {
+      const couseData: CourseInterface = { title, acronym, teacher, avatar}
+      addUser(couseData);
+    } else {
+      const couseData: CourseInterface = {title,acronym,avatar,teacher,id:idInteface}
+      updateUser(couseData);
     }
-}
+  }
 
-useEffect(() => {
-  if(!courseCreate.isSuccess && courseUpdate.isSuccess) return 
-  handleClose();
-}, [courseCreate.isSuccess, courseUpdate.isSuccess])
+
 
   return (
     <>

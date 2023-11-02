@@ -17,7 +17,7 @@ type data ={
   avatarInteface?: string,
   courseTitleInteface?: string
   courseIdInteface?: string
-}
+} 
 
 function ModalStudentComponet({
   idInteface, 
@@ -36,7 +36,6 @@ function ModalStudentComponet({
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
   const [course, setCourse] = useState(courseIdInteface);
-  
   const [courses, setCourses] = useState<CourseInterface[]>([]);
 
   useEffect(() => {

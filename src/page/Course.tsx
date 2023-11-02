@@ -1,21 +1,41 @@
 import ModalCourseComponet from "../componets/ModalCourseComponet"
 import { useDeleteCourse } from "../hooks/course/useDeleteCourse"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { faBook, faEye, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useGetAllCourse } from "../hooks/course/useGetAllCourse"
 import NavbarComponet from "../componets/NavbarComponet"
 import { Helmet } from "react-helmet"
+import { toast } from "react-toastify"
+import { deleteCourse, getCourses } from "../api/CourseApi"
+import { CourseInterface } from "../interface/CourseInterface"
 
 
 function Course(){
-
+  const [courses, setCourses] = useState<CourseInterface[]>([]);
   const [search,setSearch]=useState("")
-  const {courses}=useGetAllCourse()
-  const courseDelete=useDeleteCourse()
-  const handledeleteCourse=(id: string | undefined)=>{
-    courseDelete.mutate(id)
+
+  useEffect(() => {
+    getAllCourse();
+  }, []);
+
+  const getAllCourse = async () => { 
+    const response = await getCourses()
+    if (response.status === 200) {
+      setCourses(response.data);
+    }
+  };
+
+  const handledeleteCourse = async (id: string | undefined) => {
+    if (window.confirm("Deseja Excluir o Curso?")) {
+      const response = await deleteCourse(id);
+      if (response.status === 200) {
+        toast.success(response.data);
+        getAllCourse();
+      }
+    }
   }
+ 
   return(
         <>
           <Helmet><title>Dashboard</title></Helmet>
