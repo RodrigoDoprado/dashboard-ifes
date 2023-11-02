@@ -2,21 +2,41 @@ import { Helmet } from "react-helmet"
 import NavbarComponet from "../componets/NavbarComponet"
 import ModalStudentComponet from "../componets/ModalStudentComponet"
 import { useDeleteStudent } from "../hooks/student/useDeleteStudent"
-import { useGetAllStudent } from "../hooks/student/useGetAllStudent"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { faGraduationCap, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { deleteStudent, getStudents } from "../api/StudentApi"
+import { StudentInterface } from "../interface/StudentInterface"
+import { toast } from "react-toastify"
 
 
 
 function Student(){
-  
-  const [search,setSearch]=useState("")
-  const {students} = useGetAllStudent()
-  const studentDelete=useDeleteStudent()
+  const [students, setStudents] = useState<StudentInterface[]>([]);
 
-  const handledeleteStudent=(id: string | undefined)=>{
-    studentDelete.mutate(id)
+  useEffect(() => {
+    getAllStudent();
+  }, []);
+
+  const getAllStudent = async () => {
+    const response = await getStudents()
+    if (response.status === 200) {
+      setStudents(response.data);
+    }
+  };
+
+  const [search,setSearch]=useState("")
+  const studentDelete=useDeleteStudent()
+  const handledeleteStudent = async (id: string | undefined) => {
+    if (
+      window.confirm("Deseja Excluir o Studante?")
+    ) {
+      const response = await deleteStudent(id);
+      if (response.status === 200) {
+        toast.success(response.data);
+        getAllStudent();
+      }
+    }
   }
   return(
         <>
@@ -28,7 +48,7 @@ function Student(){
                 <h3><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</h3>
               </div>
               <div className="col-sm d-flex my-5 gap-3">
-                <div className="position-absolute-left"><ModalStudentComponet/></div>
+                <div className=""><ModalStudentComponet/></div>
                 <form className="d-flex gap-2" >
                   <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                   <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>

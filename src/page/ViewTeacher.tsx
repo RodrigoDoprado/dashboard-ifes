@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useGetTeacher } from "../hooks/teacher/useGetTeacher";
 
-function ViewTeacher(){
+function ViewTeacher(){ 
     const {enroll}  = useParams();
     const {teacher}=useGetTeacher(enroll)
     const {signout}=useContext(AuthContext)

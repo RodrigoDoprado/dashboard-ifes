@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componets/NavbarComponet"
-import Cards from "../componets/Cards"
 import {Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legend} from "chart.js"
 import {Bar} from "react-chartjs-2"
 import { useState } from "react"
 import { UserData } from "../Data"
-import Course from "./Course"
+import { useGetAllCourse } from "../hooks/course/useGetAllCourse"
+import { useGetAllStudent } from "../hooks/student/useGetAllStudent"
 
 ChartJs.register(
   BarElement,
@@ -16,13 +16,16 @@ ChartJs.register(
 )
 
 function Dashboard(){
+  const {courses}=useGetAllCourse()
+  const {students}=useGetAllStudent()
+
   const option={}
   const [data, setData] = useState({
-    labels: UserData.map((data) => data.year),
+    labels: courses?.map((data) => data.acronym),
     datasets: [
       {
         label: "Users Gained",
-        data: UserData.map((data) => data.userGain),
+        data: UserData?.map((data) => data.userGain),
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",

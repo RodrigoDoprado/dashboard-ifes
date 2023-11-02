@@ -26,7 +26,7 @@ function Course(){
                <h3><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h3>
               </div>
               <div className="col-sm d-flex my-3 gap-3">  
-                <div className="position-absolute-left"><ModalCourseComponet/></div>
+                <div className=""><ModalCourseComponet/></div>
                 <form className="d-flex gap-2 px-lg-5" >
                   <input className="border border-primary form-control" type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
                   <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>

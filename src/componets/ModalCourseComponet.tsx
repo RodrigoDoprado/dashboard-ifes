@@ -56,7 +56,7 @@ function ModalCourseComponet({
         const couseData: CourseInterface = {title,acronym,avatar,teacher,id:idInteface}
         courseUpdate.mutate(couseData)
       }else{
-        const couseData: CourseInterface = {title,acronym,teacher,avatar}
+        const couseData: CourseInterface = { title, acronym, teacher, avatar}
         courseCreate.mutate(couseData)
       }
     }
@@ -69,8 +69,7 @@ useEffect(() => {
 
   return (
     <>
-    {idInteface?<Button variant="outline-secondary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Curso</Button>}
-      
+    {idInteface?<Button variant="outline-secondary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder' onClick={handleShow}>Novo Curso</Button>} 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Curso</>:<>Novo Curso</>}</Modal.Title></Modal.Header>
         <Modal.Body>

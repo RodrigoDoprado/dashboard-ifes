@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { usePostStudent } from '../hooks/student/usePostStudent';
 import { StudentInterface } from '../interface/StudentInterface';
-import { usePutStudent } from '../hooks/student/usePutStudent';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
+import { createStudent, updateStudent } from '../api/StudentApi';
+import { toast } from 'react-toastify';
+import { getCourses } from '../api/CourseApi';
+import { CourseInterface } from '../interface/CourseInterface';
 
 type data ={
   idInteface?: string,
@@ -36,9 +37,33 @@ function ModalStudentComponet({
   const [avatar, setAvatar] = useState(avatarInteface);
   const [course, setCourse] = useState(courseIdInteface);
   
-  const studentCreate=usePostStudent()
-  const studentUpdate=usePutStudent()
-  const {courses}=useGetAllCourse()
+  const [courses, setCourses] = useState<CourseInterface[]>([]);
+
+  useEffect(() => {
+    getAllCourse();
+  }, []);
+
+  const getAllCourse = async () => {
+    const response = await getCourses()
+    if (response.status === 200) {
+      setCourses(response.data);
+    }
+  };
+  // const {courses}=useGetAllCourse()
+
+  const addUser = async (data: StudentInterface) => {
+    const response = await createStudent(data)
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
+
+  const updateUser = async (data: StudentInterface) => {
+    const response = await updateStudent(data);
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -46,26 +71,16 @@ function ModalStudentComponet({
       event.preventDefault();
       event.stopPropagation();
     }
-    
     setValidated(true);
 
-    if (form.checkValidity() === true) {
-      if(idInteface){
-        const studentData: StudentInterface = {firstName,lastName,avatar,course,id:idInteface}
-        studentUpdate.mutate(studentData)
-        // window.location.href = window.location.href
-      }else{
-        const studentData: StudentInterface = {firstName,lastName,course,avatar}
-        studentCreate.mutate(studentData)
-        // window.location.href = window.location.href
-      }
+    if (!idInteface) {
+      const studentData: StudentInterface = {firstName,lastName,course,avatar}
+      addUser(studentData);
+    } else {
+      const studentData: StudentInterface = {firstName,lastName,course,avatar,id:idInteface}
+      updateUser(studentData);
     }
 }
-
-useEffect(() => {
-  if(!studentCreate.isSuccess && studentUpdate.isSuccess) return 
-  handleClose();
-}, [studentCreate.isSuccess, studentUpdate.isSuccess])
 
   return (
     <>

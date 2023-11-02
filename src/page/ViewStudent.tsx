@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useGetStudent } from "../hooks/student/useGetStudent";
 import NavbarStudentComponet from "../componets/NavbarStudentComponet";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext"; 
 
 function ViewStudent(){
     const {enroll}  = useParams();
