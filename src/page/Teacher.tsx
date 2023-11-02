@@ -1,21 +1,39 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componets/NavbarComponet"
 import ModalTeacherComponet from "../componets/ModalTeacherComponet"
-import { useGetAllTeacher } from "../hooks/teacher/useGetAllTeacher"
-import { useDeleteTeacher } from "../hooks/teacher/useDeleteTeacher"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { faChalkboardUser, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { deleteTeacher, getTeachers } from "../api/TeacherApi"
+import { toast } from "react-toastify"
+import { TeacherInterface } from "../interface/TeacherInterface"
 
 
 function Teacher(){
+  const [teachers, setTeachers] = useState<TeacherInterface[]>([]);
+  const [search,setSearch]=useState("");
 
-  const [search,setSearch]=useState("")
-  const {teachers} = useGetAllTeacher()
-  const teacherDelete=useDeleteTeacher()
-  const handledeleteTeacher=(id: string | undefined)=>{
-    teacherDelete.mutate(id)
+  useEffect(() => {
+    getAllTeacher();
+  }, []);
+
+  const getAllTeacher = async () => {
+    const response = await getTeachers()
+    if (response.status === 200) {
+      setTeachers(response.data);
+    }
+  };
+
+  const handledeleteTeacher = async (id: string | undefined) => {
+    if (window.confirm("Deseja Excluir o Professor?")) {
+      const response = await deleteTeacher(id);
+      if (response.status === 200) {
+        toast.success(response.data);
+        getAllTeacher();
+      }
+    }
   }
+
   return(
         <>
           <Helmet><title>Professor</title></Helmet> 

@@ -34,7 +34,7 @@ function Student(){
     }
   }
   return(
-        <>
+        <> 
           <Helmet><title>Aluno</title></Helmet>
           <NavbarComponet/>
           <main className="main">

@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { usePostTeacher } from '../hooks/teacher/usePostTeacher';
 import { TeacherInterface } from '../interface/TeacherInterface';
-import { usePutTeacher } from '../hooks/teacher/usePutTeacher';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { createTeacher, updateTeacher } from '../api/TeacherApi';
+import { toast } from 'react-toastify';
 
 type data ={
   idInteface?: string,
   firstNameInteface?: string,
   lastNameInteface?: string,
-  avatarInteface?: string
+  avatarInteface?: string 
 }
 
 function ModalTeacherComponet({
@@ -31,8 +31,23 @@ function ModalTeacherComponet({
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
 
-  const teacherCreate=usePostTeacher()
-  const teacherUpdate=usePutTeacher()
+  useEffect(() => {
+    handleClose(); 
+  }, [])
+
+  const addUser = async (data: TeacherInterface) => {
+    const response = await createTeacher(data)
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
+
+  const updateUser = async (data: TeacherInterface) => {
+    const response = await updateTeacher(data);
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -42,24 +57,14 @@ function ModalTeacherComponet({
     }
     
     setValidated(true);
-
-    if (form.checkValidity() === true) {
-      if(idInteface){
-        const teacherData: TeacherInterface = {firstName,lastName,avatar,id:idInteface}
-        teacherUpdate.mutate(teacherData)
-        // window.location.href = window.location.href
-      }else{
-        const teacherData: TeacherInterface = {firstName,lastName,avatar}
-        teacherCreate.mutate(teacherData)
-        // window.location.href = window.location.href
-      }
+    if (!idInteface) {
+      const teacherData: TeacherInterface = {firstName,lastName,avatar}
+      addUser(teacherData);
+    } else {
+      const teacherData: TeacherInterface = {firstName,lastName,avatar,id:idInteface}
+      updateUser(teacherData);
     }
   }
-
-useEffect(() => {
-  if(!teacherCreate.isSuccess && teacherUpdate.isSuccess) return handleClose(); 
-}, [teacherCreate.isSuccess, teacherUpdate.isSuccess])
-
   return (
     <>
     {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Professor</Button>}

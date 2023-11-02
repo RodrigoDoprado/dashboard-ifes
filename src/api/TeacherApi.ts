@@ -27,7 +27,8 @@ const teacherApi = axios.create({
   };
   
   export const deleteTeacher = async(id: any) => {
-    await teacherApi.delete(`/teacher/${id}`);
+    const response =await teacherApi.delete(`/teacher/${id}`);
+    return response;
   };
   
   
