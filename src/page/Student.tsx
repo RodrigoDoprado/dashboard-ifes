@@ -29,7 +29,7 @@ function Student(){
   const studentDelete=useDeleteStudent()
   const handledeleteStudent = async (id: string | undefined) => {
     if (
-      window.confirm("Deseja Excluir o Studante?")
+      window.confirm("Deseja Excluir o Aluno?")
     ) {
       const response = await deleteStudent(id);
       if (response.status === 200) {
