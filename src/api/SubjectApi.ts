@@ -27,7 +27,8 @@ const subjectApi = axios.create({
   };
   
   export const deleteSubject = async(id: any) => {
-    await subjectApi.delete(`/subject/${id}`);
+    const res =await subjectApi.delete(`/subject/${id}`);
+    return res;
   };
   
   

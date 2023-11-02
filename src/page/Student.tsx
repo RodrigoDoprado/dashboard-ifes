@@ -37,7 +37,7 @@ function Student(){
         <> 
           <Helmet><title>Aluno</title></Helmet>
           <NavbarComponet/>
-          <main className="main">
+          <main className="main"> 
             <div className="container">
               <div className="row my-5">
                 <h3><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</h3>

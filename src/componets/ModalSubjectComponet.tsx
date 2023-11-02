@@ -9,6 +9,10 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGetAllPeriod } from '../hooks/period/useGetAllCourse';
 import { useParams } from 'react-router-dom';
+import { getPeriods } from '../api/PeriodApi';
+import { PeriodInterface } from '../interface/PeriodInterface';
+import { createSubject, updateSubject } from '../api/SubjectApi';
+import { toast } from 'react-toastify';
 
 type data ={
   idInteface?: string,
@@ -19,7 +23,7 @@ type data ={
   titlePeriodInteface?: string,
 }
 
-function ModalSubjectComponet({
+function ModalSubjectComponet({ 
   idInteface, 
   titleInteface,
   avatarInteface,
@@ -32,13 +36,38 @@ function ModalSubjectComponet({
   const handleShow = () => setShow(true);
   const [validated, setValidated] = useState(false);
   const {acronym} = useParams();
+  
   const [title, setTitle] = useState(titleInteface);
   const [acronymSubject, setAcronymSubject] = useState(acronymInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
   const [period, setPeriod] = useState(idPeriodInteface);
-  const subjectCreate=usePostSubject()
-  const subjectUpdate=usePutSubject()
-  const {periods}=useGetAllPeriod(acronym) 
+  const [periods, setPeriods] = useState<PeriodInterface[]>([]);
+
+  useEffect(() => {
+    getAllPeriod()
+    handleClose();
+  }, [])
+
+  const getAllPeriod = async () => {
+    const response = await getPeriods(acronym)
+    if (response.status === 200) {
+      setPeriods(response.data);
+    }
+  };
+
+  const addUser = async (data: SubjectInterface) => {
+    const response = await createSubject(data)
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
+
+  const updateUser = async (data: SubjectInterface) => {
+    const response = await updateSubject(data);
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
@@ -48,24 +77,16 @@ function ModalSubjectComponet({
     }
     
     setValidated(true);
-
-    if (form.checkValidity() === true) {
-      if(idInteface){
-        const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject,id:idInteface}
-        subjectUpdate.mutate(subjectData)
-        // window.location.href = window.location.href
-      }else{
-        const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject}
-        subjectCreate.mutate(subjectData)
-        // window.location.href = window.location.href
-      }
+    if (!idInteface) {
+      const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject}
+      addUser(subjectData);
+    } else {
+      const subjectData: SubjectInterface = {period,title,avatar,acronym:acronymSubject,id:idInteface}
+      updateUser(subjectData);
     }
-}
+  }
 
-useEffect(() => {
-  if(!subjectCreate.isSuccess && subjectUpdate.isSuccess) return 
-  handleClose();
-}, [subjectCreate.isSuccess, subjectUpdate.isSuccess])
+
 
   return (
     <>

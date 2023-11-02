@@ -1,24 +1,40 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useDeleteSubject } from "../hooks/subject/useDeleteSubject"
-import { useGetAllSubject } from "../hooks/subject/useGetAllSubject"
 import ModalSubjectComponet from "./ModalSubjectComponet"
+import { deleteSubject, getSubjects } from "../api/SubjectApi"
+import { toast } from "react-toastify"
+import { useEffect, useState } from "react"
+import { SubjectInterface } from "../interface/SubjectInterface"
 
 type data ={
     idPeriodInteface: any,
     titlePeriodInteface: any
 }
 
-function TableSubjectComponet({
-  idPeriodInteface,
-  titlePeriodInteface
-}:data){
-    const {subjects}=useGetAllSubject(idPeriodInteface)
-    const subjectDelete=useDeleteSubject()
-    
-    const handledeleteSubject=(id: string | undefined)=>{
-        subjectDelete.mutate(id)
+function TableSubjectComponet({idPeriodInteface,titlePeriodInteface}:data){
+  const [subjects, setSubjects] = useState<SubjectInterface[]>([]);
+
+  useEffect(() => {
+    getAllSubject();
+  }, []);
+
+  const getAllSubject = async () => {
+    const response = await getSubjects(idPeriodInteface)
+    if (response.status === 200) {
+      setSubjects(response.data);
+    }
+  };
+
+  const handledeleteSubject = async (id: string | undefined) => {
+    if (window.confirm("Deseja Excluir a Matéria?")) {
+      const response = await deleteSubject(id);
+      if (response.status === 200) {
+        toast.success(response.data);
+        getAllSubject();
       }
+    }
+  }
+    
     return(
         <> 
             <div className="table-responsive">
