@@ -1,17 +1,38 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componets/NavbarComponet"
 import { useParams } from "react-router-dom";
-import { useGetCourse } from "../hooks/course/useGetCourse";
-import { useGetAllPeriod } from "../hooks/period/useGetAllCourse";
 import ModalPeriodComponet from "../componets/ModalPeriodComponet";
 import ModalSubjectComponet from "../componets/ModalSubjectComponet";
 import TableSubjectComponet from "../componets/TableSubjectComponet";
+import { useEffect, useState } from "react";
+import { getCourse } from "../api/CourseApi";
+import { getPeriods } from "../api/PeriodApi";
+import { CourseInterface } from "../interface/CourseInterface";
+import { PeriodInterface } from "../interface/PeriodInterface";
 
 
 function ViewCourse(){ 
+    const [course, setCourse] = useState<CourseInterface>();
+    const [periods, setPeriods] = useState<PeriodInterface[]>([]);
     const {acronym} = useParams();
-    const {course}=useGetCourse(acronym)
-    const {periods}=useGetAllPeriod(acronym)
+
+    useEffect(() => {
+        getByCourse().then(()=>{getAllPeriod()})
+      }, []);
+    
+      const getByCourse = async () => {
+        const response = await getCourse(acronym)
+        if (response.status === 200) {
+            setCourse(response.data);
+        }
+      };
+
+      const getAllPeriod = async () => {
+        const response = await getPeriods(acronym)
+        if (response.status === 200) {
+            setPeriods(response.data);
+        }
+      };
    
     return(
         <>

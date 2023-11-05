@@ -4,8 +4,6 @@ import {Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legen
 import {Bar} from "react-chartjs-2"
 import { useState } from "react"
 import { UserData } from "../Data"
-import { useGetAllCourse } from "../hooks/course/useGetAllCourse"
-import { useGetAllStudent } from "../hooks/student/useGetAllStudent"
 
 ChartJs.register(
   BarElement,
@@ -16,12 +14,10 @@ ChartJs.register(
 )
 
 function Dashboard(){
-  const {courses}=useGetAllCourse()
-  const {students}=useGetAllStudent()
 
   const option={}
   const [data, setData] = useState({
-    labels: courses?.map((data) => data.acronym),
+    labels: UserData?.map((data) => data.year),
     datasets: [
       {
         label: "Users Gained",

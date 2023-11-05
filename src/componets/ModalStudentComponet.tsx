@@ -50,10 +50,10 @@ function ModalStudentComponet({
   };
 
   const addUser = async (data: StudentInterface) => {
-    const response = await createStudent(data)
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await createStudent(data)
+    .then((res)=>{
+      console.log(res.data.data);
+    })
   };
 
   const updateUser = async (data: StudentInterface) => {

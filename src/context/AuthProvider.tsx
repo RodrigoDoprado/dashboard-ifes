@@ -3,10 +3,12 @@ import { AuthContext } from "./AuthContext"
 import { UserData } from "../interface/UserData"
 import { AuthInterface } from "../interface/AuthInterface"
 import { createSignIn } from "../api/AuthApi"
+import { useNavigate } from "react-router-dom"
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<UserData | null>(null)
   const [loading, setLoading] = useState(true)
+  // const history = useNavigate();
 
   // useEffect(() => {
   //   validateToken()
@@ -36,6 +38,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     setToken("")
     // setTeacherToken("")
     // setStudentToken("")
+    // setTimeout(() => history("/"), 500);
   }
 
   const setToken = (token: string) => {

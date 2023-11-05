@@ -36,7 +36,7 @@ function Student(){
   return(
         <> 
           <Helmet><title>Aluno</title></Helmet>
-          <NavbarComponet/>
+          <NavbarComponet/> 
           <main className="main"> 
             <div className="container">
               <div className="row my-5">

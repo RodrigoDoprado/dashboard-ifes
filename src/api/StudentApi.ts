@@ -16,7 +16,7 @@ import { StudentInterface } from "../interface/StudentInterface";
     return res;
   };
   
-  export const createStudent = async (data: StudentInterface): AxiosPromise<any> => {
+  export const createStudent = async (data: StudentInterface)=> {
     const res = await studentApi.post("/student",data);
     return res;
   };

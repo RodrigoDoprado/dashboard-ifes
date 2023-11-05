@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Col, Form, Row } from 'react-bootstrap';
 import { PeriodInterface } from '../interface/PeriodInterface';
-import { usePostPeriod } from '../hooks/period/usePostCourse';
-import { usePutPeriod } from '../hooks/period/usePutCourse';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
+import { createPeriod, updatePeriod } from '../api/PeriodApi';
 
 type data ={
   idInteface?: string,
@@ -23,8 +23,23 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
 
   const [title, setTitle] = useState(titleInteface);
 
-  const periodCreate=usePostPeriod()
-  const periodUpdate=usePutPeriod()
+  useEffect(() => {
+    handleClose();
+  }, [])
+
+  const addUser = async (data: PeriodInterface) => {
+    const response = await createPeriod(data)
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
+
+  const updateUser = async (data: PeriodInterface) => {
+    const response = await updatePeriod(data);
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
  
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
@@ -35,22 +50,14 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
     }
     
     setValidated(true);
-
-    if (form.checkValidity() === true) {
-      if(idInteface){
-        const periodData: PeriodInterface = {course: couserInteface,title,id:idInteface}
-        periodUpdate.mutate(periodData)
-      }else{
-        const periodData: PeriodInterface = {title,course: couserInteface}
-        periodCreate.mutate(periodData)
-      }
+    if (!idInteface) {
+      const periodData: PeriodInterface = {title,course: couserInteface}
+      addUser(periodData);
+    } else {
+      const periodData: PeriodInterface = {course: couserInteface,title,id:idInteface}
+      updateUser(periodData);
     }
 }
-
-useEffect(() => {
-  if(!periodCreate.isSuccess && periodUpdate.isSuccess) return 
-  handleClose();
-}, [periodCreate.isSuccess, periodUpdate.isSuccess])
 
   return (
     <>

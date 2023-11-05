@@ -1,19 +1,26 @@
 import { Helmet } from "react-helmet"
 import { useParams } from "react-router-dom";
-import { useGetStudent } from "../hooks/student/useGetStudent";
 import NavbarStudentComponet from "../componets/NavbarStudentComponet";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext"; 
+import { StudentInterface } from "../interface/StudentInterface";
+import { getStudent } from "../api/StudentApi";
 
 function ViewStudent(){
+    const [student, setStudent] = useState<StudentInterface>();
     const {enroll}  = useParams();
-    const {student}=useGetStudent(enroll)
     const {signout}=useContext(AuthContext)
+
+    useEffect(() => {
+        getByStudent().catch(()=>{signout()})
+      }, []);
     
-    if(student === null){
-        window.location.href = window.location.href
-        signout()
-    }
+      const getByStudent = async () => {
+        const response = await getStudent(enroll)
+        if (response.status === 200) {
+            setStudent(response.data);
+        }
+      };
     
     return(
         <>

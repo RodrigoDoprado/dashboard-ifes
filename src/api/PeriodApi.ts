@@ -11,7 +11,7 @@ const periodApi = axios.create({
     return res;
   }
 
-  export const getPeriod = async (enroll: any) => {
+  export const getPeriod = async (enroll: any): AxiosPromise<any> => {
     const res = await periodApi.get(`/period/${enroll}`);
     return res;
   };

@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { usePostCourse } from '../hooks/course/usePostCourse';
-import { usePutCourse } from '../hooks/course/usePutCourse';
 import { CourseInterface } from '../interface/CourseInterface';
-import { useGetAllTeacher } from '../hooks/teacher/useGetAllTeacher';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -56,9 +53,9 @@ function ModalCourseComponet({
 
   const addUser = async (data: CourseInterface) => {
     const response = await createCourse(data)
-    if (response.status === 200) {
+    if (response.status === 201) {
       toast.success(response.data);
-    }
+    }else{alert(response.data)}
   };
 
   const updateUser = async (data: CourseInterface) => {
