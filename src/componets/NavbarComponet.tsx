@@ -1,55 +1,48 @@
 import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
-import NavMobile from "./NavMobile"
-import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function NavbarComponet(){
   const {signout}=useContext(AuthContext)
-  const logout = ()=>{
-     signout()
+  const logout = ()=>{signout()}
+  const navigation = ()=>{
+    const sidebarToggle = document.body.querySelector('#sidebarToggle');
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', event => {
+            event.preventDefault();
+            document.body.classList.toggle('sb-sidenav-toggled');
+            // localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+        });
+    }
+
   }
     return(
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="sb-topnav navbar navbar-expand navbar-dark bg-primary">
         <div className="container-fluid">
-          <a className="navbar-brand d-inline-flex gap-1" href="/dashboard">
-            <img src="../assets/ifes.png" style={{width:"45px", height:"45px"}}/>
-            <h5 className="mt-2">IFES</h5>
-          </a>
-          <div><NavMobile/></div>
-          {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 px-lg-5">
-              <li className="nav-item px-lg-2 fw-bolder">
-                <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
-              </li>
-              <li className="nav-item px-lg-2 fw-bolder">
-                <a className="nav-link" href="/alunos">Alunos</a>
-              </li>
-              <li className="nav-item px-lg-2 fw-bolder">
-                <a className="nav-link" href="/professores">Professores</a>
-              </li>
-              <li className="nav-item px-lg-2 fw-bolder">
-                <a className="nav-link" href="/cursos">Cursos</a>
-              </li>
-            </ul>
-            <ul className="navbar-nav px-lg-5 col-sm-2" >
-              <li className="nav-item dropdown fw-bolder">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <FontAwesomeIcon icon={faUser} size="lg"/>
-                  </a>
-                  <ul className="dropdown-menu">
+           <a className="navbar-brand d-inline-flex gap-1" href="/">
+             <img src="../assets/ifes.png" style={{width:"45px", height:"45px"}}/>
+             <h5 className="mt-2">IFES</h5>
+           </a>
+            <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" onClick={navigation}><FontAwesomeIcon icon={faBars} style={{color: "#f7f7f7"}} /></button>
+             <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div className="input-group">
+                    <input className="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    {/* <button className="btn btn-outline-light" id="btnNavbarSearch" type="button"><i className="fas fa-search"></i></button> */}
+                </div>
+            </form>
+            <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><FontAwesomeIcon icon={faUser} size="lg"/></a>
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a className="dropdown-item" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Meus Dados</a></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
-                  </ul>
+                        <li><a className="dropdown-item" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
+                    </ul>
                 </li>
             </ul>
           </div>
-        </div>
-      </nav>
+        </nav>
     )
 }
 export default NavbarComponet

@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet"
 import { toast } from "react-toastify"
 import { deleteCourse, getCourses } from "../api/CourseApi"
 import { CourseInterface } from "../interface/CourseInterface"
+import NavSidebar from "../componets/NavSidebar"
 
 
 function Course(){
@@ -38,23 +39,18 @@ function Course(){
         <>
           <Helmet><title>Dashboard</title></Helmet>
           <NavbarComponet/>
-          <header className="header">
-            <div className="container my-5">   
-              <div className="row">
-               <h3><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h3>
-              </div>
-              <div className="col-sm d-flex my-3 gap-3">  
-                <div className=""><ModalCourseComponet/></div>
-                <form className="d-flex gap-2 px-lg-5" >
-                  <input className="border border-primary form-control" type="search" placeholder="Busca Sigla" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                  <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-                </form>
-              </div>
-            </div> 
-          </header>
-          <section className="py-5">
-            <div className="container">
-              <div className="row gx-lg-9 row-cols-2 row-cols-md-4 justify-content">      
+          <div id="layoutSidenav">
+            <NavSidebar/>
+              <div id="layoutSidenav_content"> 
+                <main>
+                <div className="container-fluid px-4">
+                            <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Coursos</h1>
+                            <ol className="breadcrumb mb-4">
+                                {/* <li className="breadcrumb-item active">Dashboard</li> */}
+                            </ol>
+                            
+                <div className="position-absolute-left"><ModalCourseComponet/></div> 
+              <div className="row gx-lg-9 row-cols-2 row-cols-md-4 justify-content my-5">      
                 {courses?.filter((course)=>
                   course.title?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {
@@ -86,7 +82,9 @@ function Course(){
                 })}
               </div>
             </div>
-          </section>
+          </main>
+          </div>
+          </div>
       </>
     )
 }

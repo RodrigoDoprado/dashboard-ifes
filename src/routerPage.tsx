@@ -3,12 +3,24 @@ import Dashboard from "./page/Dashboard"
 import Login from "./page/Login"
 import { PagePrivate } from "./context/PagePrivate"
 import { PagePublic } from "./context/PagePublic"
+import Course from "./page/Course"
 import Student from "./page/Student"
 import Teacher from "./page/Teacher"
-import Course from "./page/Course"
 import ViewCourse from "./page/ViewCourse"
 import ViewStudent from "./page/ViewStudent"
 import ViewTeacher from "./page/ViewTeacher"
+
+// function PriveteRoute({Element, ...rest}:any){
+//   const{isAuthenticated}=useSelector(state=>)
+//   return(
+//     <Route 
+//       {...rest}
+//       render={(props:any)=>(
+//         isAuthenticated?<Element{...props}/>:redirect("/")
+//       )}
+//     />
+//   )
+// }
 
 function RouterPage (){
     return (

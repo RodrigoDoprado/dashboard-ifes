@@ -67,7 +67,7 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
           <p className="h5">{titleInteface}&nbsp;<FontAwesomeIcon icon={faPenToSquare} /></p>
         </a>:
         <a 
-          className="h5 btn btn-outline-light btn-lg" 
+          className="h5 btn btn-outline-dark btn-lg" 
           onClick={handleShow}>
             Novo Periodo
         </a>

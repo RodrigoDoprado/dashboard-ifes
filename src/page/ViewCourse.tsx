@@ -9,6 +9,7 @@ import { getCourse } from "../api/CourseApi";
 import { getPeriods } from "../api/PeriodApi";
 import { CourseInterface } from "../interface/CourseInterface";
 import { PeriodInterface } from "../interface/PeriodInterface";
+import NavSidebar from "../componets/NavSidebar";
 
 
 function ViewCourse(){ 
@@ -38,20 +39,24 @@ function ViewCourse(){
         <>
             <Helmet><title>Grade do Curso - {acronym}</title></Helmet>
             <NavbarComponet/>
-            {/* <!-- Header--> */}
-            <header className="bg-primary bg-gradient text-white">
-                <div className="container px-4 text-center">   
-                    <p className="fw-bolder h2">Grade Curicular</p>
-                    <p className="fw-bolder h4 mt-5">{course?.title}</p>
-                    <p className="h5 lead mb-5">Professor Coordenador: {course?.teacher?.firstName+" "+course?.teacher?.lastName}</p>
-                    <ModalPeriodComponet couserInteface={course?.id}/> &nbsp; &nbsp; 
+            <div id="layoutSidenav">
+            <NavSidebar/>
+              <div id="layoutSidenav_content"> 
+                <main>
+                <div className="container-fluid px-4">
+            <header>
+                
+            <h1 className="mt-4">{course?.title}</h1>
+                            <ol className="breadcrumb mb-4">
+                                <li className="">Professor Coordenador:&nbsp;{course?.teacher?.firstName+" "+course?.teacher?.lastName}</li>
+                            </ol>
+                <div className="text-center">
+                    <ModalPeriodComponet couserInteface={course?.id}/> &nbsp;&nbsp;&nbsp; &nbsp; 
                     <ModalSubjectComponet/>
-                </div>
+                    </div>
             </header>
-            <section className="py-5">
-                <div className="container-fluid">
-                    <div className="row gx-lg-9 row-cols-1 row-cols-md-2 justify-content px-5">
-                        {/* <div className="col-sm-6"> */}
+            
+                    <div className="row gx-lg-9 row-cols-1 row-cols-md-2 justify-content px-5 my-5">
                             {periods?.map((item) => {
                               return (
                                 <div className="col mb-5">
@@ -63,10 +68,11 @@ function ViewCourse(){
                                 </div>
                               )
                             })}
-                        {/* </div> */}
                     </div>
                 </div>
-            </section>
+            </main>
+            </div>
+            </div>
         </>
     )
 }

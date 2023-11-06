@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { deleteStudent, getStudents } from "../api/StudentApi"
 import { StudentInterface } from "../interface/StudentInterface"
 import { toast } from "react-toastify"
+import NavSidebar from "../componets/NavSidebar"
 
 
 function Student(){
@@ -37,19 +38,18 @@ function Student(){
         <> 
           <Helmet><title>Aluno</title></Helmet>
           <NavbarComponet/> 
-          <main className="main"> 
-            <div className="container">
-              <div className="row my-5">
-                <h3><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</h3>
-              </div>
-              <div className="col-sm d-flex my-5 gap-3">
-                <div className=""><ModalStudentComponet/></div>
-                <form className="d-flex gap-2" >
-                  <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                  <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-                </form>
-              </div>
-              <div className="row">      
+          <div id="layoutSidenav">
+            <NavSidebar/>
+              <div id="layoutSidenav_content">
+                <main>
+                <div className="container-fluid px-4">
+                            <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="sm" />Alunos</h1>
+                            <ol className="breadcrumb mb-4">
+                                {/* <li className="breadcrumb-item active">Dashboard</li> */}
+                            </ol>
+                            
+                <div className="position-absolute-left"><ModalStudentComponet/></div>
+              <div className="row my-5"> 
                 <div className="col-sm">
                   <div className="table-responsive">
                     <table className="table">
@@ -102,6 +102,8 @@ function Student(){
               </div>
             </div>
           </main>
+          </div>
+          </div>
       </>
     )
 }

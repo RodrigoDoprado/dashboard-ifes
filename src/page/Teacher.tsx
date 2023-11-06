@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { deleteTeacher, getTeachers } from "../api/TeacherApi"
 import { toast } from "react-toastify"
 import { TeacherInterface } from "../interface/TeacherInterface"
+import NavSidebar from "../componets/NavSidebar"
 
 
 function Teacher(){
@@ -38,19 +39,18 @@ function Teacher(){
         <>
           <Helmet><title>Professor</title></Helmet> 
           <NavbarComponet/>
-          <main className="main">
-            <div className="container">
-              <div className="row my-5">
-                <h3><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h3>
-              </div>
-              <div className="col-sm d-flex my-5 gap-3">
+          <div id="layoutSidenav">
+            <NavSidebar/> 
+              <div id="layoutSidenav_content">
+                <main>
+                <div className="container-fluid px-4">
+                            <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h1>
+                            <ol className="breadcrumb mb-4">
+                                {/* <li className="breadcrumb-item active">Dashboard</li> */}
+                            </ol>
+                            
                 <div className="position-absolute-left"><ModalTeacherComponet/></div>
-                <form className="d-flex gap-2 px-lg-5" >
-                  <input className="border border-primary form-control " type="search" placeholder="Busca Nome" aria-label="Search" value={search} onChange={event =>setSearch(event.target.value)}/>
-                  <button className="btn btn-outline-dark d-none d-sm-block"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-                </form>
-              </div>
-              <div className="row">      
+              <div className="row my-5">      
                 <div className="col-sm">
                   <div className="table-responsive">
                     <table className="table">
@@ -92,6 +92,8 @@ function Teacher(){
               </div>
             </div>
           </main>
+          </div>
+          </div>
       </>
     )
 }

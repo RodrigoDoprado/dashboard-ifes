@@ -94,7 +94,7 @@ function ModalSubjectComponet({
           <FontAwesomeIcon icon={faPenToSquare} />
         </Button>:
         <a 
-        className="h5 btn btn-outline-light btn-lg" 
+        className="h5 btn btn-outline-dark btn-lg" 
         onClick={handleShow}>
           Nova Matéria
         </a>
