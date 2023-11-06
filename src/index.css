@@ -6774,6 +6774,10 @@ textarea.form-control-lg {
   transform: translateX(0);
 }
 
+.sb-topnav .navbar-brand {
+  transform: translateX(1em);
+}
+
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   content: "";
   display: block;
@@ -6840,6 +6844,9 @@ textarea.form-control-lg {
 @media (min-width: 992px) {
   #layoutSidenav #layoutSidenav_nav {
     transform: translateX(0);
+  }
+  .sb-topnav .navbar-brand {
+    transform: translateX(1em);
   }
   #layoutSidenav #layoutSidenav_content {
     margin-left: 0;
@@ -6973,6 +6980,10 @@ textarea.form-control-lg {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   position: relative;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .collapse {
+  margin-bottom: 25px;
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {

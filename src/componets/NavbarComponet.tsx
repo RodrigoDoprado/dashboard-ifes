@@ -20,11 +20,11 @@ function NavbarComponet(){
     return(
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-primary">
         <div className="container-fluid">
+        <button className="btn btn-link btn-lg" id="sidebarToggle" onClick={navigation}><FontAwesomeIcon icon={faBars} style={{color: "#f7f7f7"}} /></button>
            <a className="navbar-brand d-inline-flex gap-1" href="/">
              <img src="../assets/ifes.png" style={{width:"45px", height:"45px"}}/>
              <h5 className="mt-2">IFES</h5>
            </a>
-            <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" onClick={navigation}><FontAwesomeIcon icon={faBars} style={{color: "#f7f7f7"}} /></button>
              <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div className="input-group">
                     <input className="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
