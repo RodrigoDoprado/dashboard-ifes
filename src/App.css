@@ -87,7 +87,7 @@
 
     @media only screen and (max-width: 600px) {
       .sb-topnav .navbar-brand{ 
-        transform: translateX(3.8em);
+        transform: translateX(3.5em);
       }
     }
 
