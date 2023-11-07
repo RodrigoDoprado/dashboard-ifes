@@ -3,25 +3,10 @@
   }
   
 #login {
-  margin: 20vh 0 0 0;
+  margin: 10vh 0 24vh 0;
 }
 
 #login .card{
-  width: 45vh;
-  background-image:linear-gradient(0deg, var(--bs-secondary), var(--bs-primary));
-  /* box-shadow: 0 7px 15px var(--bs-secondary) */
-}
-
-#login .card form input{
-  background-color: transparent;
-  color: var(--bs-gray-100);
-  border-color: var(--bs-gray-100);
-}
-
-#login .card form input:focus{
-  box-shadow: 0 7px 15px var(--bs-gray-100);
-}
-
-#login .card form button{
-  box-shadow: 0 7px 15px var(--bs-secondary);
+  background-image:linear-gradient(25deg, var(--bs-secondary), var(--bs-primary));
+  
 }

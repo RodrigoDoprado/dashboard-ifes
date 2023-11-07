@@ -8,6 +8,7 @@ import { deleteTeacher, getTeachers } from "../api/TeacherApi"
 import { toast } from "react-toastify"
 import { TeacherInterface } from "../interface/TeacherInterface"
 import NavSidebar from "../componets/NavSidebar"
+import Footer from "../componets/footer"
 
 
 function Teacher(){
@@ -92,6 +93,7 @@ function Teacher(){
               </div>
             </div>
           </main>
+          <Footer/>
           </div>
           </div>
       </>

@@ -8,6 +8,7 @@ import { toast } from "react-toastify"
 import { deleteCourse, getCourses } from "../api/CourseApi"
 import { CourseInterface } from "../interface/CourseInterface"
 import NavSidebar from "../componets/NavSidebar"
+import Footer from "../componets/footer"
 
 
 function Course(){
@@ -83,6 +84,7 @@ function Course(){
               </div>
             </div>
           </main>
+          <Footer/>
           </div>
           </div>
       </>

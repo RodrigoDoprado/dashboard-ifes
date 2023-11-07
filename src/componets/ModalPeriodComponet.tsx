@@ -62,15 +62,15 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
   return (
     <>
       {idInteface?
-        <Button className='btn btn-outline-dark'
+        <a style={{cursor:"pointer"}}
           onClick={handleShow}>
           <p className="h5">{titleInteface}&nbsp;<FontAwesomeIcon icon={faPenToSquare} /></p>
-        </Button>:
-        <Button 
+        </a>:
+        <a 
           className="h5 btn btn-outline-dark btn-lg" 
           onClick={handleShow}>
             Novo Periodo
-        </Button>
+        </a>
       }
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Periodo</>:<>Novo Periodo</>}</Modal.Title></Modal.Header>

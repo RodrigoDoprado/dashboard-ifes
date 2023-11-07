@@ -8,6 +8,7 @@ import { deleteStudent, getStudents } from "../api/StudentApi"
 import { StudentInterface } from "../interface/StudentInterface"
 import { toast } from "react-toastify"
 import NavSidebar from "../componets/NavSidebar"
+import Footer from "../componets/footer"
 
 
 function Student(){
@@ -102,6 +103,7 @@ function Student(){
               </div>
             </div>
           </main>
+          <Footer/>
           </div>
           </div>
       </>

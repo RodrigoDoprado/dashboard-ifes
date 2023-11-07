@@ -5,6 +5,7 @@ import {Bar} from "react-chartjs-2"
 import { useState } from "react"
 import { UserData } from "../Data"
 import NavSidebar from "../componets/NavSidebar"
+import Footer from "../componets/footer"
 
 ChartJs.register(
   BarElement,
@@ -70,6 +71,7 @@ function Dashboard(){
                                 </div>
                             </div>
                     </main>
+                    <Footer/>
                 </div>
             </div>
         </>

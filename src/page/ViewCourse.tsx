@@ -10,6 +10,7 @@ import { getPeriods } from "../api/PeriodApi";
 import { CourseInterface } from "../interface/CourseInterface";
 import { PeriodInterface } from "../interface/PeriodInterface";
 import NavSidebar from "../componets/NavSidebar";
+import Footer from "../componets/footer";
 
 
 function ViewCourse(){ 
@@ -71,6 +72,7 @@ function ViewCourse(){
                     </div>
                 </div>
             </main>
+            <Footer/>
             </div>
             </div>
         </>
