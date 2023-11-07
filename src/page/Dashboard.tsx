@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../componets/NavbarComponet"
 import {Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legend} from "chart.js"
-import {Bar} from "react-chartjs-2"
+import {Bar, Pie} from "react-chartjs-2"
 import { useState } from "react"
 import { UserData } from "../Data"
 import NavSidebar from "../componets/NavSidebar"
@@ -17,7 +17,7 @@ ChartJs.register(
 
 function Dashboard(){
 
-  const option={}
+  const options={}
   const [data, setData] = useState({
     labels: UserData?.map((data) => data.year),
     datasets: [
@@ -56,7 +56,7 @@ function Dashboard(){
                                             <i className="fas fa-chart-area me-1"></i>
                                             Area Chart Example
                                         </div>
-                                        <div className="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                        {/* <div className="card-body"><Pie data={data} options={options} /></div> */}
                                     </div>
                                 </div>
                                 <div className="col-xl-6">
@@ -65,7 +65,7 @@ function Dashboard(){
                                             <i className="fas fa-chart-bar me-1"></i>
                                             Bar Chart Example
                                         </div>
-                                        <div className="card-body"><Bar data={data} options={option} /></div>
+                                        <div className="card-body"><Bar data={data} options={options} /></div>
                                         </div>
                                     </div>
                                 </div>

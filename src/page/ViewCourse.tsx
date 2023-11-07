@@ -57,7 +57,7 @@ function ViewCourse(){
                     </div>
             </header>
             
-                    <div className="row gx-lg-9 row-cols-1 row-cols-md-2 justify-content px-5 my-5">
+                    <div className="row gx-lg-9 row-cols-1 row-cols-md-2 my-5">
                             {periods?.map((item) => {
                               return (
                                 <div className="col mb-5">

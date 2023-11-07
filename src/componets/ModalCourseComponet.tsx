@@ -117,7 +117,7 @@ function ModalCourseComponet({
               <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
             </div>
             </Row>
-            <div className='px-lg-5 gap-5 d-inline-flex'>
+            <div className='px-5 gap-5 d-inline-flex'>
               <Button variant="primary" className='px-5' type="submit">Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div>

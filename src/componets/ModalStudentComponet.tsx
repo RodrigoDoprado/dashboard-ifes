@@ -114,7 +114,7 @@ function ModalStudentComponet({
               </div>
             </Row>
             
-            <div className='px-lg-5 gap-5 d-inline-flex'>
+            <div className='px-5 gap-5 d-inline-flex'>
               <Button variant="primary" type="submit" className='px-5'>Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div>
