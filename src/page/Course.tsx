@@ -51,7 +51,7 @@ function Course(){
                             </ol>
                             
                 <div className="position-absolute-left"><ModalCourseComponet/></div> 
-              <div className="row gx-lg-9 row-cols-2 row-cols-md-4 justify-content my-5">      
+              <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 my-5">      
                 {courses?.filter((course)=>
                   course.title?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {

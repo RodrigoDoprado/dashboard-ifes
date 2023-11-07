@@ -41,39 +41,37 @@ function ViewCourse(){
             <Helmet><title>Grade do Curso - {acronym}</title></Helmet>
             <NavbarComponet/>
             <div id="layoutSidenav">
-            <NavSidebar/>
-              <div id="layoutSidenav_content"> 
-                <main>
-                <div className="container-fluid px-4">
-            <header>
-                
-            <h1 className="mt-4">{course?.title}</h1>
-                            <ol className="breadcrumb mb-4">
-                                <li className="">Professor Coordenador:&nbsp;{course?.teacher?.firstName+" "+course?.teacher?.lastName}</li>
-                            </ol>
-                <div className="text-center">
-                    <ModalPeriodComponet couserInteface={course?.id}/> &nbsp;&nbsp;&nbsp; &nbsp; 
-                    <ModalSubjectComponet/>
+              <NavSidebar/>
+                <div id="layoutSidenav_content"> 
+                  <main>
+                    <div className="container-fluid px-4">
+                      <header>
+                        <h1 className="mt-4 text-capitalize">{course?.title}</h1>
+                        <ol className="breadcrumb mb-4">
+                          <li className="">Professor Coordenador:&nbsp;{course?.teacher?.firstName+" "+course?.teacher?.lastName}</li>
+                        </ol>
+                        <div className="text-center">
+                          <ModalPeriodComponet couserInteface={course?.id}/> &nbsp;&nbsp;&nbsp; &nbsp; 
+                          <ModalSubjectComponet/>
+                        </div>
+                      </header>
+                      <div className="row gx-lg-9 row-cols-1 row-cols-md-2 row-cols-lg-3 my-5">
+                        {periods?.map((item) => {
+                          return (
+                            <div className="col mb-5">
+                                <ModalPeriodComponet idInteface={item.id} titleInteface={item.title} />
+                                <TableSubjectComponet 
+                                    idPeriodInteface={item.id} 
+                                    titlePeriodInteface={item.title}
+                                />
+                            </div>
+                          )
+                        })}
                     </div>
-            </header>
-            
-                    <div className="row gx-lg-9 row-cols-1 row-cols-md-2 my-5">
-                            {periods?.map((item) => {
-                              return (
-                                <div className="col mb-5">
-                                    <ModalPeriodComponet idInteface={item.id} titleInteface={item.title} />
-                                    <TableSubjectComponet 
-                                        idPeriodInteface={item.id} 
-                                        titlePeriodInteface={item.title}
-                                    />
-                                </div>
-                              )
-                            })}
-                    </div>
-                </div>
-            </main>
-            <Footer/>
-            </div>
+                  </div>
+                </main>
+                <Footer/>
+              </div>
             </div>
         </>
     )

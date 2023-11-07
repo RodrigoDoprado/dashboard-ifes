@@ -66,9 +66,9 @@
         transform: translateX(0);
       }
 
-      .sb-topnav .navbar-brand{ 
-        transform: translateX(8em);
-      }
+      /* .sb-topnav .navbar-brand{ 
+        transform: translateX(1em);
+      } */
 
       #layoutSidenav #layoutSidenav_content {
         margin-left: 0;
@@ -85,11 +85,11 @@
       }
     }
 
-    /* @media (min-width: 767px) {
+    @media only screen and (max-width: 600px) {
       .sb-topnav .navbar-brand{ 
-        transform: translateX(1em);
+        transform: translateX(3.8em);
       }
-    } */
+    }
 
     .sb-nav-fixed .sb-topnav {
       z-index: 1039;
