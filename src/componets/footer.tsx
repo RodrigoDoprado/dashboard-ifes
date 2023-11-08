@@ -1,6 +1,6 @@
 function Footer(){
     return(
-        <div id="layoutAuthentication_footer">
+        // <div id="layoutAuthentication_footer">
             <footer className="py-4 bg-light mt-auto">
                 <div className="container-fluid px-4">
                     <div className="d-flex align-items-center justify-content-between small">
@@ -13,7 +13,7 @@ function Footer(){
                     </div>
                 </div>
             </footer>
-        </div>
+        // </div>
     )
 }
 export default Footer

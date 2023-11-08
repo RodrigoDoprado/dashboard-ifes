@@ -66,9 +66,9 @@
         transform: translateX(0);
       }
 
-      /* .sb-topnav .navbar-brand{ 
+      .sb-topnav .navbar-brand{ 
         transform: translateX(1em);
-      } */
+      }
 
       #layoutSidenav #layoutSidenav_content {
         margin-left: 0;
