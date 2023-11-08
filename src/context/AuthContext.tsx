@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { createContext } from "react"
-import { UserData } from "../interface/UserData"
+import { StudentInterface } from "../interface/StudentInterface"
+import { TeacherInterface } from "../interface/TeacherInterface"
 
 export type AuthContextType = {
-  authenticated: boolean
+  // authenticated: boolean
   loading: boolean
-  user: UserData | null
+  student: StudentInterface | null
+  teacher: TeacherInterface | null
   signin: (email: string, password: string) => Promise<boolean>
   signout: () => void
 }

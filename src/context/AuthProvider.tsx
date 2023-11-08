@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { AuthContext } from "./AuthContext"
-import { UserData } from "../interface/UserData"
 import { AuthInterface } from "../interface/AuthInterface"
 import { createSignIn } from "../api/AuthApi"
-import { useNavigate } from "react-router-dom"
+import { StudentInterface } from "../interface/StudentInterface"
+import { TeacherInterface } from "../interface/TeacherInterface"
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-  const [user, setUser] = useState<UserData | null>(null)
+  const [student, setStudent] = useState<StudentInterface | null>(null)
+  const [teacher, setTeacher] = useState<TeacherInterface | null>(null)
   const [loading, setLoading] = useState(true)
   // const history = useNavigate();
 
@@ -23,36 +24,40 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   //   setLoading(false)
   // }
 
-    const signin = async (email: string, password: string) => {
-      const autDdata: AuthInterface={email}
-      const res = await createSignIn(autDdata)
-     if(res){
+  const signin = async (email: string) => {
+    const autDdata: AuthInterface={email}
+    const res = await createSignIn(autDdata)
+    if(res.data.user === "student"){
+      setStudentToken(res.data.token)
+      return true
+    }else if(res.data.user === "teacher"){
+      setTeacherToken(res.data.token)
+      return true
+    }else{
       setToken(res.data.token)
       return true
-     }else{
-      return false
-     }
+    }
   }
 
   const signout =async ()=> {
     setToken("")
-    // setTeacherToken("")
-    // setStudentToken("")
+    setTeacherToken("")
+    setStudentToken("")
     // setTimeout(() => history("/"), 500);
   }
 
   const setToken = (token: string) => {
     localStorage.setItem("token", token)
   }
-  // const setStudentToken = (token: string) => {
-  //   localStorage.setItem("tokenStudent", token)
-  // }
-  // const setTeacherToken = (token: string) => {
-  //   localStorage.setItem("tokenTeacher", token)
-  // }
+  const setStudentToken = (token: string) => {
+    localStorage.setItem("tokenStudent", token)
+  }
+  const setTeacherToken = (token: string) => {
+    localStorage.setItem("tokenTeacher", token)
+  }
 
   return (
-    <AuthContext.Provider value={{ authenticated: !!user, user, loading, signin, signout }}>
+    <AuthContext.Provider value={{ student,teacher, loading, signin, signout }}>
       {children}
     </AuthContext.Provider>
   )

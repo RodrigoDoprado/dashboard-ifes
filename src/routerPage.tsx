@@ -9,6 +9,8 @@ import Teacher from "./page/Teacher"
 import ViewCourse from "./page/ViewCourse"
 import ViewStudent from "./page/ViewStudent"
 import ViewTeacher from "./page/ViewTeacher"
+import { PagePrivateStudent } from "./context/PagePrivateStudent"
+import { PagePrivateTeacher } from "./context/PagePrivateTeacher"
 
 // function PriveteRoute({Element, ...rest}:any){
 //   const{isAuthenticated}=useSelector(state=>)
@@ -22,10 +24,11 @@ import ViewTeacher from "./page/ViewTeacher"
 //   )
 // }
 
+
 function RouterPage (){
     return (
         <Routes>
-          <Route path="*" element={<PagePublic><Login /></PagePublic>} />
+          <Route path="*" element={<PagePublic><Login /></PagePublic>} />  
           <Route path="/" element={<PagePublic><Login /></PagePublic>} />
           <Route path="/auth/login" element={<PagePublic><Login /></PagePublic>} />
           <Route path="/dashboard" element={<PagePrivate><Dashboard /></PagePrivate>} />
