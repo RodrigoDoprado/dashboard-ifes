@@ -44,20 +44,20 @@ function Course(){
             <NavSidebar/>
               <div id="layoutSidenav_content"> 
                 <main>
-                <div className="container-fluid px-4">
+                <div className="container-fluid px-4 px-lg-5 mt-5">
                             <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Coursos</h1>
                             <ol className="breadcrumb mb-4">
                                 {/* <li className="breadcrumb-item active">Dashboard</li> */}
                             </ol>
                             
                 <div className="position-absolute-left"><ModalCourseComponet/></div> 
-              <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 my-5">      
+              <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 my-5">      
                 {courses?.filter((course)=>
                   course.title?.toLocaleLowerCase().includes(search))
                   .map((item,index) => {
                   return (
                     <div className="col mb-5">
-                      <div className="card">
+                      <div className="card h-100">
                         <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>
                           <div className="card-body">
                           {/* <img className="card-img-top"src={item.avatar}alt={item.title}/> */}

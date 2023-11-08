@@ -28,7 +28,7 @@ function NavbarComponet(){
     return(
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-primary">
         <div className="container-fluid">
-          <button className="btn btn-link btn-lg order-lg-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" onClick={navigation}><FontAwesomeIcon icon={faBars} size="xl" style={{color: "#f7f7f7"}} /></button>
+          <button className="btn btn-link btn-lg  order-0 me-4 me-lg-0" id="sidebarToggle" onClick={navigation}><FontAwesomeIcon icon={faBars} size="xl" style={{color: "#f7f7f7"}} /></button>
            <a className="navbar-brand d-inline-flex gap-1" href="/">
              <img src="../assets/ifes.png" style={{width:"45px", height:"45px"}}/>
              <h5 className="mt-2">IFES</h5>

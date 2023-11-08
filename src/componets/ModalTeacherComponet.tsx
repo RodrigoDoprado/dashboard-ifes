@@ -75,7 +75,7 @@ function ModalTeacherComponet({
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
               <Form.Group as={Col} md="12" controlId="validationCustom01">
-                <Form.Label>Avatar:</Form.Label>
+                <Form.Label>Foto:</Form.Label>
                 <Form.Control required type="text" value={avatar} onChange={event =>setAvatar(event.target.value)}/>
                 <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
               </Form.Group>
