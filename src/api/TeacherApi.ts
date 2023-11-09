@@ -12,7 +12,9 @@ const teacherApi = axios.create({
   }
 
   export const getTeacher = async (token: any): AxiosPromise<any> => {
-    const res = await teacherApi.get("/teacher",token);
+    const res = await teacherApi.get("/teacher", {
+      headers: { authorization: `Bearer ${token}` },
+    })
     return res;
   };
   
