@@ -26,7 +26,7 @@ const courseApi = axios.create({
     return res;
   };
   
-  export const deleteCourse = async(id: any) => {
+  export const deleteCourse = async(id: any): AxiosPromise<any> => {
     const res =await courseApi.delete(`/course/${id}`);
     return res;
   };

@@ -11,12 +11,14 @@ import { StudentInterface } from "../interface/StudentInterface";
     return res;
   }
 
-  export const getStudent = async (enroll: any): AxiosPromise<any> => {
-    const res = await studentApi.get(`/student/${enroll}`);
+  export const getStudent = async (token: any): AxiosPromise<any> => {
+    const res = await studentApi.get("/student", {
+      headers: { authorization: `Bearer ${token}` },
+    })
     return res;
   };
   
-  export const createStudent = async (data: StudentInterface)=> {
+  export const createStudent = async (data: StudentInterface): AxiosPromise<any>=> {
     const res = await studentApi.post("/student",data);
     return res;
   };
@@ -26,7 +28,7 @@ import { StudentInterface } from "../interface/StudentInterface";
     return res;
   };
   
-  export const deleteStudent = async(id: any) => {
+  export const deleteStudent = async(id: any): AxiosPromise<any> => {
     const res = await studentApi.delete(`/student/${id}`);
     return res;
   };

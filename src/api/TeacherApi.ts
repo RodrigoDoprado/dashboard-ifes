@@ -11,8 +11,8 @@ const teacherApi = axios.create({
     return res;
   }
 
-  export const getTeacher = async (enroll: any) => {
-    const res = await teacherApi.get(`/teacher/${enroll}`);
+  export const getTeacher = async (token: any): AxiosPromise<any> => {
+    const res = await teacherApi.get("/teacher",token);
     return res;
   };
   
@@ -26,7 +26,7 @@ const teacherApi = axios.create({
     return response;
   };
   
-  export const deleteTeacher = async(id: any) => {
+  export const deleteTeacher = async(id: any): AxiosPromise<any> => {
     const response =await teacherApi.delete(`/teacher/${id}`);
     return response;
   };

@@ -1,34 +1,40 @@
 import { Helmet } from "react-helmet"
-import NavbarStudentComponet from "../componets/NavbarStudentComponet";
-import { useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { getTeacher } from "../api/TeacherApi";
-import { TeacherInterface } from "../interface/TeacherInterface";
+import NavbarComponet from "../componets/NavbarComponet";
+import NavSidebar from "../componets/NavSidebar";
 
 function ViewTeacher(){ 
-    const [teacher, setTeacher] = useState<TeacherInterface>();
-    const {enroll}  = useParams();
-    const {signout}=useContext(AuthContext)
+    // const [teacher, setTeacher] = useState<TeacherInterface>();
+    const {teacher}=useContext(AuthContext)
     
-    useEffect(() => {
-        getByTeacher().catch(()=>{signout()})
-      }, []);
+    // useEffect(() => {
+    //     getByTeacher().catch(()=>{signout()})
+    //   }, []);
     
-      const getByTeacher = async () => {
-        const response = await getTeacher(enroll)
-        if (response.status === 200) {
-            setTeacher(response.data);
-        }
-      };
+    //   const getByTeacher = async () => {
+    //     const response = await getTeacher(enroll)
+    //     if (response.status === 200) {
+    //         setTeacher(response.data);
+    //     }
+    //   };
     
     return(
         <>
             <Helmet><title>{teacher?.firstName+" "+teacher?.lastName}</title></Helmet>
-            <NavbarStudentComponet/>
-            <h1>{teacher?.firstName+" "+teacher?.lastName}</h1>
-            <img src={teacher?.avatar} alt={teacher?.firstName+" "+teacher?.lastName}/>
-            <h1>Matricula: {teacher?.enroll}</h1>
+            <NavbarComponet/>
+            <div id="layoutSidenav">
+                <NavSidebar/>
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div className="container-fluid px-4">
+                            <h1>{teacher?.firstName+" "+teacher?.lastName}</h1>
+                            <img src={teacher?.avatar} alt={teacher?.firstName+" "+teacher?.lastName}/>
+                            <h1>Matricula: {teacher?.enroll}</h1>
+                        </div>
+                    </main>
+                </div>
+            </div>
         </>
     )
 }

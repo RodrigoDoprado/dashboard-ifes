@@ -9,8 +9,6 @@ import Teacher from "./page/Teacher"
 import ViewCourse from "./page/ViewCourse"
 import ViewStudent from "./page/ViewStudent"
 import ViewTeacher from "./page/ViewTeacher"
-import { PagePrivateStudent } from "./context/PagePrivateStudent"
-import { PagePrivateTeacher } from "./context/PagePrivateTeacher"
 
 // function PriveteRoute({Element, ...rest}:any){
 //   const{isAuthenticated}=useSelector(state=>)

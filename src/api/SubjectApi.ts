@@ -11,7 +11,7 @@ const subjectApi = axios.create({
     return res;
   }
 
-  export const getSubject = async (id: any) => {
+  export const getSubject = async (id: any): AxiosPromise<any> => {
     const res = await subjectApi.get(`/subject/${id}`);
     return res;
   };
@@ -26,7 +26,7 @@ const subjectApi = axios.create({
     return res;
   };
   
-  export const deleteSubject = async(id: any) => {
+  export const deleteSubject = async(id: any): AxiosPromise<any> => {
     const res =await subjectApi.delete(`/subject/${id}`);
     return res;
   };

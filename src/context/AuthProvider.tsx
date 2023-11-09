@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AuthContext } from "./AuthContext"
 import { AuthInterface } from "../interface/AuthInterface"
 import { createSignIn } from "../api/AuthApi"
 import { StudentInterface } from "../interface/StudentInterface"
 import { TeacherInterface } from "../interface/TeacherInterface"
+import { getStudent } from "../api/StudentApi"
+import { getTeacher } from "../api/TeacherApi"
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [student, setStudent] = useState<StudentInterface | null>(null)
@@ -11,31 +13,37 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [loading, setLoading] = useState(true)
   // const history = useNavigate();
 
-  // useEffect(() => {
-  //   validateToken()
-  // }, [])
+  useEffect(() => {
+    validateToken()
+  }, [])
 
-  // const validateToken = async () => {
-  //   const usercookies = localStorage.getItem("token")
-  //   if(usercookies){
-  //     getUser(usercookies)
-  //     .then((res)=>{setUser(res.data.employee)})
-  //   }
-  //   setLoading(false)
-  // }
+  const validateToken = async () => {
+    const studentCookies = localStorage.getItem("tokenStudent")
+    const teacherCookies = localStorage.getItem("tokenTeacher")
+
+    if(studentCookies){
+      getStudent(studentCookies).then((res)=>{setStudent(res.data)})
+    }else if(teacherCookies){
+      getTeacher(teacherCookies).then((res)=>{setTeacher(res.data)})
+    }
+    setLoading(false)
+  }
 
   const signin = async (email: string) => {
     const autDdata: AuthInterface={email}
     const res = await createSignIn(autDdata)
+    
     if(res.data.user === "student"){
       setStudentToken(res.data.token)
       return true
     }else if(res.data.user === "teacher"){
       setTeacherToken(res.data.token)
       return true
-    }else{
+    }else if(res.data.user === ""){
       setToken(res.data.token)
       return true
+    }else{
+      return false
     }
   }
 
