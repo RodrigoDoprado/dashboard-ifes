@@ -2,29 +2,17 @@ import { Helmet } from "react-helmet"
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import NavbarComponet from "../componets/NavbarComponet";
-import NavSidebar from "../componets/NavSidebar";
+import NavSidebarTeacher from "../componets/NavSidebarTeacher";
 
 function ViewTeacher(){ 
-    // const [teacher, setTeacher] = useState<TeacherInterface>();
     const {teacher}=useContext(AuthContext)
-    
-    // useEffect(() => {
-    //     getByTeacher().catch(()=>{signout()})
-    //   }, []);
-    
-    //   const getByTeacher = async () => {
-    //     const response = await getTeacher(enroll)
-    //     if (response.status === 200) {
-    //         setTeacher(response.data);
-    //     }
-    //   };
     
     return(
         <>
             <Helmet><title>{teacher?.firstName+" "+teacher?.lastName}</title></Helmet>
             <NavbarComponet/>
             <div id="layoutSidenav">
-                <NavSidebar/>
+                <NavSidebarTeacher/>
                 <div id="layoutSidenav_content">
                     <main>
                         <div className="container-fluid px-4">

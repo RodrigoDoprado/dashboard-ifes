@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet"
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext"; 
 import NavbarComponet from "../componets/NavbarComponet";
-import NavSidebar from "../componets/NavSidebar";
+import NavSidebarStudent from "../componets/NavSidebarStudent";
 
 function ViewStudent(){
     // const [student, setStudent] = useState<StudentInterface>();
@@ -24,7 +24,7 @@ function ViewStudent(){
             <Helmet><title>{student?.firstName+" "+student?.lastName}</title></Helmet>
             <NavbarComponet/>
             <div id="layoutSidenav">
-                <NavSidebar/>
+                <NavSidebarStudent/>
                 <div id="layoutSidenav_content">
                     <main>
                         <div className="container-fluid px-4">

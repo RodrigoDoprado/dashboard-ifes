@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { faBars, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ModalComponet from "./ModalComponet"
 
 function NavbarComponet(){
   const {signout}=useContext(AuthContext)
@@ -44,8 +45,8 @@ function NavbarComponet(){
             <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><FontAwesomeIcon icon={faUser} size="lg"/></a>
-                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a className="dropdown-item" href="#"><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Meus Dados</a></li>
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
+                    <li><ModalComponet/></li>
                     <li><hr className="dropdown-divider"/></li>
                         <li><a className="dropdown-item" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
                     </ul>
