@@ -9,19 +9,7 @@ import Teacher from "./page/Teacher"
 import ViewCourse from "./page/ViewCourse"
 import ViewStudent from "./page/ViewStudent"
 import ViewTeacher from "./page/ViewTeacher"
-
-// function PriveteRoute({Element, ...rest}:any){
-//   const{isAuthenticated}=useSelector(state=>)
-//   return(
-//     <Route 
-//       {...rest}
-//       render={(props:any)=>(
-//         isAuthenticated?<Element{...props}/>:redirect("/")
-//       )}
-//     />
-//   )
-// }
-
+import { PagePrivateUser } from "./context/PagePrivateUser"
 
 function RouterPage (){
     return (
@@ -31,9 +19,9 @@ function RouterPage (){
           <Route path="/auth/login" element={<PagePublic><Login /></PagePublic>} />
           <Route path="/dashboard" element={<PagePrivate><Dashboard /></PagePrivate>} />
           <Route path="/alunos" element={<PagePrivate><Student /></PagePrivate>} />
-          <Route path="/aluno/:enroll" element={<PagePrivate><ViewStudent /></PagePrivate>} />
+          <Route path="/aluno" element={<PagePrivateUser><ViewStudent /></PagePrivateUser>} />
           <Route path="/professores" element={<PagePrivate><Teacher /></PagePrivate>} />
-          <Route path="/professor/:enroll" element={<PagePrivate><ViewTeacher /></PagePrivate>} />
+          <Route path="/professor" element={<PagePrivateUser><ViewTeacher /></PagePrivateUser>} />
           <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} />
           <Route path="/curso/:acronym" element={<PagePrivate><ViewCourse /></PagePrivate>} />
         </Routes>
