@@ -57,13 +57,13 @@ function Login(){
                                                     <label className="form-check-label" htmlFor="inputRememberPassword">Remember Password</label>
                                                 </div> */}
                                                 <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                    <a className="small" href="/">Forgot Password?</a>
+                                                    <a className="small" href="/">Esqueceu sua Senha?</a>
                                                     <button className="btn btn-primary text-uppercase fw-bolder" type="submit">Avançar</button>
                                                 </div>
                                             </form>
                                         </div>
                                         <div className="card-footer text-center py-3">
-                                            <div className="small"><a href="/">Need an account? Sign up!</a></div>
+                                            <div className="small"><a href="/">Criar Conta Aqui!</a></div>
                                         </div>
                                     </div>
                                 </div>
