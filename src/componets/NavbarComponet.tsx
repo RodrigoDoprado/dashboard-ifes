@@ -6,7 +6,8 @@ import ModalComponet from "./ModalComponet"
 
 function NavbarComponet(){
   const {signout}=useContext(AuthContext)
-  const logout = ()=>{signout()}
+  const logout = ()=>{signout()} 
+  const usercookies = localStorage.getItem("token")
 
   useEffect(() => {
     // document.body.classList.add('sb-sidenav-toggled');
@@ -46,7 +47,7 @@ function NavbarComponet(){
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><FontAwesomeIcon icon={faUser} size="lg"/></a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
-                    <li><ModalComponet/></li>
+                    <li>{usercookies?<></>:<ModalComponet/>}</li>
                     <li><hr className="dropdown-divider"/></li>
                         <li><a className="dropdown-item" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
                     </ul>
