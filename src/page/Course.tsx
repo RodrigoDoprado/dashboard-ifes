@@ -45,25 +45,19 @@ function Course(){
               <div id="layoutSidenav_content"> 
                 <main>
                   <div className="container-fluid px-4 px-lg-5 mt-5">
-                    <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Coursos</h1>
+                    <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h1>
                       <ol className="breadcrumb mb-4">
                           {/* <li className="breadcrumb-item active">Dashboard</li> */}
                       </ol>
-                    <div className="position-absolute-left"><ModalCourseComponet/></div> 
-                    <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 my-5">      
+                    <div className="mb-5"><ModalCourseComponet/></div> 
+                    <div className="row gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 gap-5">      
                       {courses?.filter((course)=>
                         course.title?.toLocaleLowerCase().includes(search))
-                        .map((item,index) => {
+                        .map((item) => {
                         return (
                           <div className="col mb-5">
-                            <div className="card h-100">
-                              <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>
-                                <div className="card-body">
-                                {/* <img className="card-img-top"src={item.avatar}alt={item.title}/> */}
-                                  <h5 className="card-title">{item.title}</h5>
-                                </div>
-                              </a>
-                              <div className="card-footer">
+                            <div className="card h-100" style={{width: "16.5em", border: "none"}}>
+                            <div className="card-header">
                                 <div className="gap-1 d-flex">
                                     <ModalCourseComponet 
                                       idInteface={item.id} 
@@ -76,6 +70,12 @@ function Course(){
                                     <button className="btn btn-outline-danger" onClick={() => handledeleteCourse(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                   </div>
                               </div>
+                              <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>
+                                <div className="card-body">
+                                {/* <img className="card-img-top"src={item.avatar}alt={item.title}/> */}
+                                  <h5 className="card-title">{item.title}</h5>
+                                </div>
+                              </a>
                             </div>
                           </div>
                         )

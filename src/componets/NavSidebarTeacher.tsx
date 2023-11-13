@@ -11,7 +11,7 @@ function NavSidebarTeacher(){
                         <a className="nav-link" href="/dashboard">
                             <FontAwesomeIcon className='px-2' icon={faHouse} size="lg" />Dashboard
                         </a>
-                        <a href="#"><ModalComponet/></a>
+                        <ModalComponet/>
                         <a className="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse" data-bs-target="#courseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <FontAwesomeIcon className='px-2' icon={faBook} size="lg" />Diário
                         </a>

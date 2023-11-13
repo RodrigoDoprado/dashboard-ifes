@@ -46,7 +46,7 @@ function ViewCourse(){
                   <main>
                     <div className="container-fluid px-4">
                       <header>
-                        <h1 className="mt-4 text-capitalize">{course?.title}</h1>
+                        <h1 className="mt-4">{course?.title}</h1> {/*text-capitalize */}
                         <ol className="breadcrumb mb-4">
                           <li className="">Professor Coordenador:&nbsp;{course?.teacher?.firstName+" "+course?.teacher?.lastName}</li>
                         </ol>
@@ -55,7 +55,7 @@ function ViewCourse(){
                           <ModalSubjectComponet/>
                         </div>
                       </header>
-                      <div className="row gx-lg-9 row-cols-1 row-cols-md-2 row-cols-lg-3 my-5">
+                      <div className="row gx-lg-9 row-cols-1 row-cols-md-2 row-cols-lg-2 my-5">
                         {periods?.map((item) => {
                           return (
                             <div className="col mb-5">

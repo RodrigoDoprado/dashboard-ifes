@@ -109,7 +109,7 @@ function ModalCourseComponet({
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
               <div className="mb-3">
-              <label htmlFor="inputTeacher">Orientador:</label>
+              <label htmlFor="inputTeacher">Professor Orientador:</label>
               <select className="form-select" name="teacher" required value={teacher} onChange={event =>setTeacher(event.target.value)}>
                 <option value={teacherIdInteface}>{teacherNameInteface}</option>
                 {teachers?.map((item) => {return(<option value={item.id}>{item.firstName+" "+item.lastName}</option>)})}

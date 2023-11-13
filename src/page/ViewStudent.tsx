@@ -15,7 +15,7 @@ function ViewStudent(){
                 <NavSidebarStudent/>
                 <div id="layoutSidenav_content">
                     <main>
-                        <div className="container-fluid px-4">
+                        <div className="container-fluid px-4 px-lg-5 mt-5">
                             <h1>{student?.firstName+" "+student?.lastName}</h1>
                             <img
                                 className="rounded-circle" 
