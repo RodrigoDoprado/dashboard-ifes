@@ -59,7 +59,7 @@ function ModalStudentComponet({
     await updateStudent(data)
     .then(()=>{
       handleClose()
-      history("/aluno")    
+      setTimeout(() => history(window.location.href = "/alunos"), 1000);    
     })
     .catch((res)=>{})
   };

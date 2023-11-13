@@ -41,13 +41,13 @@ function ModalTeacherComponet({
     await createTeacher(data)
     .then(()=>{handleClose()})
     .catch((res)=>{})
-  }; 
+  };
 
   const updateUser = async (data: TeacherInterface) => {
     await updateTeacher(data)
     .then(()=>{
       handleClose()
-      window.location.href = window.location.href    
+      setTimeout(() => history(window.location.href = "/professores"), 1000);    
     })
     .catch((res)=>{})
   };
