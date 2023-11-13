@@ -6,7 +6,11 @@ import ModalComponet from "./ModalComponet"
 
 function NavbarComponet(){
   const {signout}=useContext(AuthContext)
-  const logout = ()=>{signout()}
+  const logout = ()=>{
+    if (window.confirm("Deseja Sair?")) {
+      signout()
+    }
+  }
 
   useEffect(() => {
     // document.body.classList.add('sb-sidenav-toggled');
