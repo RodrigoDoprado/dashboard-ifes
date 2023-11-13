@@ -6,7 +6,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createTeacher, updateTeacher } from '../api/TeacherApi';
-import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 type data ={
   idInteface?: any,
@@ -25,8 +25,8 @@ function ModalTeacherComponet({
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [validated, setValidated] = useState(true);
-
+  const [validated, setValidated] = useState(false);
+  const history = useNavigate()
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
@@ -38,19 +38,20 @@ function ModalTeacherComponet({
   }, [])
 
   const addUser = async (data: TeacherInterface) => {
-    const response = await createTeacher(data)
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
-  };
+    await createTeacher(data)
+    .then(()=>{handleClose()})
+    .catch((res)=>{})
+  }; 
 
   const updateUser = async (data: TeacherInterface) => {
-    const response = await updateTeacher(data);
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await updateTeacher(data)
+    .then(()=>{
+      handleClose()
+      window.location.href = window.location.href    
+    })
+    .catch((res)=>{})
   };
-
+console.log(firstName,lastName,avatar)
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {

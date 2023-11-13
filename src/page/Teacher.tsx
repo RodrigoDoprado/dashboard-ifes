@@ -14,7 +14,6 @@ import Footer from "../componets/footer"
 function Teacher(){
   const [teachers, setTeachers] = useState<TeacherInterface[]>([]);
   const [search,setSearch]=useState("");
-  const usercookies = localStorage.getItem("token")
 
   useEffect(() => {
     getAllTeacher();
@@ -76,14 +75,12 @@ function Teacher(){
                                   <td>{item.firstName+" "+item.lastName}</td>
                                   <td>
                                     <div className="gap-1 d-flex">
-                                      {usercookies?
-                                        <ModalTeacherComponet 
-                                          idInteface={item.id} 
-                                          firstNameInteface={item.firstName} 
-                                          lastNameInteface={item.lastName} 
-                                          avatarInteface={item.avatar}
-                                        />:<></>
-                                      }
+                                      <ModalTeacherComponet 
+                                        idInteface={item.id} 
+                                        firstNameInteface={item.firstName} 
+                                        lastNameInteface={item.lastName} 
+                                        avatarInteface={item.avatar}
+                                      />
                                       <button className="btn btn-outline-danger" onClick={() => handledeleteTeacher(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                     </div>
                                   </td>

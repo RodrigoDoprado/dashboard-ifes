@@ -14,8 +14,6 @@ function NavbarComponet(){
     }
   }
   const usercookies = localStorage.getItem("token")
-  const studentCookies = localStorage.getItem("tokenStudent")
-  const teacherCookies = localStorage.getItem("tokenTeacher")
 
   useEffect(() => {
     return () => {
@@ -56,7 +54,7 @@ function NavbarComponet(){
                     {usercookies?
                       <FontAwesomeIcon icon={faUser} size="lg" />:<></>
                     }
-                    {studentCookies?
+                    {student?
                       <img
                         className="rounded-circle" 
                         src={student?.avatar} 
@@ -64,7 +62,7 @@ function NavbarComponet(){
                         style={{width:"45px", height:"45px"}}
                       />:<></>
                     }
-                    {teacherCookies?
+                    {teacher?
                       <img
                         className="rounded-circle" 
                         src={teacher?.avatar} 
@@ -78,15 +76,17 @@ function NavbarComponet(){
                       {usercookies?<></>:
                         <>
                           <li>
-                            { studentCookies?
+                            {student?
                               <ModalStudentComponet 
-                                idInteface={student?.id} 
-                                firstNameInteface={student?.firstName} 
-                                lastNameInteface={student?.lastName} 
-                                avatarInteface={student?.avatar}
+                                idInteface={student?.id}
+                                firstNameInteface={student?.firstName}
+                                lastNameInteface={student?.lastName}
+                                avatarInteface={student?.avatar} 
+                                courseTitleInteface={student.course?.title} 
+                                courseIdInteface={student.course?.id}                              
                               />:<></>
                             }
-                            {teacherCookies?
+                            {teacher?
                               <ModalTeacherComponet 
                                 idInteface={teacher?.id} 
                                 firstNameInteface={teacher?.firstName} 

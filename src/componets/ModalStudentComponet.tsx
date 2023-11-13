@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createStudent, updateStudent } from '../api/StudentApi';
 import { getCourses } from '../api/CourseApi';
 import { CourseInterface } from '../interface/CourseInterface';
+import { useNavigate } from 'react-router-dom';
 
 type data ={
   idInteface?: string,
@@ -30,8 +31,8 @@ function ModalStudentComponet({
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true); 
-  const [validated, setValidated] = useState(true);
-
+  const [validated, setValidated] = useState(false);
+  const history = useNavigate()
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
@@ -45,19 +46,22 @@ function ModalStudentComponet({
   }, []);
 
   const getAllCourse = async () => {
-    const response = await getCourses()
-    if (response.status === 200) {
-      setCourses(response.data);
-    }
+    await getCourses().then((response)=>{setCourses(response.data)})
   };
 
   const addUser = async (data: StudentInterface) => {
-    const res = await createStudent(data)
-    if (res.status === 201) {alert("Estudante criado com sucesso!")}
+    await createStudent(data)
+    .then(()=>{handleClose()})
+    .catch((res)=>{})
   };
 
   const updateUser = async (data: StudentInterface) => {
-    await updateStudent(data).then(()=>{alert("Estudante alterado com sucesso!")})
+    await updateStudent(data)
+    .then(()=>{
+      handleClose()
+      history("/aluno")    
+    })
+    .catch((res)=>{})
   };
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
@@ -100,25 +104,10 @@ function ModalStudentComponet({
       
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton><Modal.Title>
-          {studentCookies?
-            <>
-              <FontAwesomeIcon className='px-2' icon={faUser} size="sm" />
-              Meus Dados
-            </>:
-            <>  
-              {idInteface?
-                <>
-                  Atualização Aluno
-                </>:
-                <>
-                  Novo Aluno
-                </>
-              }
-            </>  
-          }
+          {studentCookies?<><FontAwesomeIcon className='px-2' icon={faUser} size="sm" />Meus Dados</>:<>{idInteface?<>Atualização Aluno</>:<>Novo Aluno</>}</>}
         </Modal.Title></Modal.Header>
         <Modal.Body>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form noValidate validated={validated}>
             <Row className="mb-3">
               <Form.Group as={Col} md="12" controlId="validationCustom01">
                 <Form.Label>Foto:</Form.Label>
@@ -151,7 +140,7 @@ function ModalStudentComponet({
             </Row>
             
             <div className='px-4 gap-5 d-inline-flex'>
-              <Button variant="primary" type="submit" className='px-5'>Salvar</Button>
+              <Button variant="primary" onClick={handleSubmit} className='px-5'>Salvar</Button>
               <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
             </div>
           </Form>
