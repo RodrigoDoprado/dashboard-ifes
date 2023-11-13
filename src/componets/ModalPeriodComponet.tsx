@@ -19,7 +19,7 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [validated, setValidated] = useState(false);
+  const [validated, setValidated] = useState(true);
 
   const [title, setTitle] = useState(titleInteface);
 

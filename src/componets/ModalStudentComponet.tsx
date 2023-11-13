@@ -3,10 +3,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { StudentInterface } from '../interface/StudentInterface';
 import { Col, Form, Row } from 'react-bootstrap';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createStudent, updateStudent } from '../api/StudentApi';
-import { toast } from 'react-toastify';
 import { getCourses } from '../api/CourseApi';
 import { CourseInterface } from '../interface/CourseInterface';
 
@@ -27,16 +26,19 @@ function ModalStudentComponet({
   courseTitleInteface,
   courseIdInteface
 }:data) {
+  
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true); 
-  const [validated, setValidated] = useState(false);
+  const [validated, setValidated] = useState(true);
 
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
   const [course, setCourse] = useState(courseIdInteface);
   const [courses, setCourses] = useState<CourseInterface[]>([]);
+  const studentCookies = localStorage.getItem("tokenStudent")
+  const usercookies = localStorage.getItem("token")
 
   useEffect(() => {
     getAllCourse();
@@ -77,10 +79,44 @@ function ModalStudentComponet({
 
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Aluno</Button>}
+    {studentCookies?
+      <>
+        <a className="dropdown-item" href="#" onClick={handleShow}>
+          <FontAwesomeIcon className='px-2' icon={faUser} size="sm" />
+          Meus Dados
+        </a>
+      </>:
+      <>
+        {idInteface?
+          <Button variant="outline-primary" onClick={handleShow}>
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </Button>:
+          <Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>
+            Novo Aluno
+          </Button>
+        }
+      </>
+    }
       
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Aluno</>:<>Novo Aluno</>}</Modal.Title></Modal.Header>
+        <Modal.Header closeButton><Modal.Title>
+          {studentCookies?
+            <>
+              <FontAwesomeIcon className='px-2' icon={faUser} size="sm" />
+              Meus Dados
+            </>:
+            <>  
+              {idInteface?
+                <>
+                  Atualização Aluno
+                </>:
+                <>
+                  Novo Aluno
+                </>
+              }
+            </>  
+          }
+        </Modal.Title></Modal.Header>
         <Modal.Body>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
@@ -99,14 +135,19 @@ function ModalStudentComponet({
                 <Form.Control required type="text" value={lastName} onChange={event =>setLastName(event.target.value)}/>
                 <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
               </Form.Group>
-              <div className="mb-3">
-                <label htmlFor="inputCourse">Cuso:</label>
-                <select className="form-select" name="course" required value={course} onChange={event =>setCourse(event.target.value)}>
-                  <option value={courseIdInteface}>{courseTitleInteface}</option>
-                  {courses?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
-                </select>
-                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
-              </div>
+              {usercookies?
+                <>
+                  <div className="mb-3">
+                    <label htmlFor="inputCourse">Cuso:</label>
+                    <select className="form-select" name="course" required value={course} onChange={event =>setCourse(event.target.value)}>
+                      <option value={courseIdInteface}>{courseTitleInteface}</option>
+                      {courses?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
+                    </select>
+                    <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
+                  </div>
+                </>:
+                <></>
+              }
             </Row>
             
             <div className='px-4 gap-5 d-inline-flex'>

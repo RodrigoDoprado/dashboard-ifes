@@ -2,19 +2,22 @@ import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { faBars, faMagnifyingGlass, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalComponet from "./ModalComponet"
+import ModalStudentComponet from "./ModalStudentComponet"
+import ModalTeacherComponet from "./ModalTeacherComponet"
+
 
 function NavbarComponet(){
-  const {signout}=useContext(AuthContext)
+  const {signout,student,teacher}=useContext(AuthContext)
   const logout = ()=>{
     if (window.confirm("Deseja Sair?")) {
       signout()
     }
   }
   const usercookies = localStorage.getItem("token")
+  const studentCookies = localStorage.getItem("tokenStudent")
+  const teacherCookies = localStorage.getItem("tokenTeacher")
 
   useEffect(() => {
-    // document.body.classList.add('sb-sidenav-toggled');
     return () => {
       document.body.classList.remove('sb-sidenav-toggled');
     };
@@ -49,12 +52,56 @@ function NavbarComponet(){
             </form>
             <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><FontAwesomeIcon icon={faUser} size="lg"/></a>
+                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {usercookies?
+                      <FontAwesomeIcon icon={faUser} size="lg" />:<></>
+                    }
+                    {studentCookies?
+                      <img
+                        className="rounded-circle" 
+                        src={student?.avatar} 
+                        alt={student?.firstName+" "+student?.lastName} 
+                        style={{width:"45px", height:"45px"}}
+                      />:<></>
+                    }
+                    {teacherCookies?
+                      <img
+                        className="rounded-circle" 
+                        src={teacher?.avatar} 
+                        alt={teacher?.firstName+" "+teacher?.lastName} 
+                        style={{width:"45px", height:"45px"}}
+                      />
+                      :<></>
+                    }
+                    </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
-                    {usercookies?<></>:<>
-                    <li><ModalComponet/></li>
-                    <li><hr className="dropdown-divider"/></li></>}
-                        <li><a className="dropdown-item" href="/" onClick={logout}><FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />Sair</a></li>
+                      {usercookies?<></>:
+                        <>
+                          <li>
+                            { studentCookies?
+                              <ModalStudentComponet 
+                                idInteface={student?.id} 
+                                firstNameInteface={student?.firstName} 
+                                lastNameInteface={student?.lastName} 
+                                avatarInteface={student?.avatar}
+                              />:<></>
+                            }
+                            {teacherCookies?
+                              <ModalTeacherComponet 
+                                idInteface={teacher?.id} 
+                                firstNameInteface={teacher?.firstName} 
+                                lastNameInteface={teacher?.lastName} 
+                                avatarInteface={teacher?.avatar}
+                              />:<></>
+                            }
+                          </li>
+                          <li><hr className="dropdown-divider"/></li>
+                        </>
+                      }
+                      <li><a className="dropdown-item" href="/" onClick={logout}>
+                        <FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />
+                        Sair
+                      </a></li>
                     </ul>
                 </li>
             </ul>

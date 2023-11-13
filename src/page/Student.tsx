@@ -14,6 +14,7 @@ import Footer from "../componets/footer"
 function Student(){
   const [students, setStudents] = useState<StudentInterface[]>([]);
   const [search,setSearch]=useState("")
+  const usercookies = localStorage.getItem("token")
 
   useEffect(() => {
     getAllStudent();
@@ -81,15 +82,16 @@ function Student(){
                               <td>Cursando</td>
                               <td>
                                 <div className="gap-1 d-flex">
-                                  {/* <a className="btn btn-outline-primary" href={`/aluno/${item.enroll}`}>view</a> */}
-                                  <ModalStudentComponet 
-                                    idInteface={item.id} 
-                                    firstNameInteface={item.firstName} 
-                                    lastNameInteface={item.lastName} 
-                                    avatarInteface={item.avatar}  
-                                    courseTitleInteface={item.course?.title}
-                                    courseIdInteface={item.course?.id}
-                                  />  
+                                  {usercookies?  
+                                    <ModalStudentComponet 
+                                      idInteface={item.id} 
+                                      firstNameInteface={item.firstName} 
+                                      lastNameInteface={item.lastName} 
+                                      avatarInteface={item.avatar}  
+                                      courseTitleInteface={item.course?.title}
+                                      courseIdInteface={item.course?.id}
+                                    />:<></>
+                                  }    
                                   <button className="btn btn-outline-danger" onClick={() => handledeleteStudent(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
                                 </div>
                               </td>

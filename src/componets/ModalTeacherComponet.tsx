@@ -3,16 +3,16 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { TeacherInterface } from '../interface/TeacherInterface';
 import { Col, Form, Row } from 'react-bootstrap';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createTeacher, updateTeacher } from '../api/TeacherApi';
 import { toast } from 'react-toastify';
 
 type data ={
-  idInteface?: string,
-  firstNameInteface?: string,
-  lastNameInteface?: string,
-  avatarInteface?: string 
+  idInteface?: any,
+  firstNameInteface?: any,
+  lastNameInteface?: any,
+  avatarInteface?: any 
 }
 
 function ModalTeacherComponet({
@@ -25,11 +25,13 @@ function ModalTeacherComponet({
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [validated, setValidated] = useState(false);
+  const [validated, setValidated] = useState(true);
 
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
+
+  const teacherCookies = localStorage.getItem("tokenTeacher")
 
   useEffect(() => {
     handleClose(); 
@@ -67,10 +69,45 @@ function ModalTeacherComponet({
   }
   return (
     <>
-    {idInteface?<Button variant="outline-primary" onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} /></Button>:<Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>Novo Professor</Button>}
+    {teacherCookies?
+      <>
+        <a className="dropdown-item" href="#" onClick={handleShow}>
+          <FontAwesomeIcon className='px-2' icon={faUser} size="sm" />
+          Meus Dados
+        </a>
+      </>:
+      <>
+        {idInteface?
+          <Button variant="outline-primary" onClick={handleShow}>
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </Button>:
+          <Button variant="outline-dark" className='fw-bolder px-lg-5' onClick={handleShow}>
+            Novo Professor
+          </Button>
+        }
+      </>
+    }
       
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton><Modal.Title>{idInteface?<>Atualização Professor</>:<>Novo Professor</>}</Modal.Title></Modal.Header>
+        <Modal.Header closeButton><Modal.Title>
+          {teacherCookies?
+            <>
+              <FontAwesomeIcon className='px-2' icon={faUser} size="sm" />
+              Meus Dados
+            </>:
+            <>
+              {idInteface?
+                <>
+                  Atualização Professor
+                </>:
+                <>
+                  Novo Professor
+                </>
+              }
+            </>
+          }
+          
+        </Modal.Title></Modal.Header>
         <Modal.Body>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">

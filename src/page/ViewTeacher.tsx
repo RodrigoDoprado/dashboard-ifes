@@ -10,7 +10,7 @@ function ViewTeacher(){
     return(
         <>
             <Helmet><title>{teacher?.firstName+" "+teacher?.lastName}</title></Helmet>
-            <NavbarComponet/>
+            <NavbarComponet/> 
             <div id="layoutSidenav">
                 <NavSidebarTeacher/>
                 <div id="layoutSidenav_content">

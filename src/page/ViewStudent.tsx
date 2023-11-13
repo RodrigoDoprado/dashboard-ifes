@@ -5,19 +5,7 @@ import NavbarComponet from "../componets/NavbarComponet";
 import NavSidebarStudent from "../componets/NavSidebarStudent";
 
 function ViewStudent(){
-    // const [student, setStudent] = useState<StudentInterface>();
     const {student}=useContext(AuthContext)
-
-    // useEffect(() => {
-    //     getByStudent().catch(()=>{signout()})
-    //   }, []);
-    
-    //   const getByStudent = async () => {
-    //     const response = await getStudent(enroll)
-    //     if (response.status === 200) {
-    //         setStudent(response.data);
-    //     }
-    //   };
     
     return(
         <>
