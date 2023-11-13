@@ -1,5 +1,6 @@
 import { faBook, faChalkboardUser, faClock, faGraduationCap, faHouse } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ModalComponet from "./ModalComponet"
 
 function NavSidebarStudent(){
     return(
@@ -10,14 +11,7 @@ function NavSidebarStudent(){
                         <a className="nav-link" href="/dashboard">
                             <FontAwesomeIcon className='px-2' icon={faHouse} size="lg" />Dashboard
                         </a>
-                        <a className="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse" data-bs-target="#studentLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <FontAwesomeIcon className='px-2' icon={faClock} size="lg" />Horários
-                        </a>
-                        <div className="collapse" id="studentLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav className="sb-sidenav-menu-nested nav">
-                                <a className="nav-link" href="/alunos">Home</a>
-                            </nav>
-                        </div>
+                        <a href="#"><ModalComponet/></a>
                         <a className="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse" data-bs-target="#courseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <FontAwesomeIcon className='px-2' icon={faBook} size="lg" />Diário
                         </a>
