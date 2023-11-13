@@ -61,7 +61,6 @@ function Teacher(){
                           <th scope="col"></th>
                           <th scope="col">Matricula</th>
                           <th scope="col">Nome</th>
-                          <th scope="col">Matéria</th>
                           <th scope="col">Configuração</th>
                         </tr>
                       </thead>
@@ -75,7 +74,6 @@ function Teacher(){
                               <td><img src={item.avatar} alt={item.firstName+" "+item.lastName} width="45" height="35"/></td>
                               <td>{item.enroll}</td>
                               <td>{item.firstName+" "+item.lastName}</td>
-                              <td>{item.subjects}</td>
                               <td>
                                 <div className="gap-1 d-flex">
                                   {/* <a className="btn btn-outline-primary" href={`/professor/${item.enroll}`}>view</a> */}

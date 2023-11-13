@@ -10,30 +10,9 @@ function NavSidebar(){
                         <a className="nav-link" href="/dashboard">
                             <FontAwesomeIcon className='px-2' icon={faHouse} size="lg" />Dashboard
                         </a>
-                        <a className="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse" data-bs-target="#studentLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <FontAwesomeIcon className='px-2' icon={faGraduationCap} size="lg" />Alunos
-                        </a>
-                        <div className="collapse" id="studentLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav className="sb-sidenav-menu-nested nav">
-                                <a className="nav-link" href="/alunos">Home</a>
-                            </nav>
-                        </div>
-                        <a className="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse" data-bs-target="#teacherLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="lg" />Professores
-                        </a>
-                        <div className="collapse" id="teacherLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav className="sb-sidenav-menu-nested nav">
-                                <a className="nav-link" href="/professores">Home</a>
-                            </nav>
-                        </div>
-                        <a className="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse" data-bs-target="#courseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <FontAwesomeIcon className='px-2' icon={faBook} size="lg" />Cursos
-                        </a>
-                        <div className="collapse" id="courseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav className="sb-sidenav-menu-nested nav">
-                            <a className="nav-link" href="/cursos">Home</a>
-                            </nav>
-                        </div>    
+                        <a className="nav-link collapsed mt-4" href="/alunos"><FontAwesomeIcon className='px-2' icon={faGraduationCap} size="lg" />Alunos</a>
+                        <a className="nav-link collapsed mt-4" href="/professores"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="lg" />Professores</a>
+                        <a className="nav-link collapsed mt-4" href="/cursos"><FontAwesomeIcon className='px-2' icon={faBook} size="lg" />Cursos</a>
                     </div>
                 </div>
                 {/* <div className="sb-sidenav-footer">
