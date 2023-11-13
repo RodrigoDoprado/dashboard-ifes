@@ -47,7 +47,7 @@ function ModalTeacherComponet({
     await updateTeacher(data)
     .then(()=>{
       handleClose()
-      setTimeout(() => history(window.location.href = "/professores"), 1000);    
+      window.location.href = "/"    
     })
     .catch((res)=>{})
   };
