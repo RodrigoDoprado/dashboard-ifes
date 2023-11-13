@@ -50,17 +50,12 @@ function ModalStudentComponet({
   };
 
   const addUser = async (data: StudentInterface) => {
-    await createStudent(data)
-    .then((res)=>{
-      console.log(res.data.data);
-    })
+    const res = await createStudent(data)
+    if (res.status === 201) {alert("Estudante criado com sucesso!")}
   };
 
   const updateUser = async (data: StudentInterface) => {
-    const response = await updateStudent(data);
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await updateStudent(data).then(()=>{alert("Estudante alterado com sucesso!")})
   };
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {

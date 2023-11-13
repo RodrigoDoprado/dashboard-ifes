@@ -17,7 +17,12 @@ function ViewTeacher(){
                     <main>
                         <div className="container-fluid px-4">
                             <h1>{teacher?.firstName+" "+teacher?.lastName}</h1>
-                            <img src={teacher?.avatar} alt={teacher?.firstName+" "+teacher?.lastName}/>
+                            <img
+                                className="rounded-circle" 
+                                src={teacher?.avatar} 
+                                alt={teacher?.firstName+" "+teacher?.lastName} 
+                                style={{width:"200px", height:"200px"}}
+                            />
                             <h1>Matricula: {teacher?.enroll}</h1>
                         </div>
                     </main>
