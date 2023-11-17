@@ -22,7 +22,7 @@ function ViewStudent(){
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="p-5">
-                                        <h2 class="display-4">{student?.firstName+" "+student?.lastName}</h2>
+                                        <h2 className="display-4">{student?.firstName+" "+student?.lastName}</h2>
                                         <p>Matricula: {student?.enroll}</p>
                                         <p>Curso: {student?.course?.title}</p>
                                     </div>
