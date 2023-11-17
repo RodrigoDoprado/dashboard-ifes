@@ -15,13 +15,13 @@ function ViewStudent(){
                 <NavSidebarStudent/>
                 <div id="layoutSidenav_content">
                     <section>
-                        <div class="container px-5">
-                            <div class="row gx-5 align-items-center">
-                                <div class="col-lg-6">
-                                    <div class="p-5"><img class="img-fluid rounded-circle" src={student?.avatar} alt={student?.firstName+" "+student?.lastName} /></div>
+                        <div className="container px-5">
+                            <div className="row gx-5 align-items-center">
+                                <div className="col-lg-6">
+                                    <div className="p-5"><img className="img-fluid rounded-circle" src={student?.avatar} alt={student?.firstName+" "+student?.lastName} /></div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="p-5">
+                                <div className="col-lg-6">
+                                    <div className="p-5">
                                         <h2 class="display-4">{student?.firstName+" "+student?.lastName}</h2>
                                         <p>Matricula: {student?.enroll}</p>
                                         <p>Curso: {student?.course?.title}</p>
