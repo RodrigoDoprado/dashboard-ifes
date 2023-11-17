@@ -17,10 +17,10 @@ function ViewTeacher(){
                     <section>
                         <div className="container px-5">
                             <div className="row gx-5 row-cols-1 align-items-center">
-                            <div className="col-sm-6">
+                            <div className="col-lg-6">
                                 <div className="p-5"><img className="img-fluid rounded-circle" src={teacher?.avatar} alt={teacher?.firstName+" "+teacher?.lastName} /></div>
                             </div>
-                                <div className="col-sm-6">
+                                <div className="col-lg-6">
                                     <div className="p-5">
                                         <h2 className="display-4">{teacher?.firstName+" "+teacher?.lastName}</h2>
                                         <p>Matricula: {teacher?.enroll}</p>
