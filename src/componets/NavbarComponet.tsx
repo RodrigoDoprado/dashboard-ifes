@@ -38,7 +38,7 @@ function NavbarComponet(){
           <button className="btn btn-link btn-lg  order-0 me-4 me-lg-0" id="sidebarToggle" onClick={navigation}><FontAwesomeIcon icon={faBars} size="xl" style={{color: "#f7f7f7"}} /></button>
            <div className="px-lg-4">
               <a className="navbar-brand d-flex align-items-center gap-1" href="/">
-                <img src="../assets/ifes.png" style={{width:"45px", height:"45px"}}/>
+                <img src="../assets/ifes.png" style={{width:"40px", height:"40px"}}/>
                 <h5 className="mt-2">IFES</h5>
               </a>
             </div>
