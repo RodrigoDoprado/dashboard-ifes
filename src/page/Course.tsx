@@ -50,7 +50,7 @@ function Course(){
                           {/* <li className="breadcrumb-item active">Dashboard</li> */}
                       </ol>
                     <div className="mb-5"><ModalCourseComponet/></div> 
-                    <div className="row gx-lg-5 align-items-center row-cols-1 row-cols-md-3 row-cols-xl-4 gap-5">      
+                    <div className="row gx-5 justify-content-center row-cols-1 row-cols-md-3 row-cols-xl-4 gap-5">      
                       {courses?.filter((course)=>
                         course.title?.toLocaleLowerCase().includes(search))
                         .map((item) => {
