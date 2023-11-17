@@ -18,9 +18,7 @@ function ViewStudent(){
                         <div className="container px-5">
                             <div className="row gx-5 align-items-center">
                                 <div className="col-sm-6">
-                                    <div className="p-5"><img className="img-fluid rounded-circle" src={student?.avatar} alt={student?.firstName+" "+student?.lastName} /></div>
-                                </div>
-                                <div className="col-sm-6">
+                                    <img className="img-fluid rounded-circle" src={student?.avatar} alt={student?.firstName+" "+student?.lastName} />
                                     <div className="p-5">
                                         <h2 className="display-4">{student?.firstName+" "+student?.lastName}</h2>
                                         <p>Matricula: {student?.enroll}</p>
