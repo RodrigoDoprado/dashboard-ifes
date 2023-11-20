@@ -14,18 +14,22 @@ function ViewTeacher(){
             <div id="layoutSidenav">
                 <NavSidebarTeacher/>
                 <div id="layoutSidenav_content">
-                    <main>
-                        <div className="container-fluid px-4 px-lg-5 mt-5">
-                            <h1>{teacher?.firstName+" "+teacher?.lastName}</h1>
-                            <img
-                                className="rounded-circle" 
-                                src={teacher?.avatar} 
-                                alt={teacher?.firstName+" "+teacher?.lastName} 
-                                style={{width:"200px", height:"200px"}}
-                            />
-                            <h1>Matricula: {teacher?.enroll}</h1>
+                    <section>
+                        <div className="container px-5">
+                            <div className="row gx-5 row-cols-1 align-items-center">
+                            <div className="col-lg-6">
+                                <div className="p-5"><img className="img-fluid rounded-circle" src={teacher?.avatar} alt={teacher?.firstName+" "+teacher?.lastName} /></div>
+                            </div>
+                                <div className="col-lg-6">
+                                    <div className="p-5">
+                                        <h2 className="display-4">{teacher?.firstName+" "+teacher?.lastName}</h2>
+                                        <p>Matricula: {teacher?.enroll}</p>
+                                        {/* <p>Curso: {teacher?.course?.title}</p> */}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </main>
+                    </section>
                 </div>
             </div>
         </>
