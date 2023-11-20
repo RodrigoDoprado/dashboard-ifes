@@ -22,9 +22,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const teacherCookies = localStorage.getItem("tokenTeacher")
 
     if(studentCookies){
-     await getStudent(studentCookies).then((res)=>{setStudent(res.data.store)})
+     await getStudent(studentCookies).then((res)=>{setStudent(res.data.student)})
     }else if(teacherCookies){
-     await getTeacher(teacherCookies).then((res)=>{setTeacher(res.data.store)})
+     await getTeacher(teacherCookies).then((res)=>{setTeacher(res.data.teacher)})
     }
     setLoading(false)
   }
