@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet"
 import NavbarComponet from "../components/NavbarComponent"
-import ModalTeacherComponet from "../components/ModalTeacherComponet"
+import ModalTeacherComponet from "../components/ModalTeacherComponent"
 import { useEffect, useState } from "react"
 import { faChalkboardUser, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

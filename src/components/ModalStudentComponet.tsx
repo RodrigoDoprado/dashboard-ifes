@@ -9,6 +9,8 @@ import { createStudent, updateStudent } from '../api/StudentApi';
 import { getCourses } from '../api/CourseApi';
 import { CourseInterface } from '../interface/CourseInterface';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { hideMessageSuccess, showMessageSuccess } from '../store/layout';
 
 type data ={
   idInteface?: string,
@@ -40,6 +42,7 @@ function ModalStudentComponet({
   const [courses, setCourses] = useState<CourseInterface[]>([]);
   const studentCookies = localStorage.getItem("tokenStudent")
   const usercookies = localStorage.getItem("token")
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getAllCourse();
@@ -51,15 +54,23 @@ function ModalStudentComponet({
 
   const addUser = async (data: StudentInterface) => {
     await createStudent(data)
-    .then(()=>{handleClose()})
-    .catch((res)=>{})
+    .then(
+      ()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);
+      })
+    .catch(()=>{})
   };
 
   const updateUser = async (data: StudentInterface) => {
     await updateStudent(data)
     .then(()=>{
       handleClose()
-      setTimeout(() => history(window.location.href = "/alunos"), 1000);    
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);    
     })
     .catch((res)=>{})
   };

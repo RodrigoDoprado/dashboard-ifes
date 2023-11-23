@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet"
 import NavbarComponet from "../components/NavbarComponent"
 import { useParams } from "react-router-dom";
 import ModalPeriodComponet from "../components/ModalPeriodComponet";
-import ModalSubjectComponet from "../components/ModalSubjectComponet";
+import ModalSubjectComponet from "../components/ModalSubjectComponent";
 import { useEffect, useState } from "react";
 import { getCourse } from "../api/CourseApi";
 import { getPeriods } from "../api/PeriodApi";

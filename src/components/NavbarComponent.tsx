@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext"
 import { faBars, faMagnifyingGlass, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ModalStudentComponet from "./ModalStudentComponet"
-import ModalTeacherComponet from "./ModalTeacherComponet"
+import ModalTeacherComponet from "./ModalTeacherComponent"
 
 
 function NavbarComponent(){
@@ -11,6 +11,8 @@ function NavbarComponent(){
   const logout = ()=>{
     if (window.confirm("Deseja Sair?")) {
       signout()
+    }else{
+      window.location.href = window.location.href
     }
   }
   const usercookies = localStorage.getItem("token")

@@ -1,6 +1,6 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalSubjectComponet from "./ModalSubjectComponet"
+import ModalSubjectComponet from "./ModalSubjectComponent"
 import { deleteSubject, getSubjects } from "../api/SubjectApi"
 import { toast } from "react-toastify"
 import { useEffect, useState } from "react"

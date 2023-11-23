@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet";
-import NavSidebarStudent from "../components/NavSidebarStudent";
+import NavSidebarStudent from "../components/NavSidebarStudentComponent";
 import NavbarComponet from "../components/NavbarComponent";
 import { AuthContext } from "../context/AuthContext";
 import AlertComponent from "../components/AlertComponent";
@@ -20,9 +20,9 @@ function ViewStudent() {
         <NavSidebarStudent />
         <div id="layoutSidenav_content">
         <section>
-            <div className="container">
+            <div className="container-fluid px-4 px-lg-5 mt-5">
             <AlertComponent/>
-              <div className="row mt-5">
+              <div className="row">
                 <div className="col-lg-6">
                   <div className="card">
                     <img

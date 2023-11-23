@@ -4,12 +4,18 @@ import { MyStateInterface } from '../interface/MyStateInterface';
 import React from 'react';
 
 function AlertComponent() {
-  const isShow = useSelector((state:MyStateInterface)=>state.layout.showMessage)
+  const isShowSuccess = useSelector((state:MyStateInterface)=>state.layout.showMessageSuccess)
+  const isShowDanger = useSelector((state:MyStateInterface)=>state.layout.showMessageDanger)
   return (
     <React.Fragment>
-      {isShow && (
+      {isShowSuccess && (
       <Alert key="success" variant="success">
           This is a success alert—check it out!
+        </Alert>
+      )}
+      {isShowDanger && (
+      <Alert key="danger" variant="danger">
+          This is a danger alert—check it out!
         </Alert>
       )}
     </React.Fragment>

@@ -20,7 +20,7 @@ type data ={
   titlePeriodInteface?: string,
 }
 
-function ModalSubjectComponet({ 
+function ModalSubjectComponent({ 
   idInteface, 
   titleInteface,
   avatarInteface,
@@ -140,4 +140,4 @@ function ModalSubjectComponet({
   );
 }
 
-export default ModalSubjectComponet;
+export default ModalSubjectComponent;

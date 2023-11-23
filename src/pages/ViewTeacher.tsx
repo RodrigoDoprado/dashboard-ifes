@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import NavSidebarTeacher from "../components/NavSidebarTeacher";
+import NavSidebarTeacher from "../components/NavSidebarTeacherComponent";
 import NavbarComponent from "../components/NavbarComponent";
 import AlertComponent from "../components/AlertComponent";
 
@@ -20,9 +20,9 @@ function ViewTeacher() {
         <NavSidebarTeacher />
         <div id="layoutSidenav_content">
           <section>
-            <div className="container">
+            <div className="container-fluid px-4 px-lg-5 mt-5">
             <AlertComponent/>
-              <div className="row mt-5">
+              <div className="row">
                 <div className="col-lg-6">
                   <div className="card">
                     <img

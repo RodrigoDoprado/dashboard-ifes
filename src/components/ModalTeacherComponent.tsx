@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { TeacherInterface } from '../interface/TeacherInterface';
@@ -7,6 +7,8 @@ import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createTeacher, updateTeacher } from '../api/TeacherApi';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
 
 type data ={
   idInteface?: any,
@@ -15,7 +17,7 @@ type data ={
   avatarInteface?: any 
 }
 
-function ModalTeacherComponet({
+function ModalTeacherComponent({
     idInteface, 
     firstNameInteface, 
     lastNameInteface,
@@ -30,16 +32,17 @@ function ModalTeacherComponet({
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
-
+  const dispatch = useDispatch()
   const teacherCookies = localStorage.getItem("tokenTeacher")
-
-  useEffect(() => {
-    handleClose(); 
-  }, [])
 
   const addUser = async (data: TeacherInterface) => {
     await createTeacher(data)
-    .then(()=>{handleClose()})
+    .then(()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => history(window.location.href = "/professores"), 2500);
+    })
     .catch((res)=>{})
   };
 
@@ -47,7 +50,9 @@ function ModalTeacherComponet({
     await updateTeacher(data)
     .then(()=>{
       handleClose()
-      window.location.href = "/"    
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => history(window.location.href = "/professores"), 2500);
     })
     .catch((res)=>{})
   };
@@ -139,4 +144,4 @@ console.log(firstName,lastName,avatar)
   );
 }
 
-export default ModalTeacherComponet;
+export default ModalTeacherComponent;

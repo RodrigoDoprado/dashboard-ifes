@@ -2,7 +2,7 @@ import { faBook, faChalkboardUser, faClock, faGraduationCap, faHouse } from "@fo
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ModalComponet from "./ModalComponent"
 
-function NavSidebarTeacher(){
+function NavSidebarTeacherComponent(){
     return(
         <div id="layoutSidenav_nav">
             <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -26,4 +26,4 @@ function NavSidebarTeacher(){
         </div>
     )
 }
-export default NavSidebarTeacher
+export default NavSidebarTeacherComponent
