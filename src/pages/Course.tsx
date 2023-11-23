@@ -1,14 +1,14 @@
-import ModalCourseComponet from "../componets/ModalCourseComponet"
+import ModalCourseComponet from "../components/ModalCourseComponet"
 import { useEffect, useState } from "react"
 import { faBook, faEye, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import NavbarComponet from "../componets/NavbarComponet"
+import NavbarComponet from "../components/NavbarComponet"
 import { Helmet } from "react-helmet"
 import { toast } from "react-toastify"
 import { deleteCourse, getCourses } from "../api/CourseApi"
 import { CourseInterface } from "../interface/CourseInterface"
-import NavSidebar from "../componets/NavSidebar"
-import Footer from "../componets/footer"
+import NavSidebar from "../components/NavSidebar"
+import Footer from "../components/footerComponent"
 
 
 function Course(){

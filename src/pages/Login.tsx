@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../context/AuthContext";
-import Footer from "../componets/footer";
+import Footer from "../components/footerComponent";
 import "./Login.css"
 
 function Login(){

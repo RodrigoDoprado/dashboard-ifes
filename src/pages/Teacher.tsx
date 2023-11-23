@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componets/NavbarComponet"
-import ModalTeacherComponet from "../componets/ModalTeacherComponet"
+import NavbarComponet from "../components/NavbarComponet"
+import ModalTeacherComponet from "../components/ModalTeacherComponet"
 import { useEffect, useState } from "react"
 import { faChalkboardUser, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { deleteTeacher, getTeachers } from "../api/TeacherApi"
 import { toast } from "react-toastify"
 import { TeacherInterface } from "../interface/TeacherInterface"
-import NavSidebar from "../componets/NavSidebar"
-import Footer from "../componets/footer"
+import NavSidebar from "../components/NavSidebar"
+import Footer from "../components/footerComponent"
 
 
 function Teacher(){

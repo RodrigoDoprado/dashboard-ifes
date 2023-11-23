@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet"
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import NavbarComponet from "../componets/NavbarComponet";
-import NavSidebarTeacher from "../componets/NavSidebarTeacher";
+import NavbarComponet from "../components/NavbarComponet";
+import NavSidebarTeacher from "../components/NavSidebarTeacher";
 
 function ViewTeacher(){ 
     const {teacher}=useContext(AuthContext)

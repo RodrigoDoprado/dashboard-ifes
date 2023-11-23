@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componets/NavbarComponet"
-import ModalStudentComponet from "../componets/ModalStudentComponet"
+import NavbarComponet from "../components/NavbarComponet"
+import ModalStudentComponet from "../components/ModalStudentComponet"
 import { useEffect, useState } from "react"
 import { faGraduationCap, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { deleteStudent, getStudents } from "../api/StudentApi"
 import { StudentInterface } from "../interface/StudentInterface"
 import { toast } from "react-toastify"
-import NavSidebar from "../componets/NavSidebar"
-import Footer from "../componets/footer"
+import NavSidebar from "../components/NavSidebar"
+import Footer from "../components/footerComponent"
 
 
 function Student(){

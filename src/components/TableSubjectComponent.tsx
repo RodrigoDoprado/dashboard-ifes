@@ -11,7 +11,7 @@ type data ={
     titlePeriodInteface: any
 }
 
-function TableSubjectComponet({idPeriodInteface,titlePeriodInteface}:data){
+function TableSubjectComponent({idPeriodInteface,titlePeriodInteface}:data){
   const [subjects, setSubjects] = useState<SubjectInterface[]>([]);
 
   useEffect(() => {
@@ -80,4 +80,4 @@ function TableSubjectComponet({idPeriodInteface,titlePeriodInteface}:data){
         </>    
     )
 }
-export default TableSubjectComponet
+export default TableSubjectComponent

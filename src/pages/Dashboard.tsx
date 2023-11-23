@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componets/NavbarComponet"
+import NavbarComponet from "../components/NavbarComponet"
 import {Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legend} from "chart.js"
 import {Bar, Pie} from "react-chartjs-2"
 import { useState } from "react"
 import { UserData } from "../Data"
-import NavSidebar from "../componets/NavSidebar"
-import Footer from "../componets/footer"
+import NavSidebar from "../components/NavSidebar"
+import Footer from "../components/footerComponent"
 
 ChartJs.register(
   BarElement,

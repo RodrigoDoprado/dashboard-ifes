@@ -1,6 +1,6 @@
-import Dashboard from "../page/Dashboard"
-import ViewStudent from "../page/ViewStudent"
-import ViewTeacher from "../page/ViewTeacher"
+import Dashboard from "../pages/Dashboard"
+import ViewStudent from "../pages/ViewStudent"
+import ViewTeacher from "../pages/ViewTeacher"
 
 export const PagePublic = ({ children }: { children: JSX.Element }) => {
   const studentCookies = localStorage.getItem("tokenStudent")

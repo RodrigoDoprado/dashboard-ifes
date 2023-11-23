@@ -3,5 +3,5 @@ export interface SubjectInterface{
     avatar?: string,
     title?: string,
     acronym?:string //sigla
-    period?: string
+    period?: any
 }

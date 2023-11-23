@@ -1,6 +1,9 @@
 import Alert from 'react-bootstrap/Alert';
+import { useSelector } from 'react-redux';
+import { MyStateInterface } from '../interface/MyStateInterface';
 
-function AlertComponet() {
+function AlertComponent() {
+  const isShow = useSelector((state:MyStateInterface)=>state.layout.showMessage)
   return (
     <>
       {[
@@ -21,4 +24,4 @@ function AlertComponet() {
   );
 }
 
-export default AlertComponet;
+export default AlertComponent;

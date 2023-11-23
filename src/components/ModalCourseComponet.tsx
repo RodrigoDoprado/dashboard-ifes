@@ -19,7 +19,7 @@ type data ={
   teacherIdInteface?: string
 }
 
-function ModalCourseComponet({
+function ModalCourseComponent({
   idInteface,
   avatarInteface, 
   titleInteface,
@@ -108,14 +108,16 @@ function ModalCourseComponet({
                 <Form.Control required type="text" value={acronym} onChange={event =>setAcronym(event.target.value)}/>
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
-              <div className="mb-3">
-              <label htmlFor="inputTeacher">Professor Orientador:</label>
-              <select className="form-select" name="teacher" required value={teacher} onChange={event =>setTeacher(event.target.value)}>
-                <option value={teacherIdInteface}>{teacherNameInteface}</option>
-                {teachers?.map((item) => {return(<option value={item.id}>{item.firstName+" "+item.lastName}</option>)})}
-              </select>
-              <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
-            </div>
+              {!idInteface?<></>:<>
+                <div className="mb-3">
+                  <label htmlFor="inputTeacher">Professor Orientador:</label>
+                  <select className="form-select" name="teacher" required value={teacher} onChange={event =>setTeacher(event.target.value)}>
+                  {!teacherIdInteface?<><option>Escolhar...</option></>:<><option value={teacherIdInteface}>{teacherNameInteface}</option></>}
+                    {teachers?.map((item) => {return(<option value={item.id}>{item.firstName+" "+item.lastName}</option>)})}
+                  </select>
+                  <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
+                </div>
+            </>}
             </Row>
             <div className='px-4 gap-5 d-inline-flex'>
               <Button variant="primary" className='px-5' type="submit">Salvar</Button>
@@ -128,4 +130,4 @@ function ModalCourseComponet({
   );
 }
 
-export default ModalCourseComponet;
+export default ModalCourseComponent;

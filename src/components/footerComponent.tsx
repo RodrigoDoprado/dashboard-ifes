@@ -1,4 +1,4 @@
-function Footer(){
+function FooterComponent(){
     return(
         <div id="layoutAuthentication_footer">
             <footer className="py-4 bg-light mt-auto">
@@ -16,4 +16,4 @@ function Footer(){
         </div>
     )
 }
-export default Footer
+export default FooterComponent

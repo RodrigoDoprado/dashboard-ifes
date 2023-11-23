@@ -1,16 +1,20 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../componets/NavbarComponet"
+import NavbarComponet from "../components/NavbarComponet"
 import { useParams } from "react-router-dom";
-import ModalPeriodComponet from "../componets/ModalPeriodComponet";
-import ModalSubjectComponet from "../componets/ModalSubjectComponet";
-import TableSubjectComponet from "../componets/TableSubjectComponet";
+import ModalPeriodComponet from "../components/ModalPeriodComponet";
+import ModalSubjectComponet from "../components/ModalSubjectComponet";
 import { useEffect, useState } from "react";
 import { getCourse } from "../api/CourseApi";
 import { getPeriods } from "../api/PeriodApi";
 import { CourseInterface } from "../interface/CourseInterface";
 import { PeriodInterface } from "../interface/PeriodInterface";
-import NavSidebar from "../componets/NavSidebar";
-import Footer from "../componets/footer";
+import NavSidebar from "../components/NavSidebar";
+import Footer from "../components/footerComponent";
+import { deleteSubject } from "../api/SubjectApi";
+import { toast } from "react-toastify";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import TableSubjectComponet from "../components/TableSubjectComponent";
 
 
 function ViewCourse(){ 
@@ -32,9 +36,20 @@ function ViewCourse(){
       const getAllPeriod = async () => {
         const response = await getPeriods(acronym)
         if (response.status === 200) {
-            setPeriods(response.data);
+            // setPeriods(response.data);
+            setPeriods(response.data)
         }
       };
+
+      const handledeleteSubject = async (id: string | undefined) => {
+        if (window.confirm("Deseja Excluir a Matéria?")) {
+          const response = await deleteSubject(id);
+          if (response.status === 200) {
+            toast.success(response.data);
+            // getAllSubject();
+          }
+        }
+      }
    
     return(
         <>
@@ -48,10 +63,22 @@ function ViewCourse(){
                       <header>
                         <h1 className="mt-4">{course?.title}</h1> {/*text-capitalize */}
                         <ol className="breadcrumb mb-4">
-                          <li className="">Professor Coordenador:&nbsp;{course?.teacher?.firstName+" "+course?.teacher?.lastName}</li>
+                          {course?.teacher?
+                            <li className="">
+                              Professor Coordenador:&nbsp;
+                              {course?.teacher?.firstName+" "+course?.teacher?.lastName}
+                            </li>:
+                            <>
+                              <li className="">
+                                Professor Coordenador:&nbsp;
+                                Curso Não Possui 
+                              </li>
+                            </>
+                          }
+                          
                         </ol>
                         <div className="text-center">
-                          <ModalPeriodComponet couserInteface={course?.id}/> &nbsp;&nbsp;&nbsp; &nbsp; 
+                          <ModalPeriodComponet couserInteface={course?.id}/> &nbsp;&nbsp;&nbsp;&nbsp; 
                           <ModalSubjectComponet/>
                         </div>
                       </header>
@@ -59,14 +86,14 @@ function ViewCourse(){
                         {periods?.map((item) => {
                           return (
                             <div className="col mb-5">
-                                <ModalPeriodComponet idInteface={item.id} titleInteface={item.title} />
-                                <TableSubjectComponet 
+                              <ModalPeriodComponet idInteface={item.id} titleInteface={item.title} />
+                              <TableSubjectComponet 
                                     idPeriodInteface={item.id} 
                                     titlePeriodInteface={item.title}
                                 />
                             </div>
-                          )
-                        })}
+                             )
+                            })}
                     </div>
                   </div>
                 </main>

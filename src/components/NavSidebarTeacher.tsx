@@ -1,6 +1,6 @@
 import { faBook, faChalkboardUser, faClock, faGraduationCap, faHouse } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalComponet from "./ModalComponet"
+import ModalComponet from "./ModalComponent"
 
 function NavSidebarTeacher(){
     return(

@@ -1,6 +1,6 @@
-import Login from "../page/Login"
-import ViewStudent from "../page/ViewStudent"
-import ViewTeacher from "../page/ViewTeacher"
+import Login from "../pages/Login"
+import ViewStudent from "../pages/ViewStudent"
+import ViewTeacher from "../pages/ViewTeacher"
 
 export const PagePrivate = ({ children }: { children: JSX.Element }) => {
   const studentCookies = localStorage.getItem("tokenStudent")

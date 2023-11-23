@@ -1,8 +1,15 @@
-import RouterPage from "./routerPage"
+
 import "./App.css"
+import AlertComponent from "./components/AlertComponent"
+import Pages from "./pages"
 
 function App() {
-  return <RouterPage />
+  return( 
+    <>
+      <AlertComponent/>
+      <Pages />
+    </>
+  )
 }
 
 export default App
