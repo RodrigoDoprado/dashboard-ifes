@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import NavSidebarTeacher from "../components/NavSidebarTeacher";
 import NavbarComponent from "../components/NavbarComponent";
+import AlertComponent from "../components/AlertComponent";
 
 function ViewTeacher() {
   const { teacher } = useContext(AuthContext);
@@ -20,6 +21,7 @@ function ViewTeacher() {
         <div id="layoutSidenav_content">
           <section>
             <div className="container">
+            <AlertComponent/>
               <div className="row mt-5">
                 <div className="col-lg-6">
                   <div className="card">

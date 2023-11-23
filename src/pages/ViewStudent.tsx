@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import NavSidebarStudent from "../components/NavSidebarStudent";
 import NavbarComponet from "../components/NavbarComponent";
 import { AuthContext } from "../context/AuthContext";
+import AlertComponent from "../components/AlertComponent";
 
 function ViewStudent() {
   const { student } = useContext(AuthContext);
@@ -20,6 +21,7 @@ function ViewStudent() {
         <div id="layoutSidenav_content">
         <section>
             <div className="container">
+            <AlertComponent/>
               <div className="row mt-5">
                 <div className="col-lg-6">
                   <div className="card">
