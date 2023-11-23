@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../components/NavbarComponet"
+import NavbarComponet from "../components/NavbarComponent"
 import ModalTeacherComponet from "../components/ModalTeacherComponet"
 import { useEffect, useState } from "react"
 import { faChalkboardUser, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
@@ -9,6 +9,7 @@ import { toast } from "react-toastify"
 import { TeacherInterface } from "../interface/TeacherInterface"
 import NavSidebar from "../components/NavSidebar"
 import Footer from "../components/footerComponent"
+import AlertComponent from "../components/AlertComponent"
 
 
 function Teacher(){
@@ -45,6 +46,7 @@ function Teacher(){
               <div id="layoutSidenav_content">
                 <main>
                   <div className="container-fluid px-4 px-lg-5 mt-5">
+                  <AlertComponent/>
                     <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faChalkboardUser} size="sm" />Professores</h1>
                       <ol className="breadcrumb mb-4">
                         {/* <li className="breadcrumb-item active">Dashboard</li> */}

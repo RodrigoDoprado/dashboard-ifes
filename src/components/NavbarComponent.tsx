@@ -6,7 +6,7 @@ import ModalStudentComponet from "./ModalStudentComponet"
 import ModalTeacherComponet from "./ModalTeacherComponet"
 
 
-function NavbarComponet(){
+function NavbarComponent(){
   const {signout,student,teacher}=useContext(AuthContext)
   const logout = ()=>{
     if (window.confirm("Deseja Sair?")) {
@@ -59,7 +59,7 @@ function NavbarComponet(){
                         className="rounded-circle" 
                         src={student?.avatar} 
                         alt={student?.firstName+" "+student?.lastName} 
-                        style={{width:"45px", height:"45px"}}
+                        style={{width:"40px", height:"40px"}}
                       />:<></>
                     }
                     {teacher?
@@ -109,4 +109,4 @@ function NavbarComponet(){
         </nav>
     )
 }
-export default NavbarComponet
+export default NavbarComponent

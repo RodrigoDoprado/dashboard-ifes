@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import NavbarComponet from "../components/NavbarComponet";
 import NavSidebarTeacher from "../components/NavSidebarTeacher";
+import NavbarComponent from "../components/NavbarComponent";
 
 function ViewTeacher() {
   const { teacher } = useContext(AuthContext);
@@ -13,20 +13,21 @@ function ViewTeacher() {
         <title>{teacher?.firstName + " " + teacher?.lastName}</title>
       </Helmet>
 
-      <NavbarComponet />
+      <NavbarComponent />
 
       <div id="layoutSidenav">
         <NavSidebarTeacher />
         <div id="layoutSidenav_content">
           <section>
             <div className="container">
-              <div className="row">
+              <div className="row mt-5">
                 <div className="col-lg-6">
                   <div className="card">
                     <img
                       src={teacher?.avatar}
                       alt={teacher?.firstName + " " + teacher?.lastName}
                       className="card-img-top rounded-circle"
+                      style={{width:"15em", height:"15em"}}
                     />
                     <div className="card-body">
                       <h5 className="card-title">{teacher?.firstName + " " + teacher?.lastName}</h5>

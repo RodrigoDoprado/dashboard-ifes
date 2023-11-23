@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../components/NavbarComponet"
+import NavbarComponet from "../components/NavbarComponent"
 import {Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legend} from "chart.js"
 import {Bar, Pie} from "react-chartjs-2"
 import { useState } from "react"
 import { UserData } from "../Data"
 import NavSidebar from "../components/NavSidebar"
 import Footer from "../components/footerComponent"
+import AlertComponent from "../components/AlertComponent"
 
 ChartJs.register(
   BarElement,
@@ -45,6 +46,7 @@ function Dashboard(){
                 <div id="layoutSidenav_content">
                     <main>
                         <div className="container-fluid px-4 px-lg-5 mt-5">
+                        <AlertComponent/>
                             <h1 className="mt-4">Dashboard</h1>
                             <ol className="breadcrumb mb-4">
                                 <li className="breadcrumb-item active">Dashboard</li>

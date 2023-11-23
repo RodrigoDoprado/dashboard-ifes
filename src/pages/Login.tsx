@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { AuthContext } from "../context/AuthContext";
 import Footer from "../components/footerComponent";
 import "./Login.css"
+import AlertComponent from "../components/AlertComponent";
 
 function Login(){
     const {signin} = useContext(AuthContext)
@@ -31,9 +32,10 @@ function Login(){
         <>
             <Helmet><title>Login</title></Helmet>
             <div id="layoutAuthentication">
-                <div id="layoutAuthentication_content">
+                <div id="layoutAuthentication_content"> 
                     <main id="login">
                         <div className="container">
+                        <AlertComponent/>
                             <div className="row justify-content-center">
                                 <div className="col-lg-5">
                                         <div className="card shadow-lg border-0 rounded-lg mt-5">

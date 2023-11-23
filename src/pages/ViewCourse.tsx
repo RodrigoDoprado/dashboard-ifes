@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet"
-import NavbarComponet from "../components/NavbarComponet"
+import NavbarComponet from "../components/NavbarComponent"
 import { useParams } from "react-router-dom";
 import ModalPeriodComponet from "../components/ModalPeriodComponet";
 import ModalSubjectComponet from "../components/ModalSubjectComponet";
@@ -12,9 +12,8 @@ import NavSidebar from "../components/NavSidebar";
 import Footer from "../components/footerComponent";
 import { deleteSubject } from "../api/SubjectApi";
 import { toast } from "react-toastify";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TableSubjectComponet from "../components/TableSubjectComponent";
+import AlertComponent from "../components/AlertComponent";
 
 
 function ViewCourse(){ 
@@ -41,15 +40,15 @@ function ViewCourse(){
         }
       };
 
-      const handledeleteSubject = async (id: string | undefined) => {
-        if (window.confirm("Deseja Excluir a Matéria?")) {
-          const response = await deleteSubject(id);
-          if (response.status === 200) {
-            toast.success(response.data);
-            // getAllSubject();
-          }
-        }
-      }
+      // const handledeleteSubject = async (id: string | undefined) => {
+      //   if (window.confirm("Deseja Excluir a Matéria?")) {
+      //     const response = await deleteSubject(id);
+      //     if (response.status === 200) {
+      //       toast.success(response.data);
+      //       // getAllSubject();
+      //     }
+      //   }
+      // }
    
     return(
         <>
@@ -60,6 +59,7 @@ function ViewCourse(){
                 <div id="layoutSidenav_content"> 
                   <main>
                     <div className="container-fluid px-4">
+                    <AlertComponent/>
                       <header>
                         <h1 className="mt-4">{course?.title}</h1> {/*text-capitalize */}
                         <ol className="breadcrumb mb-4">

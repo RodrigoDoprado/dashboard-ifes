@@ -2,13 +2,14 @@ import ModalCourseComponet from "../components/ModalCourseComponet"
 import { useEffect, useState } from "react"
 import { faBook, faEye, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import NavbarComponet from "../components/NavbarComponet"
+import NavbarComponet from "../components/NavbarComponent"
 import { Helmet } from "react-helmet"
 import { toast } from "react-toastify"
 import { deleteCourse, getCourses } from "../api/CourseApi"
 import { CourseInterface } from "../interface/CourseInterface"
 import NavSidebar from "../components/NavSidebar"
 import Footer from "../components/footerComponent"
+import AlertComponent from "../components/AlertComponent"
 
 
 function Course(){
@@ -45,6 +46,7 @@ function Course(){
               <div id="layoutSidenav_content"> 
                 <main>
                   <div className="container-fluid px-4 px-lg-5 mt-5">
+                  <AlertComponent/>
                     <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h1>
                       <ol className="breadcrumb mb-4">
                           {/* <li className="breadcrumb-item active">Dashboard</li> */}
