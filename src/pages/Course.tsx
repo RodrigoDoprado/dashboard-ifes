@@ -39,7 +39,7 @@ function Course(){
  
   return(
         <>
-          <Helmet><title>Dashboard</title></Helmet>
+          <Helmet><title>Cursos</title></Helmet>
           <NavbarComponet/>
           <div id="layoutSidenav">
             <NavSidebar/>
