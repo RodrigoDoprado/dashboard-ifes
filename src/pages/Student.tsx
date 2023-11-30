@@ -75,7 +75,14 @@ function Student(){
                           return (
                             <tr>
                               <th scope="row">{index+1}</th>
-                              <td><img src={item.avatar} alt={item.firstName+""+item.lastName} width="45" height="35"/></td>
+                              <td>
+                                <img 
+                                  src={item.avatar} 
+                                  alt={item.firstName+""+item.lastName} 
+                                  className="card-img-top rounded-circle"
+                                  style={{width:"3em", height:"3em"}}
+                                />
+                              </td>
                               <td>{item.enroll}</td>
                               <td>{item.firstName+" "+item.lastName}</td>
                               <td>{item.course?.acronym}</td>

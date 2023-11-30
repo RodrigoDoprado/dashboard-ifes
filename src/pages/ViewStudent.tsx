@@ -30,7 +30,7 @@ function ViewStudent() {
                       alt={student?.firstName + " " + student?.lastName}
                       className="card-img-top rounded-circle"
                       style={{width:"15em", height:"15em"}}
-                    />
+                    /> 
                     <div className="card-body">
                       <h5 className="card-title">{student?.firstName + " " + student?.lastName}</h5>
                       <p className="card-text">Matrícula: {student?.enroll}</p>
