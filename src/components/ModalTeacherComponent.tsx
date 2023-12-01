@@ -133,10 +133,8 @@ console.log(firstName,lastName,avatar)
                 <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <div className='px-4 gap-5 d-inline-flex'>
-              <Button variant="primary" type="submit" className='px-5'>Salvar</Button>
-              <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
-            </div> 
+            <Button variant="primary" onClick={handleSubmit}>Salvar</Button>
+            <Button variant="secondary" className='px-3' onClick={handleClose}>Sair</Button>
           </Form>
         </Modal.Body>
       </Modal>

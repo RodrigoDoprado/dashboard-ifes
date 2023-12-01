@@ -119,10 +119,8 @@ function ModalCourseComponent({
                 </div>
             </>}
             </Row>
-            <div className='px-4 gap-5 d-inline-flex'>
-              <Button variant="primary" className='px-5' type="submit">Salvar</Button>
-              <Button variant="secondary" className='px-5' onClick={handleClose}>Sair</Button>
-            </div>
+            <Button variant="primary" onClick={handleSubmit}>Salvar</Button>
+            <Button variant="secondary" className='px-3' onClick={handleClose}>Sair</Button>
           </Form>
         </Modal.Body>
       </Modal>
