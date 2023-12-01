@@ -25,7 +25,7 @@ function ViewStudent() {
               <div className="row">
                 <div className="col-lg-6">
                   <div className="card">
-                    <div className="card-header d-lg-flex">
+                    <div className="card-header">
                       <img
                         src={student?.avatar}
                         alt={student?.firstName + " " + student?.lastName}

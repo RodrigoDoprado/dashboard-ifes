@@ -15,11 +15,11 @@ function NavSidebarTeacherComponent(){
                         <a className="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse" data-bs-target="#courseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <FontAwesomeIcon className='px-2' icon={faBook} size="lg" />Diário
                         </a>
-                        <div className="collapse" id="courseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        {/* <div className="collapse" id="courseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav className="sb-sidenav-menu-nested nav">
                             <a className="nav-link" href="/cursos">Home</a>
                             </nav>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </nav>
