@@ -25,15 +25,17 @@ function ViewTeacher() {
               <div className="row">
                 <div className="col-lg-6">
                   <div className="card">
-                    <img
-                      src={teacher?.avatar}
-                      alt={teacher?.firstName + " " + teacher?.lastName}
-                      className="card-img-top rounded-circle"
-                      style={{width:"15em", height:"15em"}}
-                    />
-                    <div className="card-body">
+                    <div className="card-header">
+                      <img
+                        src={teacher?.avatar}
+                        alt={teacher?.firstName + " " + teacher?.lastName}
+                        className="card-img-top rounded-circle img-thumbnail"
+                        style={{width:"9em", height:"9em"}}
+                      />
                       <h5 className="card-title">{teacher?.firstName + " " + teacher?.lastName}</h5>
                       <p className="card-text">Matrícula: {teacher?.enroll}</p>
+                    </div>
+                    <div className="card-body">
                       {/* <p className="card-text">Curso: {teacher?.course?.title}</p> */}
                     </div>
                   </div>
