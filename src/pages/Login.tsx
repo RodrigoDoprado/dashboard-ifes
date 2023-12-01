@@ -64,9 +64,9 @@ function Login(){
                                                 </div>
                                             </form>
                                         </div>
-                                        <div className="card-footer text-center py-3">
+                                        {/* <div className="card-footer text-center py-3">
                                             <div className="small"><a href="/">Criar Conta Aqui!</a></div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
