@@ -11,6 +11,7 @@ import { CourseInterface } from '../interface/CourseInterface';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideMessageSuccess, showMessageSuccess } from '../store/layout';
+import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
 
 type data ={
   idInteface?: string,
@@ -39,18 +40,20 @@ function ModalStudentComponet({
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
   const [course, setCourse] = useState(courseIdInteface);
-  const [courses, setCourses] = useState<CourseInterface[]>([]);
+  // const [courses, setCourses] = useState<CourseInterface[]>([]);
   const studentCookies = localStorage.getItem("tokenStudent")
   const usercookies = localStorage.getItem("token")
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    getAllCourse();
-  }, []);
+  // useEffect(() => {
+  //   getAllCourse();
+  // }, []);
 
-  const getAllCourse = async () => {
-    await getCourses().then((response)=>{setCourses(response.data)})
-  };
+  // const getAllCourse = async () => {
+  //   await getCourses().then((response)=>{setCourses(response.data)})
+  // };
+
+  const {courses}=useGetAllCourse()
 
   const addUser = async (data: StudentInterface) => {
     await createStudent(data)
