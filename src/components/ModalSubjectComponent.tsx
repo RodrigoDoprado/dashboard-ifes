@@ -10,6 +10,8 @@ import { getPeriods } from '../api/PeriodApi';
 import { PeriodInterface } from '../interface/PeriodInterface';
 import { createSubject, updateSubject } from '../api/SubjectApi';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
 
 type data ={
   idInteface?: string,
@@ -39,7 +41,8 @@ function ModalSubjectComponent({
   const [avatar, setAvatar] = useState(avatarInteface);
   const [period, setPeriod] = useState(idPeriodInteface);
   const [periods, setPeriods] = useState<PeriodInterface[]>([]);
-
+  const dispatch = useDispatch()
+  
   useEffect(() => {
     getAllPeriod()
     handleClose();
@@ -53,17 +56,25 @@ function ModalSubjectComponent({
   };
 
   const addUser = async (data: SubjectInterface) => {
-    const response = await createSubject(data)
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await createSubject(data)
+    .then(()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);    
+    })
+    .catch((res)=>{})
   };
 
   const updateUser = async (data: SubjectInterface) => {
-    const response = await updateSubject(data);
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await updateSubject(data)
+    .then(()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);    
+    })
+    .catch((res)=>{})
   };
 
   const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {

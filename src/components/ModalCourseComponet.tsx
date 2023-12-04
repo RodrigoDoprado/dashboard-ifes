@@ -9,6 +9,8 @@ import { TeacherInterface } from '../interface/TeacherInterface';
 import { getTeachers } from '../api/TeacherApi';
 import { toast } from 'react-toastify';
 import { createCourse, updateCourse } from '../api/CourseApi';
+import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
+import { useDispatch } from 'react-redux';
 
 type data ={
   idInteface?: string,
@@ -38,6 +40,7 @@ function ModalCourseComponent({
   const [acronym, setAcronym] = useState(acronymInteface);
   const [teacher, setTeacher] = useState(teacherIdInteface);
   const [teachers, setTeachers] = useState<TeacherInterface[]>([]);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getAllTeacher()
@@ -52,17 +55,25 @@ function ModalCourseComponent({
   };
 
   const addUser = async (data: CourseInterface) => {
-    const response = await createCourse(data)
-    if (response.status === 201) {
-      toast.success(response.data);
-    }else{alert(response.data)}
-  };
+    await createCourse(data)
+    .then(()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);
+      })
+    .catch(()=>{})
+  }; 
 
   const updateUser = async (data: CourseInterface) => {
-    const response = await updateCourse(data);
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await updateCourse(data)
+    .then(()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);
+      })
+    .catch(()=>{})
   };
  
 

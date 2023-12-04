@@ -7,6 +7,8 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
 import { createPeriod, updatePeriod } from '../api/PeriodApi';
+import { useDispatch } from 'react-redux';
+import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
 
 type data ={
   idInteface?: string,
@@ -20,25 +22,33 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [validated, setValidated] = useState(false);
-
   const [title, setTitle] = useState(titleInteface);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     handleClose();
   }, [])
 
   const addUser = async (data: PeriodInterface) => {
-    const response = await createPeriod(data)
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await createPeriod(data)
+    .then(()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);    
+    })
+    .catch((res)=>{})
   };
 
   const updateUser = async (data: PeriodInterface) => {
-    const response = await updatePeriod(data);
-    if (response.status === 200) {
-      toast.success(response.data);
-    }
+    await updatePeriod(data)
+    .then(()=>{
+      handleClose()
+      dispatch(showMessageSuccess())
+      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      setTimeout(() => window.location.href = window.location.href, 2500);    
+    })
+    .catch((res)=>{})
   };
  
 
