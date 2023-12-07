@@ -1,7 +1,4 @@
-import { Routes, Route } from "react-router-dom";
-import { PagePrivate } from "../context/PagePrivate";
-import { PagePrivateUser } from "../context/PagePrivateUser";
-import { PagePublic } from "../context/PagePublic";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Course from "./Course";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
@@ -10,20 +7,41 @@ import Teacher from "./Teacher";
 import ViewCourse from "./ViewCourse";
 import ViewStudent from "./ViewStudent";
 import ViewTeacher from "./ViewTeacher";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
+// function privateRoute({component:Component, ...rest}) {
+//   return(
+//     <Route {...rest} render={props =>(
+//       false ? (<Component {...props}/>):(<Redirect to={{pathname:"/",state:{from: props.location}}}/>)
+//     )}/>
+//   )
+// }
 
-export default ()=>(
-  <Routes>
-    <Route path="*" element={<PagePublic><Login /></PagePublic>} />  
-    <Route path="/" element={<PagePublic><Login /></PagePublic>} />
-    <Route path="/auth/login" element={<PagePublic><Login /></PagePublic>} />
-    <Route path="/dashboard" element={<PagePrivate><Dashboard /></PagePrivate>} />
-    <Route path="/alunos" element={<PagePrivate><Student /></PagePrivate>} />
-    <Route path="/aluno" element={<PagePrivateUser><ViewStudent /></PagePrivateUser>} />
-    <Route path="/professores" element={<PagePrivate><Teacher /></PagePrivate>} />
-    <Route path="/professor" element={<PagePrivateUser><ViewTeacher /></PagePrivateUser>} />
-    <Route path="/cursos" element={<PagePrivate><Course /></PagePrivate>} />
-    <Route path="/curso/:acronym" element={<PagePrivate><ViewCourse /></PagePrivate>} />
-  </Routes>
-)
+const Pages=()=>{
+  const isAuthenticated = useSelector((state:RootState)=>state.auth)
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<Login />} />  
+        <Route path="/" element={<Login />} />
+        <Route path="/auth/login" element={<Login />} />
+        {isAuthenticated && (
+          <>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/alunos" element={<Student />} />
+            <Route path="/professores" element={<Teacher />} />
+            <Route path="/cursos" element={<Course />} />
+            <Route path="/curso/:acronym" element={<ViewCourse />} />
+          </>
+        )}
+
+        <Route path="/aluno" element={<ViewStudent />} />
+        <Route path="/professor" element={<ViewTeacher />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+export default Pages
 

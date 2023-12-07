@@ -1,17 +1,17 @@
-import { useContext, useEffect } from "react"
-import { AuthContext } from "../context/AuthContext"
+import { useEffect } from "react"
 import { faBars, faMagnifyingGlass, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ModalStudentComponet from "./ModalStudentComponet"
 import ModalTeacherComponet from "./ModalTeacherComponent"
+import { authLogout } from "../store/ducks/FatchActions"
+import { useDispatch } from "react-redux"
 import "./Navbar.css"
 
-
 function NavbarComponent(){
-  const {signout,student,teacher}=useContext(AuthContext)
+  const dispatch = useDispatch()
   const logout = ()=>{
     if (window.confirm("Deseja Sair?")) {
-      signout()
+      dispatch(authLogout())
     }else{
       window.location.href = window.location.href
     }
@@ -43,21 +43,21 @@ function NavbarComponent(){
             <img src="../assets/ifes.png" style={{width:"40px", height:"40px"}}/>
             <h5 className="mt-2">IFES</h5>
           </a>
-          {usercookies?
+          {/* {usercookies? */}
             <form className="d-none d-md-inline-block ms-auto me-0 me-md-3 my-2 my-md-0">    
               <div className="input-group">
                 <input className="form-control" type="text" placeholder="Busca..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                 <button className="btn btn-outline-secondary px-3 text-light" type="button"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
               </div>
             </form>
-          :<></>}   
+          {/* :<></>}    */}
           <ul className="navbar-nav ms-auto ms-md-0 me-3">
               <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {usercookies?
-                    <FontAwesomeIcon icon={faUser} size="lg" />:<></>
-                  }
-                  {student?
+                  {/* {usercookies? */}
+                    <FontAwesomeIcon icon={faUser} size="lg" />
+                  {/* :<></>} */}
+                  {/* {student?
                     <img
                       className="rounded-circle" 
                       src={student?.avatar} 
@@ -73,10 +73,10 @@ function NavbarComponent(){
                       style={{width:"45px", height:"45px"}}
                     />
                     :<></>
-                  }
+                  } */}
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
-                    {usercookies?<></>:
+                    {/* {usercookies?<></>:
                       <>
                         <li>
                           {student?
@@ -100,7 +100,7 @@ function NavbarComponent(){
                         </li>
                         <li><hr className="dropdown-divider"/></li>
                       </>
-                    }
+                    } */}
                     <li><a className="dropdown-item" href="/" onClick={logout}>
                       <FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />
                       Sair

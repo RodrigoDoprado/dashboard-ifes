@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { StudentInterface } from '../interface/StudentInterface';
@@ -6,12 +6,10 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createStudent, updateStudent } from '../api/StudentApi';
-import { getCourses } from '../api/CourseApi';
-import { CourseInterface } from '../interface/CourseInterface';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { hideMessageSuccess, showMessageSuccess } from '../store/layout';
 import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
+import { addMessage, hideMessage, showMessage } from '../store/ducks/layout';
 
 type data ={
   idInteface?: string,
@@ -57,11 +55,11 @@ function ModalStudentComponet({
 
   const addUser = async (data: StudentInterface) => {
     await createStudent(data)
-    .then(
-      ()=>{
+    .then(()=>{
+      // dispatch(addMessage())
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);
       })
     .catch(()=>{})
@@ -71,8 +69,8 @@ function ModalStudentComponet({
     await updateStudent(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);    
     })
     .catch((res)=>{})
@@ -138,8 +136,8 @@ function ModalStudentComponet({
                 <Form.Control required type="text" value={lastName} onChange={event =>setLastName(event.target.value)}/>
                 <Form.Control.Feedback type="invalid"><p>* Campo Obrigatório</p></Form.Control.Feedback>
               </Form.Group>
-              {usercookies?
-                <>
+              {/* {usercookies?
+                <> */}
                   <div className="mb-3">
                     <label htmlFor="inputCourse">Cuso:</label>
                     <select className="form-select" name="course" required value={course} onChange={event =>setCourse(event.target.value)}>
@@ -148,9 +146,9 @@ function ModalStudentComponet({
                     </select>
                     <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
                   </div>
-                </>:
+                {/* </>:
                 <></>
-              }
+              } */}
             </Row>
             <Button variant="primary" onClick={handleSubmit}>Salvar</Button>
             <Button variant="secondary" className='px-3' onClick={handleClose}>Sair</Button>

@@ -1,23 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { AuthContext } from "../context/AuthContext";
 import Footer from "../components/footerComponent";
-import "./Login.css"
 import AlertComponent from "../components/AlertComponent";
+import { authLogin } from "../store/ducks/FatchActions";
+import { useDispatch } from "react-redux";
+import "./Login.css"
 
 function Login(){
-    const {signin} = useContext(AuthContext)
-    const [login,setLogin]=useState("")
-    const [password,setPassword]=useState("")
-
+    const [loginInput,setLoginInput]=useState("")
+    const [passwordInput,setPasswordInput]=useState("")
+    const dispatch = useDispatch()
     
-    const handleLogin = async (e: { preventDefault: () => void }) => {
+    const handleLogin = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        if(await signin(login, password)){
-            window.location.href = window.location.href
-        }else{
-            alert("Email ou Senha Invalido")
-        }
+        dispatch(authLogin({loginInput,passwordInput}))
     }
 
     useEffect(() => {
@@ -35,7 +31,6 @@ function Login(){
                 <div id="layoutAuthentication_content"> 
                     <main id="login">
                         <div className="container">
-                        <AlertComponent/>
                             <div className="row justify-content-center">
                                 <div className="col-lg-5">
                                         <div className="card shadow-lg border-0 rounded-lg mt-5">
@@ -45,13 +40,14 @@ function Login(){
                                             </h3>
                                         </div>
                                         <div className="card-body">
+                                        <AlertComponent/>
                                             <form onSubmit={handleLogin}>
                                                 <div className="form-floating mb-3">
-                                                    <input className="form-control" id="inputEmail" type="text" placeholder="" required value={login} onChange={event =>setLogin(event.target.value)}/>
+                                                    <input className="form-control" id="inputEmail" type="text" placeholder="" required value={loginInput} onChange={event =>setLoginInput(event.target.value)}/>
                                                     <label htmlFor="inputEmail">Login</label>
                                                 </div>
                                                 <div className="form-floating mb-3">
-                                                    <input className="form-control" id="inputPassword" type="password" placeholder="" required value={password} onChange={event =>setPassword(event.target.value)}/>
+                                                    <input className="form-control" id="inputPassword" type="password" placeholder="" required value={passwordInput} onChange={event =>setPasswordInput(event.target.value)}/>
                                                     <label htmlFor="inputPassword">Senha</label>
                                                 </div>
                                                 {/* <div className="form-check mb-3">

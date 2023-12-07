@@ -5,10 +5,9 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { PeriodInterface } from '../interface/PeriodInterface';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { toast } from 'react-toastify';
 import { createPeriod, updatePeriod } from '../api/PeriodApi';
 import { useDispatch } from 'react-redux';
-import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
+import { hideMessage, showMessage } from '../store/ducks/layout';
 
 type data ={
   idInteface?: string,
@@ -33,8 +32,8 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
     await createPeriod(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);    
     })
     .catch((res)=>{})
@@ -44,8 +43,8 @@ function ModalPeriodComponet({idInteface,titleInteface,couserInteface}:data) {
     await updatePeriod(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);    
     })
     .catch((res)=>{})

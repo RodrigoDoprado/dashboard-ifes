@@ -1,8 +1,13 @@
-import { combineReducers, createStore } from "redux";
-import layoutReducer from "./layout";
+import layoutReducer from "./ducks/layout";
+import rootAuth from "./ducks/Auth"
+import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({
-    layout: layoutReducer
+export const store = configureStore({
+    reducer:{
+        layout: layoutReducer,
+        auth: rootAuth
+    }
 })
 
-export default createStore(rootReducer)
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

@@ -1,21 +1,15 @@
 import Alert from 'react-bootstrap/Alert';
 import { useSelector } from 'react-redux';
-import { MyStateInterface } from '../interface/MyStateInterface';
 import React from 'react';
+import { RootState } from '../store';
 
-function AlertComponent() {
-  const isShowSuccess = useSelector((state:MyStateInterface)=>state.layout.showMessageSuccess)
-  const isShowDanger = useSelector((state:MyStateInterface)=>state.layout.showMessageDanger)
+function AlertComponent({message}:any) {
+  const isShowSuccess = useSelector((state: RootState)=>state.layout.showMessage)
   return (
     <React.Fragment>
       {isShowSuccess && (
       <Alert key="success" variant="success">
-          This is a success alert—check it out!
-        </Alert>
-      )}
-      {isShowDanger && (
-      <Alert key="danger" variant="danger">
-          This is a danger alert—check it out!
+          {message}
         </Alert>
       )}
     </React.Fragment>

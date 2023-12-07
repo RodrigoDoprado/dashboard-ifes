@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createTeacher, updateTeacher } from '../api/TeacherApi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
+import { showMessage, hideMessage } from '../store/ducks/layout';
 
 type data ={
   idInteface?: any,
@@ -39,8 +39,8 @@ function ModalTeacherComponent({
     await createTeacher(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => history(window.location.href = "/professores"), 2500);
     })
     .catch((res)=>{})
@@ -50,8 +50,8 @@ function ModalTeacherComponent({
     await updateTeacher(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => history(window.location.href = "/professores"), 2500);
     })
     .catch((res)=>{})

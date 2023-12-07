@@ -7,10 +7,9 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TeacherInterface } from '../interface/TeacherInterface';
 import { getTeachers } from '../api/TeacherApi';
-import { toast } from 'react-toastify';
 import { createCourse, updateCourse } from '../api/CourseApi';
-import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
 import { useDispatch } from 'react-redux';
+import { hideMessage, showMessage } from '../store/ducks/layout';
 
 type data ={
   idInteface?: string,
@@ -58,8 +57,8 @@ function ModalCourseComponent({
     await createCourse(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);
       })
     .catch(()=>{})
@@ -69,8 +68,8 @@ function ModalCourseComponent({
     await updateCourse(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);
       })
     .catch(()=>{})

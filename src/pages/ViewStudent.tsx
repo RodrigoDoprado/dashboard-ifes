@@ -2,16 +2,15 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import NavSidebarStudent from "../components/NavSidebarStudentComponent";
 import NavbarComponet from "../components/NavbarComponent";
-import { AuthContext } from "../context/AuthContext";
 import AlertComponent from "../components/AlertComponent";
 
 function ViewStudent() {
-  const { student } = useContext(AuthContext);
+  // const { student } = useContext(AuthContext);
 
   return (
     <>
       <Helmet>
-        <title>{student?.firstName + ' ' + student?.lastName}</title>
+        {/* <title>{student?.firstName + ' ' + student?.lastName}</title> */}
       </Helmet>
 
       <NavbarComponet />
@@ -26,7 +25,7 @@ function ViewStudent() {
                 <div className="col-lg-6">
                   <div className="card">
                     <div className="card-header">
-                      <img
+                      {/* <img
                         src={student?.avatar}
                         alt={student?.firstName + " " + student?.lastName}
                         className="card-img-top rounded-circle img-thumbnail"
@@ -36,7 +35,7 @@ function ViewStudent() {
                       <p className="card-text">Matrícula: {student?.enroll}</p>
                     </div> 
                     <div className="card-body">
-                      <p className="card-text">Curso: {student?.course?.title}</p>
+                      <p className="card-text">Curso: {student?.course?.title}</p> */}
                     </div>
                   </div>
                 </div>

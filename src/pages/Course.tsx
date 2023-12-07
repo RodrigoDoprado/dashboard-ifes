@@ -1,38 +1,40 @@
 import ModalCourseComponet from "../components/ModalCourseComponet"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { faBook, faEye, faMagnifyingGlass, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import NavbarComponet from "../components/NavbarComponent"
 import { Helmet } from "react-helmet"
 import { toast } from "react-toastify"
-import { deleteCourse, getCourses } from "../api/CourseApi"
-import { CourseInterface } from "../interface/CourseInterface"
+import { deleteCourse} from "../api/CourseApi"
 import NavSidebar from "../components/NavSidebar"
 import Footer from "../components/footerComponent"
 import AlertComponent from "../components/AlertComponent"
+import { useGetAllCourse } from "../hooks/course/useGetAllCourse"
 
 
 function Course(){
-  const [courses, setCourses] = useState<CourseInterface[]>([]);
+  // const [courses, setCourses] = useState<CourseInterface[]>([]);
   const [search,setSearch]=useState("")
 
-  useEffect(() => {
-    getAllCourse();
-  }, []);
+  // useEffect(() => {
+  //   getAllCourse();
+  // }, []);
 
-  const getAllCourse = async () => { 
-    const response = await getCourses()
-    if (response.status === 200) {
-      setCourses(response.data);
-    }
-  };
+  // const getAllCourse = async () => { 
+  //   const response = await getCourses()
+  //   if (response.status === 200) {
+  //     setCourses(response.data);
+  //   }
+  // };
+
+  const {courses}=useGetAllCourse()
 
   const handledeleteCourse = async (id: string | undefined) => {
     if (window.confirm("Deseja Excluir o Curso?")) {
       const response = await deleteCourse(id);
       if (response.status === 200) {
         toast.success(response.data);
-       await getAllCourse();
+      //  await getAllCourse();
       }
     }
   }

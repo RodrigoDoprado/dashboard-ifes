@@ -9,9 +9,8 @@ import { useParams } from 'react-router-dom';
 import { getPeriods } from '../api/PeriodApi';
 import { PeriodInterface } from '../interface/PeriodInterface';
 import { createSubject, updateSubject } from '../api/SubjectApi';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { showMessageSuccess, hideMessageSuccess } from '../store/layout';
+import { showMessage, hideMessage } from '../store/ducks/layout';
 
 type data ={
   idInteface?: string,
@@ -59,8 +58,8 @@ function ModalSubjectComponent({
     await createSubject(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);    
     })
     .catch((res)=>{})
@@ -70,8 +69,8 @@ function ModalSubjectComponent({
     await updateSubject(data)
     .then(()=>{
       handleClose()
-      dispatch(showMessageSuccess())
-      setTimeout(()=>{dispatch(hideMessageSuccess())},2500)
+      dispatch(showMessage())
+      setTimeout(()=>{dispatch(hideMessage())},2500)
       setTimeout(() => window.location.href = window.location.href, 2500);    
     })
     .catch((res)=>{})
