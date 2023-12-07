@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import React from 'react';
 import { RootState } from '../store';
 
-function AlertComponent({message}:any) {
+function AlertComponent() {
   const isShowSuccess = useSelector((state: RootState)=>state.layout.showMessage)
   return (
     <React.Fragment>
       {isShowSuccess && (
       <Alert key="success" variant="success">
-          {message}
+          Cadastrado Com Sucesso !!!
         </Alert>
       )}
     </React.Fragment>

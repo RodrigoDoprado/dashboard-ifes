@@ -58,7 +58,7 @@ function ViewCourse(){
               <NavSidebar/>
                 <div id="layoutSidenav_content"> 
                   <main>
-                    <div className="container-fluid px-4">
+                  <div className="container-fluid px-4 px-lg-5 mt-5">
                     <AlertComponent/>
                       <header>
                         <h1 className="mt-4">{course?.title}</h1> {/*text-capitalize */}

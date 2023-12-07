@@ -54,9 +54,9 @@ function NavbarComponent(){
           <ul className="navbar-nav ms-auto ms-md-0 me-3">
               <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {/* {usercookies? */}
+                  {usercookies?
                     <FontAwesomeIcon icon={faUser} size="lg" />
-                  {/* :<></>} */}
+                  :<></>} 
                   {/* {student?
                     <img
                       className="rounded-circle" 
@@ -76,9 +76,9 @@ function NavbarComponent(){
                   } */}
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> 
-                    {/* {usercookies?<></>:
+                     {usercookies?<></>:
                       <>
-                        <li>
+                        {/* <li>
                           {student?
                             <ModalStudentComponet 
                               idInteface={student?.id}
@@ -97,10 +97,10 @@ function NavbarComponent(){
                               avatarInteface={teacher?.avatar}
                             />:<></>
                           }
-                        </li>
+                        </li> */}
                         <li><hr className="dropdown-divider"/></li>
                       </>
-                    } */}
+                    }
                     <li><a className="dropdown-item" href="/" onClick={logout}>
                       <FontAwesomeIcon className='px-2' icon={faRightFromBracket} size="xs" />
                       Sair
