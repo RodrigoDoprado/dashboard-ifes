@@ -24,7 +24,7 @@ const Pages=()=>{
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<Login />} />  
-        <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<Login />} /> */}
         <Route path="/auth/login" element={<Login />} />
         {isAuthenticated && (
           <>
@@ -35,7 +35,6 @@ const Pages=()=>{
             <Route path="/curso/:acronym" element={<ViewCourse />} />
           </>
         )}
-
         <Route path="/aluno" element={<ViewStudent />} />
         <Route path="/professor" element={<ViewTeacher />} />
       </Routes>

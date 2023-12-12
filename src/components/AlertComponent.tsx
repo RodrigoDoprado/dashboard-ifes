@@ -8,9 +8,16 @@ function AlertComponent() {
   return (
     <React.Fragment>
       {isShowSuccess && (
-      <Alert key="success" variant="success">
-          Cadastrado Com Sucesso !!!
-        </Alert>
+        <div className='d-flex justify-content-end'>
+          <Alert 
+            key="success" 
+            variant="success" 
+            style={{position:"absolute",width:"40%"}}
+            className='mt-5'
+          >
+            Cadastrado com Sucesso !
+          </Alert>
+        </div>
       )}
     </React.Fragment>
   );

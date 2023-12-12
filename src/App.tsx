@@ -3,7 +3,12 @@ import AlertComponent from "./components/AlertComponent"
 import Pages from "./pages"
 
 function App() {
-  return <Pages />
+  return(
+    <>
+      <AlertComponent/>
+      <Pages />
+    </>
+  )
 }
 
 export default App

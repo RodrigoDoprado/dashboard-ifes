@@ -1,23 +1,22 @@
 import { useEffect } from "react"
 import { faBars, faMagnifyingGlass, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalStudentComponet from "./ModalStudentComponet"
-import ModalTeacherComponet from "./ModalTeacherComponent"
-import { authLogout } from "../store/ducks/FatchActions"
 import { useDispatch } from "react-redux"
 import "./Navbar.css"
+import LogoutService from "../api/AuthApi"
 
 function NavbarComponent(){
+  const usercookies = localStorage.getItem("token")
   const dispatch = useDispatch()
+
   const logout = ()=>{
     if (window.confirm("Deseja Sair?")) {
-      dispatch(authLogout())
+      dispatch(LogoutService())
     }else{
       window.location.href = window.location.href
     }
   }
-  const usercookies = localStorage.getItem("token")
-
+  
   useEffect(() => {
     return () => {
       document.body.classList.remove('sb-sidenav-toggled');

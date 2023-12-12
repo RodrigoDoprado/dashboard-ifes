@@ -6,10 +6,9 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createStudent, updateStudent } from '../api/StudentApi';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
-import { addMessage, hideMessage, showMessage } from '../store/ducks/layout';
+import { hideMessage, showMessage } from '../store/ducks/layout';
 
 type data ={
   idInteface?: string,
@@ -33,7 +32,6 @@ function ModalStudentComponet({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true); 
   const [validated, setValidated] = useState(false);
-  const history = useNavigate()
   const [firstName, setFirstName] = useState(firstNameInteface);
   const [lastName, setLastName] = useState(lastNameInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
@@ -56,7 +54,6 @@ function ModalStudentComponet({
   const addUser = async (data: StudentInterface) => {
     await createStudent(data)
     .then(()=>{
-      // dispatch(addMessage())
       handleClose()
       dispatch(showMessage())
       setTimeout(()=>{dispatch(hideMessage())},2500)

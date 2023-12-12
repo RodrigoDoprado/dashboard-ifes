@@ -40,7 +40,6 @@ function Login(){
                                             </h3>
                                         </div>
                                         <div className="card-body">
-                                        <AlertComponent/>
                                             <form onSubmit={handleLogin}>
                                                 <div className="form-floating mb-3">
                                                     <input className="form-control" id="inputEmail" type="text" placeholder="" required value={loginInput} onChange={event =>setLoginInput(event.target.value)}/>

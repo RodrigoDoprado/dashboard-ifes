@@ -48,7 +48,6 @@ function Course(){
               <div id="layoutSidenav_content"> 
                 <main>
                   <div className="container-fluid px-4 px-lg-5 mt-5">
-                  <AlertComponent/>
                     <h1 className="mt-4"><FontAwesomeIcon className='px-2' icon={faBook} size="sm" />Cursos</h1>
                       <ol className="breadcrumb mb-4">
                           {/* <li className="breadcrumb-item active">Dashboard</li> */}
