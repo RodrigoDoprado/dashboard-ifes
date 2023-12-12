@@ -2,6 +2,7 @@ import Alert from 'react-bootstrap/Alert';
 import { useSelector } from 'react-redux';
 import React from 'react';
 import { RootState } from '../store';
+import "./AlertComponent.css"
 
 function AlertComponent() {
   const isShowSuccess = useSelector((state: RootState)=>state.layout.showMessage)
@@ -10,10 +11,11 @@ function AlertComponent() {
       {isShowSuccess && (
         <div className='d-flex justify-content-end'>
           <Alert 
+            id="message"
             key="success" 
             variant="success" 
-            style={{position:"absolute",width:"40%"}}
-            className='mt-5'
+            style={{position:"absolute"}}
+            className=''
           >
             Cadastrado com Sucesso !
           </Alert>

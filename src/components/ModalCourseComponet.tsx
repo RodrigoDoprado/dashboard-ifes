@@ -57,9 +57,9 @@ function ModalCourseComponent({
     await createCourse(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => window.location.href = window.location.href, 2500);
+      setTimeout(()=>{dispatch(hideMessage())},4500)
       })
     .catch(()=>{})
   }; 
@@ -68,9 +68,9 @@ function ModalCourseComponent({
     await updateCourse(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => window.location.href = window.location.href, 2500);
+      setTimeout(()=>{dispatch(hideMessage())},4500)
       })
     .catch(()=>{})
   };

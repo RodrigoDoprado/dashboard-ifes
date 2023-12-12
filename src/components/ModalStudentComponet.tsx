@@ -55,9 +55,9 @@ function ModalStudentComponet({
     await createStudent(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => window.location.href = window.location.href, 2500);
+      setTimeout(()=>{dispatch(hideMessage())},4500)
       })
     .catch(()=>{})
   };
@@ -66,9 +66,9 @@ function ModalStudentComponet({
     await updateStudent(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => window.location.href = window.location.href, 2500);    
+      setTimeout(()=>{dispatch(hideMessage())},4500)    
     })
     .catch((res)=>{})
   };
@@ -138,7 +138,7 @@ function ModalStudentComponet({
                   <div className="mb-3">
                     <label htmlFor="inputCourse">Cuso:</label>
                     <select className="form-select" name="course" required value={course} onChange={event =>setCourse(event.target.value)}>
-                      <option value={courseIdInteface}>{courseTitleInteface}</option>
+                    {!usercookies?<><option>Escolhar...</option></>:<><option value={courseIdInteface}>{courseTitleInteface}</option></>}
                       {courses?.map((item) => {return(<option value={item.id}>{item.title}</option>)})}
                     </select>
                     <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>

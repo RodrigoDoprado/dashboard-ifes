@@ -1,0 +1,11 @@
+#message{
+    width:60%;
+    margin-top: 4.5%;
+}
+
+@media (max-width: 478px) {
+    #message{
+        width:100%;
+        margin-top: 12%;
+    }
+}

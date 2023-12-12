@@ -58,9 +58,9 @@ function ModalSubjectComponent({
     await createSubject(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => window.location.href = window.location.href, 2500);    
+      setTimeout(()=>{dispatch(hideMessage())},4500)    
     })
     .catch((res)=>{})
   };
@@ -69,9 +69,9 @@ function ModalSubjectComponent({
     await updateSubject(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => window.location.href = window.location.href, 2500);    
+      setTimeout(()=>{dispatch(hideMessage())},4500)    
     })
     .catch((res)=>{})
   };

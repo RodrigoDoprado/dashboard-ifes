@@ -60,7 +60,7 @@ function ViewCourse(){
                   <main>
                   <div className="container-fluid px-4 px-lg-5 mt-5">
                       <header>
-                        <h1 className="mt-4">{course?.title}</h1> {/*text-capitalize */}
+                        <h1 className="mt-5">{course?.title}</h1> {/*text-capitalize */}
                         <ol className="breadcrumb mb-4">
                           {course?.teacher?
                             <li className="">

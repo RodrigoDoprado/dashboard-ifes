@@ -39,9 +39,9 @@ function ModalTeacherComponent({
     await createTeacher(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => history(window.location.href = "/professores"), 2500);
+      setTimeout(()=>{dispatch(hideMessage())},4500)
     })
     .catch((res)=>{})
   };
@@ -50,9 +50,9 @@ function ModalTeacherComponent({
     await updateTeacher(data)
     .then(()=>{
       handleClose()
+      setTimeout(() => window.location.href = window.location.href, 1500);
       dispatch(showMessage())
-      setTimeout(()=>{dispatch(hideMessage())},2500)
-      setTimeout(() => history(window.location.href = "/professores"), 2500);
+      setTimeout(()=>{dispatch(hideMessage())},4500)
     })
     .catch((res)=>{})
   };
