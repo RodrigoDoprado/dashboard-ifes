@@ -1,17 +1,20 @@
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ModalSubjectComponet from "./ModalSubjectComponent"
-import { deleteSubject, getSubjects } from "../api/SubjectApi"
-import { toast } from "react-toastify"
-import { useEffect, useState } from "react"
-import { SubjectInterface } from "../interface/SubjectInterface"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import ModalSubjectComponet from './ModalSubjectComponent';
+import { deleteSubject, getSubjects } from '../api/SubjectApi';
+import { useEffect, useState } from 'react';
+import { SubjectInterface } from '../interface/SubjectInterface';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type data ={
-    idPeriodInteface: any,
-    titlePeriodInteface: any
-}
+type data = {
+  idPeriodInteface: any;
+  titlePeriodInteface: any;
+};
 
-function TableSubjectComponent({idPeriodInteface,titlePeriodInteface}:data){
+function TableSubjectComponent({
+  idPeriodInteface,
+  titlePeriodInteface,
+}: data) {
   const [subjects, setSubjects] = useState<SubjectInterface[]>([]);
 
   useEffect(() => {
@@ -19,65 +22,77 @@ function TableSubjectComponent({idPeriodInteface,titlePeriodInteface}:data){
   }, []);
 
   const getAllSubject = async () => {
-    const response = await getSubjects(idPeriodInteface)
+    const response = await getSubjects(idPeriodInteface);
     if (response.status === 200) {
       setSubjects(response.data);
     }
   };
 
   const handledeleteSubject = async (id: string | undefined) => {
-    if (window.confirm("Deseja Excluir a Matéria?")) {
+    if (window.confirm('Deseja Excluir a Matéria?')) {
       const response = await deleteSubject(id);
       if (response.status === 200) {
-        toast.success(response.data);
+        // toast.success(response.data);
         getAllSubject();
       }
     }
-  }
-    
-    return(
-        <> 
-            <div className="table-responsive">
-                <table className="table table-borderless">
-                    <thead>
-                      <tr>
-                        {/* <th scope="col"></th> */}
-                        <th scope="col"></th>
-                        <th scope="col">Sigla</th>
-                        <th scope="col">Matéria</th>
-                        <th scope="col">Professor</th>
-                        <th scope="col">Configuração</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    {subjects?.map((item) => {
-                          return (
-                            <tr>
-                              {/* <th scope="row">{index+1}</th> */}
-                              <td><img src={item.avatar} alt={item.title} width="45" height="35"/></td>
-                              <td>{item.acronym}</td>
-                              <td>{item.title}</td>
-                              <td>Anderson Coelho</td>
-                              <td>
-                                <div className="gap-1 d-flex">
-                                  <ModalSubjectComponet 
-                                    idInteface={item.id} 
-                                    titleInteface={item.title} 
-                                    acronymInteface={item.acronym} 
-                                    avatarInteface={item.avatar} 
-                                    idPeriodInteface={idPeriodInteface} 
-                                    titlePeriodInteface={titlePeriodInteface}
-                                  />
-                                  <button className="btn btn-outline-danger" onClick={() => handledeleteSubject(item.id)}><FontAwesomeIcon icon={faTrashCan} /></button>  
-                                </div>
-                              </td>
-                            </tr>
-                          )
-                        })}
-                    </tbody>
-                </table>
-            </div>
-        </>    
-    )
+  };
+
+  return (
+    <>
+      <div className="table-responsive">
+        <table className="table table-borderless">
+          <thead>
+            <tr>
+              {/* <th scope="col"></th> */}
+              <th scope="col"></th>
+              <th scope="col">Sigla</th>
+              <th scope="col">Matéria</th>
+              <th scope="col">Professor</th>
+              <th scope="col">Configuração</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subjects?.map((item) => {
+              return (
+                <tr>
+                  {/* <th scope="row">{index+1}</th> */}
+                  <td>
+                    <img
+                      src={item.avatar}
+                      alt={item.title}
+                      width="45"
+                      height="35"
+                    />
+                  </td>
+                  <td>{item.acronym}</td>
+                  <td>{item.title}</td>
+                  <td>Anderson Coelho</td>
+                  <td>
+                    <div className="gap-1 d-flex">
+                      <ModalSubjectComponet
+                        idInteface={item.id}
+                        titleInteface={item.title}
+                        acronymInteface={item.acronym}
+                        avatarInteface={item.avatar}
+                        idPeriodInteface={idPeriodInteface}
+                        titlePeriodInteface={titlePeriodInteface}
+                      />
+                      <button
+                        className="btn btn-outline-danger"
+                        onClick={() => handledeleteSubject(item.id)}
+                      >
+                        <FontAwesomeIcon icon={faTrashCan} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
 }
-export default TableSubjectComponent
+export default TableSubjectComponent;

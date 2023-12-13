@@ -1,14 +1,14 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Course from "./Course";
-import Dashboard from "./Dashboard";
-import Login from "./Login";
-import Student from "./Student";
-import Teacher from "./Teacher";
-import ViewCourse from "./ViewCourse";
-import ViewStudent from "./ViewStudent";
-import ViewTeacher from "./ViewTeacher";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Course from './Course';
+import Dashboard from './Dashboard';
+import Login from './Login';
+import Student from './Student';
+import Teacher from './Teacher';
+import ViewCourse from './ViewCourse';
+import ViewStudent from './ViewStudent';
+import ViewTeacher from './ViewTeacher';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 // function privateRoute({component:Component, ...rest}) {
 //   return(
@@ -18,12 +18,12 @@ import { RootState } from "../store";
 //   )
 // }
 
-const Pages=()=>{
-  const isAuthenticated = useSelector((state:RootState)=>state.auth)
-  return(
+const Pages = () => {
+  const isAuthenticated = useSelector((state: RootState) => state.auth);
+  return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<Login />} />  
+        <Route path="*" element={<Login />} />
         {/* <Route path="/" element={<Login />} /> */}
         <Route path="/auth/login" element={<Login />} />
         {isAuthenticated && (
@@ -39,8 +39,7 @@ const Pages=()=>{
         <Route path="/professor" element={<ViewTeacher />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default Pages
-
+export default Pages;

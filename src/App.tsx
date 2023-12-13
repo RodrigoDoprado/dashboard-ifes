@@ -1,14 +1,14 @@
-import "./App.css"
-import AlertComponent from "./components/AlertComponent"
-import Pages from "./pages"
+import './App.css';
+import AlertComponent from './components/AlertComponent';
+import Pages from './pages';
 
 function App() {
-  return(
+  return (
     <>
-      <AlertComponent/>
+      <AlertComponent />
       <Pages />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

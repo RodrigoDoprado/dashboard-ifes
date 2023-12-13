@@ -1,14 +1,15 @@
-import { Helmet } from "react-helmet";
-import { useContext } from "react";
-import NavSidebarTeacher from "../components/NavSidebarTeacherComponent";
-import NavbarComponent from "../components/NavbarComponent";
-import AlertComponent from "../components/AlertComponent";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Helmet } from 'react-helmet';
+import NavSidebarTeacher from '../components/NavSidebarTeacherComponent';
+import NavbarComponent from '../components/NavbarComponent';
+import AlertComponent from '../components/AlertComponent';
 
 function ViewTeacher() {
   // const { teacher } = useContext(AuthContext);
 
   return (
     <>
+      {/* @ts-ignore */}
       <Helmet>
         {/* <title>{teacher?.firstName + " " + teacher?.lastName}</title> */}
       </Helmet>
@@ -20,7 +21,7 @@ function ViewTeacher() {
         <div id="layoutSidenav_content">
           <section>
             <div className="container-fluid px-4 px-lg-5 mt-5">
-            <AlertComponent/>
+              <AlertComponent />
               <div className="row">
                 <div className="col-lg-6">
                   <div className="card">

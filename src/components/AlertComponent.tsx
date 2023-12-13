@@ -1,21 +1,22 @@
-import Alert from 'react-bootstrap/Alert';
+import { Alert } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import React from 'react';
 import { RootState } from '../store';
-import "./AlertComponent.css"
+import './AlertComponent.css';
 
 function AlertComponent() {
-  const isShowSuccess = useSelector((state: RootState)=>state.layout.showMessage)
+  const isShow = useSelector((state: RootState) => state.layout.showMessage);
+  // const {messages} = useSelector((state: RootState)=>state.layout)
   return (
     <React.Fragment>
-      {isShowSuccess && (
-        <div className='d-flex justify-content-end'>
-          <Alert 
+      {isShow && (
+        <div className="d-flex justify-content-end">
+          <Alert
             id="message"
-            key="success" 
-            variant="success" 
-            style={{position:"absolute"}}
-            className=''
+            key="success"
+            variant="success"
+            style={{ position: 'absolute' }}
+            className=""
           >
             Cadastrado com Sucesso !
           </Alert>
@@ -27,8 +28,8 @@ function AlertComponent() {
 
 export default AlertComponent;
 
-
-{/*
+{
+  /*
   'primary',
   'secondary',
   'success',
@@ -37,4 +38,5 @@ export default AlertComponent;
   'info',
   'light',
   'dark',
- */}
+ */
+}

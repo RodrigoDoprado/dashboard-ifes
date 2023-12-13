@@ -1,5 +1,5 @@
-export interface AuthInterface{
-    loginInput?:string
-    passwordInput?:string
-    // token?:string
+export interface AuthInterface {
+  loginInput?: string;
+  passwordInput?: string;
+  // token?:string
 }
