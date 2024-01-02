@@ -5,40 +5,36 @@ import ModalStudentComponet from '../components/ModalStudentComponet';
 import { useEffect, useState } from 'react';
 import { faGraduationCap, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { deleteStudent, getStudents } from '../api/StudentApi';
-import { StudentInterface } from '../interface/StudentInterface';
 import NavSidebar from '../components/NavSidebar';
-import Footer from '../components/footerComponent';
+import { useGetAllStudent } from '../hooks/student/useGetAllStudent';
+import { useDeleteStudent } from '../hooks/student/useDeleteStudent';
+import { useDispatch } from 'react-redux';
+import { addMessage } from '../redux/ducks/layout';
+import FooterComponent from '../components/FooterComponent';
 
 function Student() {
-  const [students, setStudents] = useState<StudentInterface[]>([]);
   const [search] = useState('');
-
-  useEffect(() => {
-    getAllStudent();
-  }, []);
-
-  const getAllStudent = async () => {
-    const response = await getStudents();
-    if (response.status === 200) {
-      setStudents(response.data);
-    }
-  };
-
+  const {students} = useGetAllStudent()
+  const deleteStudent = useDeleteStudent()
+  const dispatch = useDispatch();
+  
   const handledeleteStudent = async (id: string | undefined) => {
     if (window.confirm('Deseja Excluir o Aluno?')) {
-      const response = await deleteStudent(id);
-      if (response.status === 200) {
-        // toast.success(response.data);
-        getAllStudent();
-      }
+      deleteStudent.mutate(id)
     }
-  };
+  }
+
+  useEffect(() => {
+    if (!deleteStudent.isSuccess) return;
+    handleClose();
+    dispatch(addMessage());
+  }, [deleteStudent.isSuccess]);
+
   return (
     <>
       {/* @ts-ignore */}
       <Helmet>
-        <title>Aluno</title>
+        <title>Alunos</title>
       </Helmet>
       <NavbarComponet />
       <div id="layoutSidenav">
@@ -125,10 +121,14 @@ function Student() {
               </div>
             </div>
           </main>
-          <Footer />
+          <FooterComponent />
         </div>
       </div>
     </>
   );
 }
 export default Student;
+function handleClose() {
+  throw new Error('Function not implemented.');
+}
+

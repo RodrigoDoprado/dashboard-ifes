@@ -15,13 +15,13 @@ function NavSidebarStudentComponent() {
       >
         <div className="sb-sidenav-menu">
           <div className="nav mt-5">
-            <a className="nav-link" href="/dashboard">
+            <a className="nav-link sb-sidenav-menu-heading" href="/dashboard">
               <FontAwesomeIcon className="px-2" icon={faHouse} size="lg" />
               Dashboard
             </a>
             <ModalComponet />
             <a
-              className="nav-link collapsed mt-4"
+              className="nav-link mt-4 sb-sidenav-menu-heading"
               href="#"
               data-bs-toggle="collapse"
               data-bs-target="#courseLayouts"
@@ -37,7 +37,7 @@ function NavSidebarStudentComponent() {
                             </nav>
                         </div> */}
             <a
-              className="nav-link collapsed mt-4"
+              className="nav-link mt-4 sb-sidenav-menu-heading"
               href="#"
               data-bs-toggle="collapse"
               data-bs-target="#teacherLayouts"

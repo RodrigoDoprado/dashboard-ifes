@@ -1,5 +1,4 @@
 export interface AuthInterface {
-  loginInput?: string;
-  passwordInput?: string;
-  // token?:string
+  loginInput?: string
+  passwordInput?: string
 }

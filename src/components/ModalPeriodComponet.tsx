@@ -8,9 +8,11 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { PeriodInterface } from '../interface/PeriodInterface';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { createPeriod, updatePeriod } from '../api/PeriodApi';
 import { useDispatch } from 'react-redux';
-import { hideMessage, showMessage } from '../store/ducks/layout';
+import { usePostPeriod } from '../hooks/period/usePostCourse';
+import { usePutPeriod } from '../hooks/period/usePutCourse';
+import { addMessage } from '../redux/ducks/layout';
+
 
 type data = {
   idInteface?: string;
@@ -30,35 +32,8 @@ function ModalPeriodComponet({
   const [title, setTitle] = useState(titleInteface);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    handleClose();
-  }, []);
-
-  const addUser = async (data: PeriodInterface) => {
-    await createPeriod(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
-
-  const updateUser = async (data: PeriodInterface) => {
-    await updatePeriod(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
+  const addPeriod=usePostPeriod()
+  const putPeriod=usePutPeriod()
 
   const handleSubmit = (event: {
     currentTarget: any;
@@ -74,16 +49,26 @@ function ModalPeriodComponet({
     setValidated(true);
     if (!idInteface) {
       const periodData: PeriodInterface = { title, course: couserInteface };
-      addUser(periodData);
+      addPeriod.mutate(periodData);
     } else {
       const periodData: PeriodInterface = {
         course: couserInteface,
         title,
         id: idInteface,
       };
-      updateUser(periodData);
+      putPeriod.mutate(periodData);
     }
   };
+
+  useEffect(() => {
+    if (!addPeriod.isSuccess && !putPeriod.isSuccess) return;
+    handleClose();
+    dispatch(addMessage())
+    // dispatch(showMessage());
+    // setTimeout(() => {
+    //   dispatch(hideMessage());
+    // }, 4500);
+  }, [addPeriod.isSuccess, putPeriod.isSuccess]);
 
   return (
     <>

@@ -9,11 +9,12 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useParams } from 'react-router-dom';
-import { getPeriods } from '../api/PeriodApi';
-import { PeriodInterface } from '../interface/PeriodInterface';
-import { createSubject, updateSubject } from '../api/SubjectApi';
 import { useDispatch } from 'react-redux';
-import { showMessage, hideMessage } from '../store/ducks/layout';
+import { useGetAllPeriod } from '../hooks/period/useGetAllCourse';
+import { usePostSubject } from '../hooks/subject/usePostSubject';
+import { usePutSubject } from '../hooks/subject/usePutSubject';
+import { addMessage } from '../redux/ducks/layout';
+
 
 type data = {
   idInteface?: string;
@@ -42,46 +43,11 @@ function ModalSubjectComponent({
   const [acronymSubject, setAcronymSubject] = useState(acronymInteface);
   const [avatar, setAvatar] = useState(avatarInteface);
   const [period, setPeriod] = useState(idPeriodInteface);
-  const [periods, setPeriods] = useState<PeriodInterface[]>([]);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getAllPeriod();
-    handleClose();
-  }, []);
-
-  const getAllPeriod = async () => {
-    const response = await getPeriods(acronym);
-    if (response.status === 200) {
-      setPeriods(response.data);
-    }
-  };
-
-  const addUser = async (data: SubjectInterface) => {
-    await createSubject(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
-
-  const updateUser = async (data: SubjectInterface) => {
-    await updateSubject(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
+  const {periods}=useGetAllPeriod(acronym)
+  const addSubject=usePostSubject()
+  const putSubject=usePutSubject()
 
   const handleSubmit = (event: {
     currentTarget: any;
@@ -102,7 +68,7 @@ function ModalSubjectComponent({
         avatar,
         acronym: acronymSubject,
       };
-      addUser(subjectData);
+      addSubject.mutate(subjectData);
     } else {
       const subjectData: SubjectInterface = {
         period,
@@ -111,9 +77,19 @@ function ModalSubjectComponent({
         acronym: acronymSubject,
         id: idInteface,
       };
-      updateUser(subjectData);
+      putSubject.mutate(subjectData);
     }
   };
+  
+  useEffect(() => {
+    if (!addSubject.isSuccess && !putSubject.isSuccess) return;
+    handleClose();
+    dispatch(addMessage())
+    // dispatch(showMessage());
+    // setTimeout(() => {
+    //   dispatch(hideMessage());
+    // }, 4500);
+  }, [addSubject.isSuccess, putSubject.isSuccess]);
 
   return (
     <>

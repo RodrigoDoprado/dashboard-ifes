@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import Footer from '../components/footerComponent';
-import { authLogin } from '../store/ducks/FatchActions';
 import { useDispatch } from 'react-redux';
+import { authLogin } from '../../redux/ducks/FatchActions';
+import FooterComponent from '../../components/FooterComponent';
 import './Login.css';
 
 function Login() {
@@ -102,7 +102,7 @@ function Login() {
             </div>
           </main>
         </div>
-        <Footer />
+        <FooterComponent />
       </div>
     </>
   );

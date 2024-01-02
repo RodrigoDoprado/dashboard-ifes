@@ -11,7 +11,7 @@ function ModalComponet() {
 
   return (
     <>
-      <a className="nav-link collapsed mt-4" href="#" onClick={handleShow}>
+      <a className="nav-link mt-4 sb-sidenav-menu-heading" href="#" onClick={handleShow}>
         <FontAwesomeIcon className="px-2" icon={faClock} size="lg" />
         Horários
       </a>

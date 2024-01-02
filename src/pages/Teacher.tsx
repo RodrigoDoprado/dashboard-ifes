@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deleteTeacher, getTeachers } from '../api/TeacherApi';
 import { TeacherInterface } from '../interface/TeacherInterface';
 import NavSidebar from '../components/NavSidebar';
-import Footer from '../components/footerComponent';
+import FooterComponent from '../components/FooterComponent';
 
 function Teacher() {
   const [teachers, setTeachers] = useState<TeacherInterface[]>([]);
@@ -123,7 +123,7 @@ function Teacher() {
               </div>
             </div>
           </main>
-          <Footer />
+          <FooterComponent />
         </div>
       </div>
     </>

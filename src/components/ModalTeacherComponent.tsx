@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-self-assign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { TeacherInterface } from '../interface/TeacherInterface';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { createTeacher, updateTeacher } from '../api/TeacherApi';
 import { useDispatch } from 'react-redux';
-import { showMessage, hideMessage } from '../store/ducks/layout';
+import { addMessage } from '../redux/ducks/layout';
+import { usePostTeacher } from '../hooks/teacher/usePostTeacher';
+import { usePutTeacher } from '../hooks/teacher/usePutTeacher';
 
 type data = {
   idInteface?: any;
@@ -34,32 +35,10 @@ function ModalTeacherComponent({
   const [avatar, setAvatar] = useState(avatarInteface);
   const dispatch = useDispatch();
   const teacherCookies = localStorage.getItem('tokenTeacher');
+  const addTeacher=usePostTeacher()
+  const putTeacher=usePutTeacher()
 
-  const addUser = async (data: TeacherInterface) => {
-    await createTeacher(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
 
-  const updateUser = async (data: TeacherInterface) => {
-    await updateTeacher(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
   console.log(firstName, lastName, avatar);
   const handleSubmit = (event: {
     currentTarget: any;
@@ -75,7 +54,7 @@ function ModalTeacherComponent({
     setValidated(true);
     if (!idInteface) {
       const teacherData: TeacherInterface = { firstName, lastName, avatar };
-      addUser(teacherData);
+      addTeacher.mutate(teacherData);
     } else {
       const teacherData: TeacherInterface = {
         firstName,
@@ -83,9 +62,20 @@ function ModalTeacherComponent({
         avatar,
         id: idInteface,
       };
-      updateUser(teacherData);
+      putTeacher.mutate(teacherData);
     }
   };
+  
+  useEffect(() => {
+    if (!addTeacher.isSuccess || !putTeacher.isSuccess) return;
+    handleClose();
+    dispatch(addMessage())
+    // dispatch(showMessage());
+    // setTimeout(() => {
+    //   dispatch(hideMessage());
+    // }, 4500);
+  }, [addTeacher.isSuccess, putTeacher.isSuccess]);
+
   return (
     <>
       {teacherCookies ? (

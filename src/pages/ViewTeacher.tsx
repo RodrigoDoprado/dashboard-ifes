@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import NavSidebarTeacher from '../components/NavSidebarTeacherComponent';
 import NavbarComponent from '../components/NavbarComponent';
 import AlertComponent from '../components/AlertComponent';
+import FooterComponent from '../components/FooterComponent';
 
 function ViewTeacher() {
   // const { teacher } = useContext(AuthContext);
@@ -55,6 +56,7 @@ function ViewTeacher() {
           </section>
         </div>
       </div>
+      <FooterComponent/>
     </>
   );
 }

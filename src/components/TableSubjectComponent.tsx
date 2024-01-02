@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import ModalSubjectComponet from './ModalSubjectComponent';
-import { deleteSubject, getSubjects } from '../api/SubjectApi';
-import { useEffect, useState } from 'react';
-import { SubjectInterface } from '../interface/SubjectInterface';
+import { deleteSubject } from '../api/SubjectApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useGetAllSubject } from '../hooks/subject/useGetAllSubject';
 
 type data = {
   idPeriodInteface: any;
@@ -15,25 +14,27 @@ function TableSubjectComponent({
   idPeriodInteface,
   titlePeriodInteface,
 }: data) {
-  const [subjects, setSubjects] = useState<SubjectInterface[]>([]);
+  // const [subjects, setSubjects] = useState<SubjectInterface[]>([]);
 
-  useEffect(() => {
-    getAllSubject();
-  }, []);
+  // useEffect(() => {
+  //   getAllSubject();
+  // }, []);
 
-  const getAllSubject = async () => {
-    const response = await getSubjects(idPeriodInteface);
-    if (response.status === 200) {
-      setSubjects(response.data);
-    }
-  };
+  // const getAllSubject = async () => {
+  //   const response = await getSubjects(idPeriodInteface);
+  //   if (response.status === 200) {
+  //     setSubjects(response.data);
+  //   }
+  // };
+
+  const {subjects}=useGetAllSubject(idPeriodInteface)
 
   const handledeleteSubject = async (id: string | undefined) => {
     if (window.confirm('Deseja Excluir a Matéria?')) {
       const response = await deleteSubject(id);
       if (response.status === 200) {
         // toast.success(response.data);
-        getAllSubject();
+        // getAllSubject();
       }
     }
   };

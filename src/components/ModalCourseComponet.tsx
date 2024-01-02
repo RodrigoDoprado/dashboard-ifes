@@ -8,11 +8,13 @@ import { CourseInterface } from '../interface/CourseInterface';
 import { Col, Form, Row } from 'react-bootstrap';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TeacherInterface } from '../interface/TeacherInterface';
-import { getTeachers } from '../api/TeacherApi';
-import { createCourse, updateCourse } from '../api/CourseApi';
 import { useDispatch } from 'react-redux';
-import { hideMessage, showMessage } from '../store/ducks/layout';
+import { useGetAllTeacher } from '../hooks/teacher/useGetAllTeacher';
+import { usePutCourse } from '../hooks/course/usePutCourse';
+import { usePostCourse } from '../hooks/course/usePostCourse';
+import { addMessage } from '../redux/ducks/layout';
+
+
 
 type data = {
   idInteface?: string;
@@ -40,46 +42,11 @@ function ModalCourseComponent({
   const [title, setTitle] = useState(titleInteface);
   const [acronym, setAcronym] = useState(acronymInteface);
   const [teacher, setTeacher] = useState(teacherIdInteface);
-  const [teachers, setTeachers] = useState<TeacherInterface[]>([]);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getAllTeacher();
-    handleClose();
-  }, []);
-
-  const getAllTeacher = async () => {
-    const response = await getTeachers();
-    if (response.status === 200) {
-      setTeachers(response.data);
-    }
-  };
-
-  const addUser = async (data: CourseInterface) => {
-    await createCourse(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
-
-  const updateUser = async (data: CourseInterface) => {
-    await updateCourse(data)
-      .then(() => {
-        handleClose();
-        setTimeout(() => (window.location.href = window.location.href), 1500);
-        dispatch(showMessage());
-        setTimeout(() => {
-          dispatch(hideMessage());
-        }, 4500);
-      })
-      .catch(() => {});
-  };
+  const {teachers}=useGetAllTeacher()
+  const addCourse=usePostCourse()
+  const putCourse=usePutCourse()
 
   const handleSubmit = (event: {
     currentTarget: any;
@@ -95,7 +62,7 @@ function ModalCourseComponent({
     setValidated(true);
     if (!idInteface) {
       const couseData: CourseInterface = { title, acronym, teacher, avatar };
-      addUser(couseData);
+      addCourse.mutate(couseData);
     } else {
       const couseData: CourseInterface = {
         title,
@@ -104,9 +71,19 @@ function ModalCourseComponent({
         teacher,
         id: idInteface,
       };
-      updateUser(couseData);
+      putCourse.mutate(couseData);
     }
   };
+
+  useEffect(() => {
+    if (!addCourse.isSuccess && !putCourse.isSuccess) return;
+    handleClose();
+    dispatch(addMessage())
+    // dispatch(showMessage());
+    // setTimeout(() => {
+    //   dispatch(hideMessage());
+    // }, 4500);
+  }, [addCourse.isSuccess, putCourse.isSuccess]);
 
   return (
     <>
@@ -117,7 +94,7 @@ function ModalCourseComponent({
       ) : (
         <Button
           variant="outline-dark"
-          className="fw-bolder"
+          className="fw-bolder px-lg-5"
           onClick={handleShow}
         >
           Novo Curso

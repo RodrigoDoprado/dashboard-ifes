@@ -10,8 +10,8 @@ import { getPeriods } from '../api/PeriodApi';
 import { CourseInterface } from '../interface/CourseInterface';
 import { PeriodInterface } from '../interface/PeriodInterface';
 import NavSidebar from '../components/NavSidebar';
-import Footer from '../components/footerComponent';
 import TableSubjectComponet from '../components/TableSubjectComponent';
+import FooterComponent from '../components/FooterComponent';
 
 function ViewCourse() {
   const [course, setCourse] = useState<CourseInterface>();
@@ -103,7 +103,7 @@ function ViewCourse() {
               </div>
             </div>
           </main>
-          <Footer />
+          <FooterComponent />
         </div>
       </div>
     </>

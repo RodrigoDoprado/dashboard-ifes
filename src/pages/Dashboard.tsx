@@ -13,7 +13,7 @@ import { Bar } from 'react-chartjs-2';
 import { useState } from 'react';
 import { UserData } from '../Data';
 import NavSidebar from '../components/NavSidebar';
-import Footer from '../components/footerComponent';
+import FooterComponent from '../components/FooterComponent';
 
 ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -77,7 +77,7 @@ function Dashboard() {
               </div>
             </div>
           </main>
-          <Footer />
+          <FooterComponent />
         </div>
       </div>
     </>

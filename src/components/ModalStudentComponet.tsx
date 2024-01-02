@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-self-assign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -12,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
 import { usePutStudent } from '../hooks/student/usePutStudent';
 import { usePostStudent } from '../hooks/student/usePostStudent';
-import { addMessage, hideMessage, showMessage } from '../store/ducks/layout';
+import { addMessage } from '../redux/ducks/layout';
 
 type data = {
   idInteface?: string;
@@ -40,7 +41,6 @@ function ModalStudentComponet({
   const [avatar, setAvatar] = useState(avatarInteface);
   const [course, setCourse] = useState(courseIdInteface);
   const studentCookies = localStorage.getItem('tokenStudent');
-  const usercookies = localStorage.getItem('token');
   const dispatch = useDispatch();
   const { courses } = useGetAllCourse();
   const addStudent = usePostStudent();
@@ -79,13 +79,9 @@ function ModalStudentComponet({
   };
 
   useEffect(() => {
-    if (!addStudent.isSuccess && !putStudent.isSuccess) return;
+    if (!addStudent.isSuccess || !putStudent.isSuccess) return;
     handleClose();
-    dispatch(addMessage());
-    dispatch(showMessage());
-    setTimeout(() => {
-      dispatch(hideMessage());
-    }, 4500);
+    dispatch(addMessage())
   }, [addStudent.isSuccess, putStudent.isSuccess]);
 
   return (
@@ -178,9 +174,9 @@ function ModalStudentComponet({
                   value={course}
                   onChange={(event) => setCourse(event.target.value)}
                 >
-                  {!usercookies ? (
+                  {!courseIdInteface ? (
                     <>
-                      <option>Escolhar...</option>
+                      <option>Escolha o curso...</option>
                     </>
                   ) : (
                     <>

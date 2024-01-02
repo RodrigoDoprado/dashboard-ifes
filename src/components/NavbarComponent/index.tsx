@@ -8,12 +8,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
-import LogoutService from '../api/AuthApi';
+import LogoutService from '../../api/AuthApi';
 import './Navbar.css';
 
 function NavbarComponent() {
   const usercookies = localStorage.getItem('token');
   const dispatch = useDispatch();
+  // const {student,teacher}=useContext(AuthContext)
 
   const logout = () => {
     if (window.confirm('Deseja Sair?')) {
@@ -40,7 +41,7 @@ function NavbarComponent() {
     }
   };
   return (
-    <nav className="sb-topnav navbar navbar-expand navbar-dark bg-primary">
+    <nav className="sb-topnav navbar navbar-expand navbar-dark bg-primary sticky-top">
       <div className="container-fluid">
         <button
           className="btn btn-link btn-lg"

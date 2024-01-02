@@ -10,16 +10,14 @@ function NavSidebar() {
   return (
     <div id="layoutSidenav_nav">
       <nav
-        className="sb-sidenav accordion sb-sidenav-dark"
-        id="sidenavAccordion"
-      >
+        className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div className="sb-sidenav-menu">
           <div className="nav mt-5">
-            <a className="nav-link" href="/dashboard">
+            <a className="nav-link sb-sidenav-menu-heading" href="/dashboard">
               <FontAwesomeIcon className="px-2" icon={faHouse} size="lg" />
               Dashboard
             </a>
-            <a className="nav-link collapsed mt-4" href="/alunos">
+            <a className="nav-link mt-4 sb-sidenav-menu-heading" href="/alunos">
               <FontAwesomeIcon
                 className="px-2"
                 icon={faGraduationCap}
@@ -27,7 +25,7 @@ function NavSidebar() {
               />
               Alunos
             </a>
-            <a className="nav-link collapsed mt-4" href="/professores">
+            <a className="nav-link mt-4 sb-sidenav-menu-heading" href="/professores">
               <FontAwesomeIcon
                 className="px-2"
                 icon={faChalkboardUser}
@@ -35,7 +33,7 @@ function NavSidebar() {
               />
               Professores
             </a>
-            <a className="nav-link collapsed mt-4" href="/cursos">
+            <a className="nav-link mt-4 sb-sidenav-menu-heading" href="/cursos">
               <FontAwesomeIcon className="px-2" icon={faBook} size="lg" />
               Cursos
             </a>

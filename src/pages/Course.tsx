@@ -7,24 +7,11 @@ import NavbarComponet from '../components/NavbarComponent';
 import { Helmet } from 'react-helmet';
 import { deleteCourse } from '../api/CourseApi';
 import NavSidebar from '../components/NavSidebar';
-import Footer from '../components/footerComponent';
 import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
+import FooterComponent from '../components/FooterComponent';
 
 function Course() {
-  // const [courses, setCourses] = useState<CourseInterface[]>([]);
   const [search] = useState('');
-
-  // useEffect(() => {
-  //   getAllCourse();
-  // }, []);
-
-  // const getAllCourse = async () => {
-  //   const response = await getCourses()
-  //   if (response.status === 200) {
-  //     setCourses(response.data);
-  //   }
-  // };
-
   const { courses } = useGetAllCourse();
 
   const handledeleteCourse = async (id: string | undefined) => {
@@ -106,7 +93,7 @@ function Course() {
               </div>
             </div>
           </main>
-          <Footer />
+          <FooterComponent />
         </div>
       </div>
     </>
