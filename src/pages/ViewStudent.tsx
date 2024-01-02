@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Helmet } from 'react-helmet';
-import NavSidebarStudent from '../components/NavSidebarStudentComponent';
-import NavbarComponet from '../components/NavbarComponent';
-import AlertComponent from '../components/AlertComponent';
-import FooterComponent from '../components/FooterComponent';
+import { Helmet } from 'react-helmet'
+import NavSidebarStudent from '../components/NavSidebarStudentComponent'
+import NavbarComponet from '../components/NavbarComponent'
+import AlertComponent from '../components/AlertComponent'
+import FooterComponent from '../components/FooterComponent'
 
 function ViewStudent() {
   // const { student } = useContext(AuthContext);
@@ -11,9 +11,7 @@ function ViewStudent() {
   return (
     <>
       {/* @ts-ignore */}
-      <Helmet>
-        {/* <title>{student?.firstName + ' ' + student?.lastName}</title> */}
-      </Helmet>
+      <Helmet>{/* <title>{student?.firstName + ' ' + student?.lastName}</title> */}</Helmet>
 
       <NavbarComponet />
 
@@ -45,9 +43,7 @@ function ViewStudent() {
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title">Sobre</h5>
-                      <p className="card-text">
-                        Aqui pode ir uma breve biografia do Aluno.
-                      </p>
+                      <p className="card-text">Aqui pode ir uma breve biografia do Aluno.</p>
                     </div>
                   </div>
                 </div>
@@ -56,9 +52,9 @@ function ViewStudent() {
           </section>
         </div>
       </div>
-      <FooterComponent/>
+      <FooterComponent />
     </>
-  );
+  )
 }
 
-export default ViewStudent;
+export default ViewStudent

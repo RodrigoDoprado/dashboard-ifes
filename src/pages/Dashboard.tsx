@@ -1,42 +1,29 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Helmet } from 'react-helmet';
-import NavbarComponet from '../components/NavbarComponent';
-import {
-  Chart as ChartJs,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import { useState } from 'react';
-import { UserData } from '../Data';
-import NavSidebar from '../components/NavSidebar';
-import FooterComponent from '../components/FooterComponent';
+import { Helmet } from 'react-helmet'
+import NavbarComponet from '../components/NavbarComponent'
+import { Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
+import { Bar } from 'react-chartjs-2'
+import { useState } from 'react'
+import { UserData } from '../Data'
+import NavSidebar from '../components/NavSidebar'
+import FooterComponent from '../components/FooterComponent'
 
-ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
 function Dashboard() {
-  const options = {};
+  const options = {}
   const [data] = useState({
     labels: UserData?.map((data) => data.year),
     datasets: [
       {
         label: 'Users Gained',
         data: UserData?.map((data) => data.userGain),
-        backgroundColor: [
-          'rgba(75,192,192,1)',
-          '#ecf0f1',
-          '#50AF95',
-          '#f3ba2f',
-          '#2a71d0',
-        ],
+        backgroundColor: ['rgba(75,192,192,1)', '#ecf0f1', '#50AF95', '#f3ba2f', '#2a71d0'],
         borderColor: 'black',
         borderWidth: 1,
       },
     ],
-  });
+  })
   return (
     <>
       {/* @ts-ignore */}
@@ -81,7 +68,7 @@ function Dashboard() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard

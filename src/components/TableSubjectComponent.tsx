@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import ModalSubjectComponet from './ModalSubjectComponent';
-import { deleteSubject } from '../api/SubjectApi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useGetAllSubject } from '../hooks/subject/useGetAllSubject';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import ModalSubjectComponet from './ModalSubjectComponent'
+import { deleteSubject } from '../api/SubjectApi'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useGetAllSubject } from '../hooks/subject/useGetAllSubject'
 
 type data = {
-  idPeriodInteface: any;
-  titlePeriodInteface: any;
-};
+  idPeriodInteface: any
+  titlePeriodInteface: any
+}
 
-function TableSubjectComponent({
-  idPeriodInteface,
-  titlePeriodInteface,
-}: data) {
+function TableSubjectComponent({ idPeriodInteface, titlePeriodInteface }: data) {
   // const [subjects, setSubjects] = useState<SubjectInterface[]>([]);
 
   // useEffect(() => {
@@ -27,17 +24,17 @@ function TableSubjectComponent({
   //   }
   // };
 
-  const {subjects}=useGetAllSubject(idPeriodInteface)
+  const { subjects } = useGetAllSubject(idPeriodInteface)
 
   const handledeleteSubject = async (id: string | undefined) => {
     if (window.confirm('Deseja Excluir a Matéria?')) {
-      const response = await deleteSubject(id);
+      const response = await deleteSubject(id)
       if (response.status === 200) {
         // toast.success(response.data);
         // getAllSubject();
       }
     }
-  };
+  }
 
   return (
     <>
@@ -59,12 +56,7 @@ function TableSubjectComponent({
                 <tr>
                   {/* <th scope="row">{index+1}</th> */}
                   <td>
-                    <img
-                      src={item.avatar}
-                      alt={item.title}
-                      width="45"
-                      height="35"
-                    />
+                    <img src={item.avatar} alt={item.title} width="45" height="35" />
                   </td>
                   <td>{item.acronym}</td>
                   <td>{item.title}</td>
@@ -88,12 +80,12 @@ function TableSubjectComponent({
                     </div>
                   </td>
                 </tr>
-              );
+              )
             })}
           </tbody>
         </table>
       </div>
     </>
-  );
+  )
 }
-export default TableSubjectComponent;
+export default TableSubjectComponent

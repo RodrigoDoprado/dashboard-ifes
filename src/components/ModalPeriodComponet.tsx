@@ -1,74 +1,69 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-self-assign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { Col, Form, Row } from 'react-bootstrap';
-import { PeriodInterface } from '../interface/PeriodInterface';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import { usePostPeriod } from '../hooks/period/usePostCourse';
-import { usePutPeriod } from '../hooks/period/usePutCourse';
-import { addMessage } from '../redux/ducks/layout';
-
+import { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import { Col, Form, Row } from 'react-bootstrap'
+import { PeriodInterface } from '../interface/PeriodInterface'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch } from 'react-redux'
+import { usePostPeriod } from '../hooks/period/usePostCourse'
+import { usePutPeriod } from '../hooks/period/usePutCourse'
+import { addMessage } from '../redux/ducks/layout'
 
 type data = {
-  idInteface?: string;
-  titleInteface?: string;
-  couserInteface?: string;
-};
+  idInteface?: string
+  titleInteface?: string
+  couserInteface?: string
+}
 
-function ModalPeriodComponet({
-  idInteface,
-  titleInteface,
-  couserInteface,
-}: data) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [validated, setValidated] = useState(false);
-  const [title, setTitle] = useState(titleInteface);
-  const dispatch = useDispatch();
+function ModalPeriodComponet({ idInteface, titleInteface, couserInteface }: data) {
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const [validated, setValidated] = useState(false)
+  const [title, setTitle] = useState(titleInteface)
+  const dispatch = useDispatch()
 
-  const addPeriod=usePostPeriod()
-  const putPeriod=usePutPeriod()
+  const addPeriod = usePostPeriod()
+  const putPeriod = usePutPeriod()
 
   const handleSubmit = (event: {
-    currentTarget: any;
-    preventDefault: () => void;
-    stopPropagation: () => void;
+    currentTarget: any
+    preventDefault: () => void
+    stopPropagation: () => void
   }) => {
-    const form = event.currentTarget;
+    const form = event.currentTarget
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      event.preventDefault()
+      event.stopPropagation()
     }
 
-    setValidated(true);
+    setValidated(true)
     if (!idInteface) {
-      const periodData: PeriodInterface = { title, course: couserInteface };
-      addPeriod.mutate(periodData);
+      const periodData: PeriodInterface = { title, course: couserInteface }
+      addPeriod.mutate(periodData)
     } else {
       const periodData: PeriodInterface = {
         course: couserInteface,
         title,
         id: idInteface,
-      };
-      putPeriod.mutate(periodData);
+      }
+      putPeriod.mutate(periodData)
     }
-  };
+  }
 
   useEffect(() => {
-    if (!addPeriod.isSuccess && !putPeriod.isSuccess) return;
-    handleClose();
+    if (!addPeriod.isSuccess && !putPeriod.isSuccess) return
+    handleClose()
     dispatch(addMessage())
     // dispatch(showMessage());
     // setTimeout(() => {
     //   dispatch(hideMessage());
     // }, 4500);
-  }, [addPeriod.isSuccess, putPeriod.isSuccess]);
+  }, [addPeriod.isSuccess, putPeriod.isSuccess])
 
   return (
     <>
@@ -86,9 +81,7 @@ function ModalPeriodComponet({
       )}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>
-            {idInteface ? <>Atualização Periodo</> : <>Novo Periodo</>}
-          </Modal.Title>
+          <Modal.Title>{idInteface ? <>Atualização Periodo</> : <>Novo Periodo</>}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -101,20 +94,14 @@ function ModalPeriodComponet({
                   value={title}
                   onChange={(event) => setTitle(event.target.value)}
                 />
-                <Form.Control.Feedback type="invalid">
-                  * Campo Obrigatório
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
             </Row>
             <div className="d-flex justify-content-between">
               <Button variant="primary" onClick={handleSubmit}>
                 Salvar
               </Button>
-              <Button
-                variant="secondary"
-                className="px-3"
-                onClick={handleClose}
-              >
+              <Button variant="secondary" className="px-3" onClick={handleClose}>
                 Sair
               </Button>
             </div>
@@ -122,7 +109,7 @@ function ModalPeriodComponet({
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
 
-export default ModalPeriodComponet;
+export default ModalPeriodComponet

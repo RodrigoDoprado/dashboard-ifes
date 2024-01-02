@@ -1,13 +1,13 @@
-import { faClock } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useState } from 'react'
+import { Button, Modal } from 'react-bootstrap'
 
 function ModalComponet() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
     <>
@@ -34,7 +34,7 @@ function ModalComponet() {
         </Modal.Footer>
       </Modal>
     </>
-  );
+  )
 }
 
-export default ModalComponet;
+export default ModalComponet

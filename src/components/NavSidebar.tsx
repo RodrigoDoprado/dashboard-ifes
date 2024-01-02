@@ -3,14 +3,13 @@ import {
   faChalkboardUser,
   faGraduationCap,
   faHouse,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function NavSidebar() {
   return (
     <div id="layoutSidenav_nav">
-      <nav
-        className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+      <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div className="sb-sidenav-menu">
           <div className="nav mt-5">
             <a className="nav-link sb-sidenav-menu-heading" href="/dashboard">
@@ -18,19 +17,11 @@ function NavSidebar() {
               Dashboard
             </a>
             <a className="nav-link mt-4 sb-sidenav-menu-heading" href="/alunos">
-              <FontAwesomeIcon
-                className="px-2"
-                icon={faGraduationCap}
-                size="lg"
-              />
+              <FontAwesomeIcon className="px-2" icon={faGraduationCap} size="lg" />
               Alunos
             </a>
             <a className="nav-link mt-4 sb-sidenav-menu-heading" href="/professores">
-              <FontAwesomeIcon
-                className="px-2"
-                icon={faChalkboardUser}
-                size="lg"
-              />
+              <FontAwesomeIcon className="px-2" icon={faChalkboardUser} size="lg" />
               Professores
             </a>
             <a className="nav-link mt-4 sb-sidenav-menu-heading" href="/cursos">
@@ -45,6 +36,6 @@ function NavSidebar() {
                 </div> */}
       </nav>
     </div>
-  );
+  )
 }
-export default NavSidebar;
+export default NavSidebar

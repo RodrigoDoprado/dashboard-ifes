@@ -1,14 +1,11 @@
-import { faBook, faHouse } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ModalComponet from './ModalComponent';
+import { faBook, faHouse } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ModalComponet from './ModalComponent'
 
 function NavSidebarTeacherComponent() {
   return (
     <div id="layoutSidenav_nav">
-      <nav
-        className="sb-sidenav accordion sb-sidenav-dark"
-        id="sidenavAccordion"
-      >
+      <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div className="sb-sidenav-menu">
           <div className="nav mt-5">
             <a className="nav-link sb-sidenav-menu-heading" href="/dashboard">
@@ -36,6 +33,6 @@ function NavSidebarTeacherComponent() {
         </div>
       </nav>
     </div>
-  );
+  )
 }
-export default NavSidebarTeacherComponent;
+export default NavSidebarTeacherComponent

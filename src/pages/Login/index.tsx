@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { useDispatch } from 'react-redux';
-import { authLogin } from '../../redux/ducks/FatchActions';
-import FooterComponent from '../../components/FooterComponent';
-import './Login.css';
+import { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet'
+import { useDispatch } from 'react-redux'
+import { authLogin } from '../../redux/ducks/FatchActions'
+import FooterComponent from '../../components/FooterComponent'
+import './Login.css'
 
 function Login() {
-  const [loginInput, setLoginInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
-  const dispatch = useDispatch();
+  const [loginInput, setLoginInput] = useState('')
+  const [passwordInput, setPasswordInput] = useState('')
+  const dispatch = useDispatch()
 
   const handleLogin = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    dispatch(authLogin({ loginInput, passwordInput }));
-  };
+    e.preventDefault()
+    dispatch(authLogin({ loginInput, passwordInput }))
+  }
 
   useEffect(() => {
-    document.body.classList.add('login-body');
+    document.body.classList.add('login-body')
     return () => {
-      document.body.classList.remove('login-body');
-    };
-  }, []);
+      document.body.classList.remove('login-body')
+    }
+  }, [])
 
   return (
     <>
@@ -56,9 +56,7 @@ function Login() {
                             placeholder=""
                             required
                             value={loginInput}
-                            onChange={(event) =>
-                              setLoginInput(event.target.value)
-                            }
+                            onChange={(event) => setLoginInput(event.target.value)}
                           />
                           <label htmlFor="inputEmail">Login</label>
                         </div>
@@ -70,9 +68,7 @@ function Login() {
                             placeholder=""
                             required
                             value={passwordInput}
-                            onChange={(event) =>
-                              setPasswordInput(event.target.value)
-                            }
+                            onChange={(event) => setPasswordInput(event.target.value)}
                           />
                           <label htmlFor="inputPassword">Senha</label>
                         </div>
@@ -105,7 +101,7 @@ function Login() {
         <FooterComponent />
       </div>
     </>
-  );
+  )
 }
 
-export default Login;
+export default Login

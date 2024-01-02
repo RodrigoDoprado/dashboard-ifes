@@ -1,42 +1,39 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Helmet } from 'react-helmet';
-import NavbarComponet from '../components/NavbarComponent';
-import ModalTeacherComponet from '../components/ModalTeacherComponent';
-import { useEffect, useState } from 'react';
-import {
-  faChalkboardUser,
-  faTrashCan,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { deleteTeacher, getTeachers } from '../api/TeacherApi';
-import { TeacherInterface } from '../interface/TeacherInterface';
-import NavSidebar from '../components/NavSidebar';
-import FooterComponent from '../components/FooterComponent';
+import { Helmet } from 'react-helmet'
+import NavbarComponet from '../components/NavbarComponent'
+import ModalTeacherComponet from '../components/ModalTeacherComponent'
+import { useEffect, useState } from 'react'
+import { faChalkboardUser, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { deleteTeacher, getTeachers } from '../api/TeacherApi'
+import { TeacherInterface } from '../interface/TeacherInterface'
+import NavSidebar from '../components/NavSidebar'
+import FooterComponent from '../components/FooterComponent'
 
 function Teacher() {
-  const [teachers, setTeachers] = useState<TeacherInterface[]>([]);
-  const [search] = useState('');
+  const [teachers, setTeachers] = useState<TeacherInterface[]>([])
+  const [search] = useState('')
 
   useEffect(() => {
-    getAllTeacher();
-  }, []);
+    getAllTeacher()
+  }, [])
 
   const getAllTeacher = async () => {
-    const response = await getTeachers();
+    const response = await getTeachers()
     if (response.status === 200) {
-      setTeachers(response.data);
+      setTeachers(response.data)
     }
-  };
+  }
 
   const handledeleteTeacher = async (id: string | undefined) => {
     if (window.confirm('Deseja Excluir o Professor?')) {
-      const response = await deleteTeacher(id);
+      const response = await deleteTeacher(id)
       if (response.status === 200) {
         // toast.success(response.data);
-        getAllTeacher();
+        getAllTeacher()
       }
     }
-  };
+  }
 
   return (
     <>
@@ -52,11 +49,7 @@ function Teacher() {
             <div className="container-fluid px-4 px-lg-5 mt-5">
               <div className="d-flex justify-content-between mb-5">
                 <h1>
-                  <FontAwesomeIcon
-                    className="px-2"
-                    icon={faChalkboardUser}
-                    size="sm"
-                  />
+                  <FontAwesomeIcon className="px-2" icon={faChalkboardUser} size="sm" />
                   Professores
                 </h1>
                 <ModalTeacherComponet />
@@ -77,9 +70,7 @@ function Teacher() {
                       <tbody>
                         {teachers
                           ?.filter((student) =>
-                            student.firstName
-                              ?.toLocaleLowerCase()
-                              .includes(search)
+                            student.firstName?.toLocaleLowerCase().includes(search)
                           )
                           .map((item, index) => {
                             return (
@@ -105,16 +96,14 @@ function Teacher() {
                                     />
                                     <button
                                       className="btn btn-outline-danger"
-                                      onClick={() =>
-                                        handledeleteTeacher(item.id)
-                                      }
+                                      onClick={() => handledeleteTeacher(item.id)}
                                     >
                                       <FontAwesomeIcon icon={faTrashCan} />
                                     </button>
                                   </div>
                                 </td>
                               </tr>
-                            );
+                            )
                           })}
                       </tbody>
                     </table>
@@ -127,6 +116,6 @@ function Teacher() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default Teacher;
+export default Teacher

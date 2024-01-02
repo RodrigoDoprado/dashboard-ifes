@@ -2,27 +2,27 @@
 /* eslint-disable no-self-assign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { StudentInterface } from '../interface/StudentInterface';
-import { Col, Form, Row } from 'react-bootstrap';
-import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
-import { usePutStudent } from '../hooks/student/usePutStudent';
-import { usePostStudent } from '../hooks/student/usePostStudent';
-import { addMessage } from '../redux/ducks/layout';
+import { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import { StudentInterface } from '../interface/StudentInterface'
+import { Col, Form, Row } from 'react-bootstrap'
+import { faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch } from 'react-redux'
+import { useGetAllCourse } from '../hooks/course/useGetAllCourse'
+import { usePutStudent } from '../hooks/student/usePutStudent'
+import { usePostStudent } from '../hooks/student/usePostStudent'
+import { addMessage } from '../redux/ducks/layout'
 
 type data = {
-  idInteface?: string;
-  firstNameInteface?: string;
-  lastNameInteface?: string;
-  avatarInteface?: string;
-  courseTitleInteface?: string;
-  courseIdInteface?: string;
-};
+  idInteface?: string
+  firstNameInteface?: string
+  lastNameInteface?: string
+  avatarInteface?: string
+  courseTitleInteface?: string
+  courseIdInteface?: string
+}
 
 function ModalStudentComponet({
   idInteface,
@@ -32,31 +32,31 @@ function ModalStudentComponet({
   courseTitleInteface,
   courseIdInteface,
 }: data) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [validated, setValidated] = useState(false);
-  const [firstName, setFirstName] = useState(firstNameInteface);
-  const [lastName, setLastName] = useState(lastNameInteface);
-  const [avatar, setAvatar] = useState(avatarInteface);
-  const [course, setCourse] = useState(courseIdInteface);
-  const studentCookies = localStorage.getItem('tokenStudent');
-  const dispatch = useDispatch();
-  const { courses } = useGetAllCourse();
-  const addStudent = usePostStudent();
-  const putStudent = usePutStudent();
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const [validated, setValidated] = useState(false)
+  const [firstName, setFirstName] = useState(firstNameInteface)
+  const [lastName, setLastName] = useState(lastNameInteface)
+  const [avatar, setAvatar] = useState(avatarInteface)
+  const [course, setCourse] = useState(courseIdInteface)
+  const studentCookies = localStorage.getItem('tokenStudent')
+  const dispatch = useDispatch()
+  const { courses } = useGetAllCourse()
+  const addStudent = usePostStudent()
+  const putStudent = usePutStudent()
 
   const handleSubmit = (event: {
-    currentTarget: any;
-    preventDefault: () => void;
-    stopPropagation: () => void;
+    currentTarget: any
+    preventDefault: () => void
+    stopPropagation: () => void
   }) => {
-    const form = event.currentTarget;
+    const form = event.currentTarget
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      event.preventDefault()
+      event.stopPropagation()
     }
-    setValidated(true);
+    setValidated(true)
 
     if (!idInteface) {
       const studentData: StudentInterface = {
@@ -64,8 +64,8 @@ function ModalStudentComponet({
         lastName,
         course,
         avatar,
-      };
-      addStudent.mutate(studentData);
+      }
+      addStudent.mutate(studentData)
     } else {
       const studentData: StudentInterface = {
         firstName,
@@ -73,16 +73,16 @@ function ModalStudentComponet({
         course,
         avatar,
         id: idInteface,
-      };
-      putStudent.mutate(studentData);
+      }
+      putStudent.mutate(studentData)
     }
-  };
+  }
 
   useEffect(() => {
-    if (!addStudent.isSuccess || !putStudent.isSuccess) return;
-    handleClose();
+    if (!addStudent.isSuccess || !putStudent.isSuccess) return
+    handleClose()
     dispatch(addMessage())
-  }, [addStudent.isSuccess, putStudent.isSuccess]);
+  }, [addStudent.isSuccess, putStudent.isSuccess])
 
   return (
     <>
@@ -100,11 +100,7 @@ function ModalStudentComponet({
               <FontAwesomeIcon icon={faPenToSquare} />
             </Button>
           ) : (
-            <Button
-              variant="outline-dark"
-              className="fw-bolder px-lg-5"
-              onClick={handleShow}
-            >
+            <Button variant="outline-dark" className="fw-bolder px-lg-5" onClick={handleShow}>
               Novo Aluno
             </Button>
           )}
@@ -180,18 +176,14 @@ function ModalStudentComponet({
                     </>
                   ) : (
                     <>
-                      <option value={courseIdInteface}>
-                        {courseTitleInteface}
-                      </option>
+                      <option value={courseIdInteface}>{courseTitleInteface}</option>
                     </>
                   )}
                   {courses?.map((item) => {
-                    return <option value={item.id}>{item.title}</option>;
+                    return <option value={item.id}>{item.title}</option>
                   })}
                 </select>
-                <Form.Control.Feedback type="invalid">
-                  * Campo Obrigatório
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </div>
               {/* </>:
                 <></>
@@ -201,11 +193,7 @@ function ModalStudentComponet({
               <Button variant="primary" onClick={handleSubmit}>
                 Salvar
               </Button>
-              <Button
-                variant="secondary"
-                className="px-3"
-                onClick={handleClose}
-              >
+              <Button variant="secondary" className="px-3" onClick={handleClose}>
                 Sair
               </Button>
             </div>
@@ -213,7 +201,7 @@ function ModalStudentComponet({
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
 
-export default ModalStudentComponet;
+export default ModalStudentComponet

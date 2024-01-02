@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { createContext } from "react"
-import { StudentInterface } from "../interface/StudentInterface"
-import { TeacherInterface } from "../interface/TeacherInterface"
+import { createContext } from 'react'
+import { StudentInterface } from '../interface/StudentInterface'
+import { TeacherInterface } from '../interface/TeacherInterface'
 
 export type AuthContextType = {
   // authenticated: boolean

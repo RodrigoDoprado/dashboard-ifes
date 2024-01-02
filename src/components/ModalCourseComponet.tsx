@@ -1,29 +1,27 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-self-assign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { CourseInterface } from '../interface/CourseInterface';
-import { Col, Form, Row } from 'react-bootstrap';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import { useGetAllTeacher } from '../hooks/teacher/useGetAllTeacher';
-import { usePutCourse } from '../hooks/course/usePutCourse';
-import { usePostCourse } from '../hooks/course/usePostCourse';
-import { addMessage } from '../redux/ducks/layout';
-
-
+import { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import { CourseInterface } from '../interface/CourseInterface'
+import { Col, Form, Row } from 'react-bootstrap'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch } from 'react-redux'
+import { useGetAllTeacher } from '../hooks/teacher/useGetAllTeacher'
+import { usePutCourse } from '../hooks/course/usePutCourse'
+import { usePostCourse } from '../hooks/course/usePostCourse'
+import { addMessage } from '../redux/ducks/layout'
 
 type data = {
-  idInteface?: string;
-  avatarInteface?: string;
-  titleInteface?: string;
-  acronymInteface?: string;
-  teacherNameInteface?: string;
-  teacherIdInteface?: string;
-};
+  idInteface?: string
+  avatarInteface?: string
+  titleInteface?: string
+  acronymInteface?: string
+  teacherNameInteface?: string
+  teacherIdInteface?: string
+}
 
 function ModalCourseComponent({
   idInteface,
@@ -33,36 +31,36 @@ function ModalCourseComponent({
   teacherIdInteface,
   teacherNameInteface,
 }: data) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [validated, setValidated] = useState(false);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const [validated, setValidated] = useState(false)
 
-  const [avatar, setAvatar] = useState(avatarInteface);
-  const [title, setTitle] = useState(titleInteface);
-  const [acronym, setAcronym] = useState(acronymInteface);
-  const [teacher, setTeacher] = useState(teacherIdInteface);
-  const dispatch = useDispatch();
+  const [avatar, setAvatar] = useState(avatarInteface)
+  const [title, setTitle] = useState(titleInteface)
+  const [acronym, setAcronym] = useState(acronymInteface)
+  const [teacher, setTeacher] = useState(teacherIdInteface)
+  const dispatch = useDispatch()
 
-  const {teachers}=useGetAllTeacher()
-  const addCourse=usePostCourse()
-  const putCourse=usePutCourse()
+  const { teachers } = useGetAllTeacher()
+  const addCourse = usePostCourse()
+  const putCourse = usePutCourse()
 
   const handleSubmit = (event: {
-    currentTarget: any;
-    preventDefault: () => void;
-    stopPropagation: () => void;
+    currentTarget: any
+    preventDefault: () => void
+    stopPropagation: () => void
   }) => {
-    const form = event.currentTarget;
+    const form = event.currentTarget
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      event.preventDefault()
+      event.stopPropagation()
     }
 
-    setValidated(true);
+    setValidated(true)
     if (!idInteface) {
-      const couseData: CourseInterface = { title, acronym, teacher, avatar };
-      addCourse.mutate(couseData);
+      const couseData: CourseInterface = { title, acronym, teacher, avatar }
+      addCourse.mutate(couseData)
     } else {
       const couseData: CourseInterface = {
         title,
@@ -70,20 +68,20 @@ function ModalCourseComponent({
         avatar,
         teacher,
         id: idInteface,
-      };
-      putCourse.mutate(couseData);
+      }
+      putCourse.mutate(couseData)
     }
-  };
+  }
 
   useEffect(() => {
-    if (!addCourse.isSuccess && !putCourse.isSuccess) return;
-    handleClose();
+    if (!addCourse.isSuccess && !putCourse.isSuccess) return
+    handleClose()
     dispatch(addMessage())
     // dispatch(showMessage());
     // setTimeout(() => {
     //   dispatch(hideMessage());
     // }, 4500);
-  }, [addCourse.isSuccess, putCourse.isSuccess]);
+  }, [addCourse.isSuccess, putCourse.isSuccess])
 
   return (
     <>
@@ -92,19 +90,13 @@ function ModalCourseComponent({
           <FontAwesomeIcon icon={faPenToSquare} />
         </Button>
       ) : (
-        <Button
-          variant="outline-dark"
-          className="fw-bolder px-lg-5"
-          onClick={handleShow}
-        >
+        <Button variant="outline-dark" className="fw-bolder px-lg-5" onClick={handleShow}>
           Novo Curso
         </Button>
       )}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>
-            {idInteface ? <>Atualização Curso</> : <>Novo Curso</>}
-          </Modal.Title>
+          <Modal.Title>{idInteface ? <>Atualização Curso</> : <>Novo Curso</>}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -129,9 +121,7 @@ function ModalCourseComponent({
                   value={title}
                   onChange={(event) => setTitle(event.target.value)}
                 />
-                <Form.Control.Feedback type="invalid">
-                  * Campo Obrigatório
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="12" controlId="validationCustom01">
                 <Form.Label>Sigle:</Form.Label>
@@ -141,9 +131,7 @@ function ModalCourseComponent({
                   value={acronym}
                   onChange={(event) => setAcronym(event.target.value)}
                 />
-                <Form.Control.Feedback type="invalid">
-                  * Campo Obrigatório
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
               {!idInteface ? (
                 <></>
@@ -164,17 +152,13 @@ function ModalCourseComponent({
                         </>
                       ) : (
                         <>
-                          <option value={teacherIdInteface}>
-                            {teacherNameInteface}
-                          </option>
+                          <option value={teacherIdInteface}>{teacherNameInteface}</option>
                         </>
                       )}
                       {teachers?.map((item) => {
                         return (
-                          <option value={item.id}>
-                            {item.firstName + ' ' + item.lastName}
-                          </option>
-                        );
+                          <option value={item.id}>{item.firstName + ' ' + item.lastName}</option>
+                        )
                       })}
                     </select>
                     <Form.Control.Feedback type="invalid">
@@ -188,11 +172,7 @@ function ModalCourseComponent({
               <Button variant="primary" onClick={handleSubmit}>
                 Salvar
               </Button>
-              <Button
-                variant="secondary"
-                className="px-3"
-                onClick={handleClose}
-              >
+              <Button variant="secondary" className="px-3" onClick={handleClose}>
                 Sair
               </Button>
             </div>
@@ -200,7 +180,7 @@ function ModalCourseComponent({
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
 
-export default ModalCourseComponent;
+export default ModalCourseComponent

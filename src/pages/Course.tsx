@@ -1,28 +1,28 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import ModalCourseComponet from '../components/ModalCourseComponet';
-import { useState } from 'react';
-import { faBook, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NavbarComponet from '../components/NavbarComponent';
-import { Helmet } from 'react-helmet';
-import { deleteCourse } from '../api/CourseApi';
-import NavSidebar from '../components/NavSidebar';
-import { useGetAllCourse } from '../hooks/course/useGetAllCourse';
-import FooterComponent from '../components/FooterComponent';
+import ModalCourseComponet from '../components/ModalCourseComponet'
+import { useState } from 'react'
+import { faBook, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import NavbarComponet from '../components/NavbarComponent'
+import { Helmet } from 'react-helmet'
+import { deleteCourse } from '../api/CourseApi'
+import NavSidebar from '../components/NavSidebar'
+import { useGetAllCourse } from '../hooks/course/useGetAllCourse'
+import FooterComponent from '../components/FooterComponent'
 
 function Course() {
-  const [search] = useState('');
-  const { courses } = useGetAllCourse();
+  const [search] = useState('')
+  const { courses } = useGetAllCourse()
 
   const handledeleteCourse = async (id: string | undefined) => {
     if (window.confirm('Deseja Excluir o Curso?')) {
-      const response = await deleteCourse(id);
+      const response = await deleteCourse(id)
       if (response.status === 200) {
         // toast.success(response.data);
         //  await getAllCourse();
       }
     }
-  };
+  }
 
   return (
     <>
@@ -45,16 +45,11 @@ function Course() {
               </div>
               <div className="row gx-5 align-items-center justify-content-start row-cols-1 row-cols-md-3 row-cols-xl-4 gap-5">
                 {courses
-                  ?.filter((course) =>
-                    course.title?.toLocaleLowerCase().includes(search)
-                  )
+                  ?.filter((course) => course.title?.toLocaleLowerCase().includes(search))
                   .map((item) => {
                     return (
                       <div className="col mb-5">
-                        <div
-                          className="card h-100"
-                          style={{ width: '16.5em', border: 'none' }}
-                        >
+                        <div className="card h-100" style={{ width: '16.5em', border: 'none' }}>
                           <div className="card-header">
                             <div className="gap-1 d-flex">
                               <ModalCourseComponet
@@ -62,9 +57,7 @@ function Course() {
                                 titleInteface={item.title}
                                 acronymInteface={item.acronym}
                                 teacherNameInteface={
-                                  item.teacher?.firstName +
-                                  ' ' +
-                                  item.teacher?.lastName
+                                  item.teacher?.firstName + ' ' + item.teacher?.lastName
                                 }
                                 avatarInteface={item.avatar}
                                 teacherIdInteface={item.teacher?.id}
@@ -77,10 +70,7 @@ function Course() {
                               </button>
                             </div>
                           </div>
-                          <a
-                            className="btn btn-outline-primary"
-                            href={`/curso/${item.acronym}`}
-                          >
+                          <a className="btn btn-outline-primary" href={`/curso/${item.acronym}`}>
                             <div className="card-body">
                               {/* <img className="card-img-top"src={item.avatar}alt={item.title}/> */}
                               <h5 className="card-title">{item.title}</h5>
@@ -88,7 +78,7 @@ function Course() {
                           </a>
                         </div>
                       </div>
-                    );
+                    )
                   })}
               </div>
             </div>
@@ -97,6 +87,6 @@ function Course() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default Course;
+export default Course

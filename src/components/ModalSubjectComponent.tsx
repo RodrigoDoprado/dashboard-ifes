@@ -1,29 +1,28 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-self-assign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { SubjectInterface } from '../interface/SubjectInterface';
-import { Col, Form, Row } from 'react-bootstrap';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useGetAllPeriod } from '../hooks/period/useGetAllCourse';
-import { usePostSubject } from '../hooks/subject/usePostSubject';
-import { usePutSubject } from '../hooks/subject/usePutSubject';
-import { addMessage } from '../redux/ducks/layout';
-
+import { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import { SubjectInterface } from '../interface/SubjectInterface'
+import { Col, Form, Row } from 'react-bootstrap'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useGetAllPeriod } from '../hooks/period/useGetAllCourse'
+import { usePostSubject } from '../hooks/subject/usePostSubject'
+import { usePutSubject } from '../hooks/subject/usePutSubject'
+import { addMessage } from '../redux/ducks/layout'
 
 type data = {
-  idInteface?: string;
-  titleInteface?: string;
-  acronymInteface?: string;
-  avatarInteface?: string;
-  idPeriodInteface?: any;
-  titlePeriodInteface?: string;
-};
+  idInteface?: string
+  titleInteface?: string
+  acronymInteface?: string
+  avatarInteface?: string
+  idPeriodInteface?: any
+  titlePeriodInteface?: string
+}
 
 function ModalSubjectComponent({
   idInteface,
@@ -33,42 +32,42 @@ function ModalSubjectComponent({
   titlePeriodInteface,
   idPeriodInteface,
 }: data) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [validated, setValidated] = useState(false);
-  const { acronym } = useParams();
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const [validated, setValidated] = useState(false)
+  const { acronym } = useParams()
 
-  const [title, setTitle] = useState(titleInteface);
-  const [acronymSubject, setAcronymSubject] = useState(acronymInteface);
-  const [avatar, setAvatar] = useState(avatarInteface);
-  const [period, setPeriod] = useState(idPeriodInteface);
-  const dispatch = useDispatch();
+  const [title, setTitle] = useState(titleInteface)
+  const [acronymSubject, setAcronymSubject] = useState(acronymInteface)
+  const [avatar, setAvatar] = useState(avatarInteface)
+  const [period, setPeriod] = useState(idPeriodInteface)
+  const dispatch = useDispatch()
 
-  const {periods}=useGetAllPeriod(acronym)
-  const addSubject=usePostSubject()
-  const putSubject=usePutSubject()
+  const { periods } = useGetAllPeriod(acronym)
+  const addSubject = usePostSubject()
+  const putSubject = usePutSubject()
 
   const handleSubmit = (event: {
-    currentTarget: any;
-    preventDefault: () => void;
-    stopPropagation: () => void;
+    currentTarget: any
+    preventDefault: () => void
+    stopPropagation: () => void
   }) => {
-    const form = event.currentTarget;
+    const form = event.currentTarget
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      event.preventDefault()
+      event.stopPropagation()
     }
 
-    setValidated(true);
+    setValidated(true)
     if (!idInteface) {
       const subjectData: SubjectInterface = {
         period,
         title,
         avatar,
         acronym: acronymSubject,
-      };
-      addSubject.mutate(subjectData);
+      }
+      addSubject.mutate(subjectData)
     } else {
       const subjectData: SubjectInterface = {
         period,
@@ -76,20 +75,20 @@ function ModalSubjectComponent({
         avatar,
         acronym: acronymSubject,
         id: idInteface,
-      };
-      putSubject.mutate(subjectData);
+      }
+      putSubject.mutate(subjectData)
     }
-  };
-  
+  }
+
   useEffect(() => {
-    if (!addSubject.isSuccess && !putSubject.isSuccess) return;
-    handleClose();
+    if (!addSubject.isSuccess && !putSubject.isSuccess) return
+    handleClose()
     dispatch(addMessage())
     // dispatch(showMessage());
     // setTimeout(() => {
     //   dispatch(hideMessage());
     // }, 4500);
-  }, [addSubject.isSuccess, putSubject.isSuccess]);
+  }, [addSubject.isSuccess, putSubject.isSuccess])
 
   return (
     <>
@@ -105,9 +104,7 @@ function ModalSubjectComponent({
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>
-            {idInteface ? <>Atualização Matéria</> : <>Nova Matéria</>}
-          </Modal.Title>
+          <Modal.Title>{idInteface ? <>Atualização Matéria</> : <>Nova Matéria</>}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -144,9 +141,7 @@ function ModalSubjectComponent({
                   value={acronymSubject}
                   onChange={(event) => setAcronymSubject(event.target.value)}
                 />
-                <Form.Control.Feedback type="invalid">
-                  * Campo Obrigatório
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">* Campo Obrigatório</Form.Control.Feedback>
               </Form.Group>
               <div className="mb-3">
                 <label htmlFor="inputPeriod">Semestre:</label>
@@ -159,7 +154,7 @@ function ModalSubjectComponent({
                 >
                   <option selected>{titlePeriodInteface}</option>
                   {periods?.map((item) => {
-                    return <option value={item.id}>{item.title}</option>;
+                    return <option value={item.id}>{item.title}</option>
                   })}
                 </select>
                 <Form.Control.Feedback type="invalid">
@@ -171,11 +166,7 @@ function ModalSubjectComponent({
               <Button variant="primary" onClick={handleSubmit}>
                 Salvar
               </Button>
-              <Button
-                variant="secondary"
-                className="px-3"
-                onClick={handleClose}
-              >
+              <Button variant="secondary" className="px-3" onClick={handleClose}>
                 Sair
               </Button>
             </div>
@@ -183,7 +174,7 @@ function ModalSubjectComponent({
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
 
-export default ModalSubjectComponent;
+export default ModalSubjectComponent

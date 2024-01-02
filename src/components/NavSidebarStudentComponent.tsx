@@ -1,18 +1,11 @@
-import {
-  faBook,
-  faChalkboardUser,
-  faHouse,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ModalComponet from './ModalComponent';
+import { faBook, faChalkboardUser, faHouse } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ModalComponet from './ModalComponent'
 
 function NavSidebarStudentComponent() {
   return (
     <div id="layoutSidenav_nav">
-      <nav
-        className="sb-sidenav accordion sb-sidenav-dark"
-        id="sidenavAccordion"
-      >
+      <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div className="sb-sidenav-menu">
           <div className="nav mt-5">
             <a className="nav-link sb-sidenav-menu-heading" href="/dashboard">
@@ -44,11 +37,7 @@ function NavSidebarStudentComponent() {
               aria-expanded="false"
               aria-controls="collapseLayouts"
             >
-              <FontAwesomeIcon
-                className="px-2"
-                icon={faChalkboardUser}
-                size="lg"
-              />
+              <FontAwesomeIcon className="px-2" icon={faChalkboardUser} size="lg" />
               Grade Curicular
             </a>
           </div>
@@ -59,6 +48,6 @@ function NavSidebarStudentComponent() {
                 </div> */}
       </nav>
     </div>
-  );
+  )
 }
-export default NavSidebarStudentComponent;
+export default NavSidebarStudentComponent

@@ -1,64 +1,53 @@
 /* eslint-disable no-self-assign */
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import {
   faBars,
   faMagnifyingGlass,
   faRightFromBracket,
   faUser,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import LogoutService from '../../api/AuthApi';
-import './Navbar.css';
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch } from 'react-redux'
+import LogoutService from '../../api/AuthApi'
+import './Navbar.css'
 
 function NavbarComponent() {
-  const usercookies = localStorage.getItem('token');
-  const dispatch = useDispatch();
+  const usercookies = localStorage.getItem('token')
+  const dispatch = useDispatch()
   // const {student,teacher}=useContext(AuthContext)
 
   const logout = () => {
     if (window.confirm('Deseja Sair?')) {
-      dispatch(LogoutService());
+      dispatch(LogoutService())
     } else {
-      window.location.href = window.location.href;
+      window.location.href = window.location.href
     }
-  };
+  }
 
   useEffect(() => {
     return () => {
-      document.body.classList.remove('sb-sidenav-toggled');
-    };
-  }, []);
+      document.body.classList.remove('sb-sidenav-toggled')
+    }
+  }, [])
 
   const navigation = () => {
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
+    const sidebarToggle = document.body.querySelector('#sidebarToggle')
     if (sidebarToggle) {
       sidebarToggle.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.body.classList.toggle('sb-sidenav-toggled');
+        event.preventDefault()
+        document.body.classList.toggle('sb-sidenav-toggled')
         // localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-      });
+      })
     }
-  };
+  }
   return (
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-primary sticky-top">
       <div className="container-fluid">
-        <button
-          className="btn btn-link btn-lg"
-          id="sidebarToggle"
-          onClick={navigation}
-        >
-          <FontAwesomeIcon
-            icon={faBars}
-            size="xl"
-            style={{ color: '#f7f7f7' }}
-          />
+        <button className="btn btn-link btn-lg" id="sidebarToggle" onClick={navigation}>
+          <FontAwesomeIcon icon={faBars} size="xl" style={{ color: '#f7f7f7' }} />
         </button>
         <a className="navbar-brand d-flex gap-1" href="/">
-          <img
-            src="../assets/ifes.png"
-            style={{ width: '40px', height: '40px' }}
-          />
+          <img src="../assets/ifes.png" style={{ width: '40px', height: '40px' }} />
           <h5 className="mt-2">IFES</h5>
         </a>
         {/* {usercookies? */}
@@ -71,10 +60,7 @@ function NavbarComponent() {
               aria-label="Search for..."
               aria-describedby="btnNavbarSearch"
             />
-            <button
-              className="btn btn-outline-secondary px-3 text-light"
-              type="button"
-            >
+            <button className="btn btn-outline-secondary px-3 text-light" type="button">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
@@ -90,11 +76,7 @@ function NavbarComponent() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {usercookies ? (
-                <FontAwesomeIcon icon={faUser} size="lg" />
-              ) : (
-                <></>
-              )}
+              {usercookies ? <FontAwesomeIcon icon={faUser} size="lg" /> : <></>}
               {/* {student?
                     <img
                       className="rounded-circle" 
@@ -113,10 +95,7 @@ function NavbarComponent() {
                     :<></>
                   } */}
             </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdown"
-            >
+            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               {usercookies ? (
                 <></>
               ) : (
@@ -148,11 +127,7 @@ function NavbarComponent() {
               )}
               <li>
                 <a className="dropdown-item" href="/" onClick={logout}>
-                  <FontAwesomeIcon
-                    className="px-2"
-                    icon={faRightFromBracket}
-                    size="xs"
-                  />
+                  <FontAwesomeIcon className="px-2" icon={faRightFromBracket} size="xs" />
                   Sair
                 </a>
               </li>
@@ -161,6 +136,6 @@ function NavbarComponent() {
         </ul>
       </div>
     </nav>
-  );
+  )
 }
-export default NavbarComponent;
+export default NavbarComponent

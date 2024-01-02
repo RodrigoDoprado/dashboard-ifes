@@ -1,23 +1,23 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Helmet } from 'react-helmet';
-import NavbarComponet from '../components/NavbarComponent';
-import ModalStudentComponet from '../components/ModalStudentComponet';
-import { useEffect, useState } from 'react';
-import { faGraduationCap, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NavSidebar from '../components/NavSidebar';
-import { useGetAllStudent } from '../hooks/student/useGetAllStudent';
-import { useDeleteStudent } from '../hooks/student/useDeleteStudent';
-import { useDispatch } from 'react-redux';
-import { addMessage } from '../redux/ducks/layout';
-import FooterComponent from '../components/FooterComponent';
+import { Helmet } from 'react-helmet'
+import NavbarComponet from '../components/NavbarComponent'
+import ModalStudentComponet from '../components/ModalStudentComponet'
+import { useEffect, useState } from 'react'
+import { faGraduationCap, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import NavSidebar from '../components/NavSidebar'
+import { useGetAllStudent } from '../hooks/student/useGetAllStudent'
+import { useDeleteStudent } from '../hooks/student/useDeleteStudent'
+import { useDispatch } from 'react-redux'
+import { addMessage } from '../redux/ducks/layout'
+import FooterComponent from '../components/FooterComponent'
 
 function Student() {
-  const [search] = useState('');
-  const {students} = useGetAllStudent()
+  const [search] = useState('')
+  const { students } = useGetAllStudent()
   const deleteStudent = useDeleteStudent()
-  const dispatch = useDispatch();
-  
+  const dispatch = useDispatch()
+
   const handledeleteStudent = async (id: string | undefined) => {
     if (window.confirm('Deseja Excluir o Aluno?')) {
       deleteStudent.mutate(id)
@@ -25,10 +25,10 @@ function Student() {
   }
 
   useEffect(() => {
-    if (!deleteStudent.isSuccess) return;
-    handleClose();
-    dispatch(addMessage());
-  }, [deleteStudent.isSuccess]);
+    if (!deleteStudent.isSuccess) return
+    handleClose()
+    dispatch(addMessage())
+  }, [deleteStudent.isSuccess])
 
   return (
     <>
@@ -44,11 +44,7 @@ function Student() {
             <div className="container-fluid px-4 px-lg-5 mt-5">
               <div className="d-flex justify-content-between mb-5">
                 <h1>
-                  <FontAwesomeIcon
-                    className="px-2"
-                    icon={faGraduationCap}
-                    size="sm"
-                  />
+                  <FontAwesomeIcon className="px-2" icon={faGraduationCap} size="sm" />
                   Alunos
                 </h1>
                 <ModalStudentComponet />
@@ -71,9 +67,7 @@ function Student() {
                       </thead>
                       <tbody>
                         {students
-                          ?.filter((student) =>
-                            student.firstName?.toLowerCase().includes(search)
-                          )
+                          ?.filter((student) => student.firstName?.toLowerCase().includes(search))
                           .map((item, index) => {
                             return (
                               <tr>
@@ -103,16 +97,14 @@ function Student() {
                                     />
                                     <button
                                       className="btn btn-outline-danger"
-                                      onClick={() =>
-                                        handledeleteStudent(item.id)
-                                      }
+                                      onClick={() => handledeleteStudent(item.id)}
                                     >
                                       <FontAwesomeIcon icon={faTrashCan} />
                                     </button>
                                   </div>
                                 </td>
                               </tr>
-                            );
+                            )
                           })}
                       </tbody>
                     </table>
@@ -125,10 +117,9 @@ function Student() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default Student;
+export default Student
 function handleClose() {
-  throw new Error('Function not implemented.');
+  throw new Error('Function not implemented.')
 }
-

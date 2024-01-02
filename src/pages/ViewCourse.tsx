@@ -1,43 +1,43 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Helmet } from 'react-helmet';
-import NavbarComponet from '../components/NavbarComponent';
-import { useParams } from 'react-router-dom';
-import ModalPeriodComponet from '../components/ModalPeriodComponet';
-import ModalSubjectComponet from '../components/ModalSubjectComponent';
-import { useEffect, useState } from 'react';
-import { getCourse } from '../api/CourseApi';
-import { getPeriods } from '../api/PeriodApi';
-import { CourseInterface } from '../interface/CourseInterface';
-import { PeriodInterface } from '../interface/PeriodInterface';
-import NavSidebar from '../components/NavSidebar';
-import TableSubjectComponet from '../components/TableSubjectComponent';
-import FooterComponent from '../components/FooterComponent';
+import { Helmet } from 'react-helmet'
+import NavbarComponet from '../components/NavbarComponent'
+import { useParams } from 'react-router-dom'
+import ModalPeriodComponet from '../components/ModalPeriodComponet'
+import ModalSubjectComponet from '../components/ModalSubjectComponent'
+import { useEffect, useState } from 'react'
+import { getCourse } from '../api/CourseApi'
+import { getPeriods } from '../api/PeriodApi'
+import { CourseInterface } from '../interface/CourseInterface'
+import { PeriodInterface } from '../interface/PeriodInterface'
+import NavSidebar from '../components/NavSidebar'
+import TableSubjectComponet from '../components/TableSubjectComponent'
+import FooterComponent from '../components/FooterComponent'
 
 function ViewCourse() {
-  const [course, setCourse] = useState<CourseInterface>();
-  const [periods, setPeriods] = useState<PeriodInterface[]>([]);
-  const { acronym } = useParams();
+  const [course, setCourse] = useState<CourseInterface>()
+  const [periods, setPeriods] = useState<PeriodInterface[]>([])
+  const { acronym } = useParams()
 
   useEffect(() => {
     getByCourse().then(() => {
-      getAllPeriod();
-    });
-  }, []);
+      getAllPeriod()
+    })
+  }, [])
 
   const getByCourse = async () => {
-    const response = await getCourse(acronym);
+    const response = await getCourse(acronym)
     if (response.status === 200) {
-      setCourse(response.data);
+      setCourse(response.data)
     }
-  };
+  }
 
   const getAllPeriod = async () => {
-    const response = await getPeriods(acronym);
+    const response = await getPeriods(acronym)
     if (response.status === 200) {
       // setPeriods(response.data);
-      setPeriods(response.data);
+      setPeriods(response.data)
     }
-  };
+  }
 
   // const handledeleteSubject = async (id: string | undefined) => {
   //   if (window.confirm("Deseja Excluir a Matéria?")) {
@@ -67,21 +67,16 @@ function ViewCourse() {
                   {course?.teacher ? (
                     <li className="">
                       Professor Coordenador:&nbsp;
-                      {course?.teacher?.firstName +
-                        ' ' +
-                        course?.teacher?.lastName}
+                      {course?.teacher?.firstName + ' ' + course?.teacher?.lastName}
                     </li>
                   ) : (
                     <>
-                      <li className="">
-                        Professor Coordenador:&nbsp; Curso Não Possui
-                      </li>
+                      <li className="">Professor Coordenador:&nbsp; Curso Não Possui</li>
                     </>
                   )}
                 </ol>
                 <div className="text-center">
-                  <ModalPeriodComponet couserInteface={course?.id} />{' '}
-                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <ModalPeriodComponet couserInteface={course?.id} /> &nbsp;&nbsp;&nbsp;&nbsp;
                   <ModalSubjectComponet />
                 </div>
               </header>
@@ -89,16 +84,13 @@ function ViewCourse() {
                 {periods?.map((item) => {
                   return (
                     <div className="col mb-5">
-                      <ModalPeriodComponet
-                        idInteface={item.id}
-                        titleInteface={item.title}
-                      />
+                      <ModalPeriodComponet idInteface={item.id} titleInteface={item.title} />
                       <TableSubjectComponet
                         idPeriodInteface={item.id}
                         titlePeriodInteface={item.title}
                       />
                     </div>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -107,6 +99,6 @@ function ViewCourse() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default ViewCourse;
+export default ViewCourse
