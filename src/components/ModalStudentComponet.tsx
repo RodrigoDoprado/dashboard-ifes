@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable no-self-assign */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -170,15 +166,8 @@ function ModalStudentComponet({
                   value={course}
                   onChange={(event) => setCourse(event.target.value)}
                 >
-                  {!courseIdInteface ? (
-                    <>
-                      <option>Escolha o curso...</option>
-                    </>
-                  ) : (
-                    <>
-                      <option value={courseIdInteface}>{courseTitleInteface}</option>
-                    </>
-                  )}
+                  {courseIdInteface ? (<option value={courseIdInteface}>{courseTitleInteface}</option>): 
+                  (<option>Escolha o curso...</option>)}
                   {courses?.map((item) => {
                     return <option value={item.id}>{item.title}</option>
                   })}
