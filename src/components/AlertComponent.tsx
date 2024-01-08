@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useSelector } from 'react-redux'
-import MessagesComponent from './messagesComponent'
 import { useMessage } from '../redux/ducks/layout'
+import MessagesComponent from './mgComponent'
 
 function AlertComponent() {
   // const isShow = useSelector((state: RootState) => state.layout.showMessage);
