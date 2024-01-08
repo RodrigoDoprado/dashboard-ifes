@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
-import NavbarComponet from '../components/nbComponent'
+import NavbarComponet from '../components/navbarComponent'
 import ModalStudentComponet from '../components/ModalStudentComponet'
 import { useEffect, useState } from 'react'
 import { faGraduationCap, faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -10,7 +10,7 @@ import { useGetAllStudent } from '../hooks/student/useGetAllStudent'
 import { useDeleteStudent } from '../hooks/student/useDeleteStudent'
 import { useDispatch } from 'react-redux'
 import { addMessage } from '../redux/ducks/layout'
-import FooterComponent from '../components/ftComponent'
+import FooterComponent from '../components/footerComponent'
 
 function Student() {
   const [search] = useState('')

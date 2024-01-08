@@ -3,12 +3,12 @@ import ModalCourseComponet from '../components/ModalCourseComponet'
 import { useState } from 'react'
 import { faBook, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import NavbarComponet from '../components/nbComponent'
+import NavbarComponet from '../components/navbarComponent'
 import { Helmet } from 'react-helmet'
 import { deleteCourse } from '../api/CourseApi'
 import NavSidebar from '../components/NavSidebar'
 import { useGetAllCourse } from '../hooks/course/useGetAllCourse'
-import FooterComponent from '../components/ftComponent'
+import FooterComponent from '../components/footerComponent'
 
 function Course() {
   const [search] = useState('')

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
-import NavbarComponet from '../components/nbComponent'
+import NavbarComponet from '../components/navbarComponent'
 import { useParams } from 'react-router-dom'
 import ModalPeriodComponet from '../components/ModalPeriodComponet'
 import ModalSubjectComponet from '../components/ModalSubjectComponent'
@@ -11,7 +11,7 @@ import { CourseInterface } from '../interface/CourseInterface'
 import { PeriodInterface } from '../interface/PeriodInterface'
 import NavSidebar from '../components/NavSidebar'
 import TableSubjectComponet from '../components/TableSubjectComponent'
-import FooterComponent from '../components/ftComponent'
+import FooterComponent from '../components/footerComponent'
 
 function ViewCourse() {
   const [course, setCourse] = useState<CourseInterface>()

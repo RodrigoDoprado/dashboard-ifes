@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
-import NavbarComponet from '../components/nbComponent'
+import NavbarComponet from '../components/navbarComponent'
 import ModalTeacherComponet from '../components/ModalTeacherComponent'
 import { useEffect, useState } from 'react'
 import { faChalkboardUser, faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { deleteTeacher, getTeachers } from '../api/TeacherApi'
 import { TeacherInterface } from '../interface/TeacherInterface'
 import NavSidebar from '../components/NavSidebar'
-import FooterComponent from '../components/ftComponent'
+import FooterComponent from '../components/footerComponent'
 
 function Teacher() {
   const [teachers, setTeachers] = useState<TeacherInterface[]>([])

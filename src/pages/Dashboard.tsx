@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
-import NavbarComponet from '../components/nbComponent'
+import NavbarComponet from '../components/navbarComponent'
 import { Chart as ChartJs, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import { useState } from 'react'
 import { UserData } from '../Data'
 import NavSidebar from '../components/NavSidebar'
-import FooterComponent from '../components/ftComponent'
+import FooterComponent from '../components/footerComponent'
 
 ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 

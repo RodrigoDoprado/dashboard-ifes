@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
 import NavSidebarTeacher from '../components/NavSidebarTeacherComponent'
-import NavbarComponent from '../components/nbComponent'
+import NavbarComponent from '../components/navbarComponent'
 import AlertComponent from '../components/AlertComponent'
-import FooterComponent from '../components/ftComponent'
+import FooterComponent from '../components/footerComponent'
 
 function ViewTeacher() {
   // const { teacher } = useContext(AuthContext);

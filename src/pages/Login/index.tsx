@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch } from 'react-redux'
 import { authLogin } from '../../redux/ducks/FatchActions'
-import FooterComponent from '../../components/ftComponent'
+import FooterComponent from '../../components/footerComponent'
 import './Login.css'
 
 function Login() {
