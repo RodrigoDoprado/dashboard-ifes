@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useSelector } from 'react-redux'
-import MessagesComponent from './MessagesComponent'
+import MessagesComponent from './messagesComponent'
 import { useMessage } from '../redux/ducks/layout'
 
 function AlertComponent() {
