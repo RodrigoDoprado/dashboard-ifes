@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
-import NavbarComponet from '../components/navbarComponent'
+import NavbarComponet from '../components/nbComponent'
 import { useParams } from 'react-router-dom'
 import ModalPeriodComponet from '../components/ModalPeriodComponet'
 import ModalSubjectComponet from '../components/ModalSubjectComponent'

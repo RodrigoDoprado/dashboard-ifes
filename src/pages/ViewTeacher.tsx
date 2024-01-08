@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
 import NavSidebarTeacher from '../components/NavSidebarTeacherComponent'
-import NavbarComponent from '../components/navbarComponent'
+import NavbarComponent from '../components/nbComponent'
 import AlertComponent from '../components/AlertComponent'
 import FooterComponent from '../components/FooterComponent'
 

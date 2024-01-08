@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Helmet } from 'react-helmet'
-import NavbarComponet from '../components/navbarComponent'
+import NavbarComponet from '../components/nbComponent'
 import ModalTeacherComponet from '../components/ModalTeacherComponent'
 import { useEffect, useState } from 'react'
 import { faChalkboardUser, faTrashCan } from '@fortawesome/free-solid-svg-icons'
