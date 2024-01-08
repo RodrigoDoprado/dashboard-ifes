@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { deleteTeacher, getTeachers } from '../api/TeacherApi'
 import { TeacherInterface } from '../interface/TeacherInterface'
 import NavSidebar from '../components/NavSidebar'
-import FooterComponent from '../components/FooterComponent'
+import FooterComponent from '../components/ftComponent'
 
 function Teacher() {
   const [teachers, setTeachers] = useState<TeacherInterface[]>([])

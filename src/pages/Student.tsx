@@ -10,7 +10,7 @@ import { useGetAllStudent } from '../hooks/student/useGetAllStudent'
 import { useDeleteStudent } from '../hooks/student/useDeleteStudent'
 import { useDispatch } from 'react-redux'
 import { addMessage } from '../redux/ducks/layout'
-import FooterComponent from '../components/FooterComponent'
+import FooterComponent from '../components/ftComponent'
 
 function Student() {
   const [search] = useState('')

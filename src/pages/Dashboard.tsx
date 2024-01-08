@@ -6,7 +6,7 @@ import { Bar } from 'react-chartjs-2'
 import { useState } from 'react'
 import { UserData } from '../Data'
 import NavSidebar from '../components/NavSidebar'
-import FooterComponent from '../components/FooterComponent'
+import FooterComponent from '../components/ftComponent'
 
 ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 

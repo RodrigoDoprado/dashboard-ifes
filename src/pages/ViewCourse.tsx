@@ -11,7 +11,7 @@ import { CourseInterface } from '../interface/CourseInterface'
 import { PeriodInterface } from '../interface/PeriodInterface'
 import NavSidebar from '../components/NavSidebar'
 import TableSubjectComponet from '../components/TableSubjectComponent'
-import FooterComponent from '../components/FooterComponent'
+import FooterComponent from '../components/ftComponent'
 
 function ViewCourse() {
   const [course, setCourse] = useState<CourseInterface>()

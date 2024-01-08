@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet'
 import { deleteCourse } from '../api/CourseApi'
 import NavSidebar from '../components/NavSidebar'
 import { useGetAllCourse } from '../hooks/course/useGetAllCourse'
-import FooterComponent from '../components/FooterComponent'
+import FooterComponent from '../components/ftComponent'
 
 function Course() {
   const [search] = useState('')

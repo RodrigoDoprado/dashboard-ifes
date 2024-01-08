@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import NavSidebarStudent from '../components/NavSidebarStudentComponent'
 import NavbarComponet from '../components/nbComponent'
 import AlertComponent from '../components/AlertComponent'
-import FooterComponent from '../components/FooterComponent'
+import FooterComponent from '../components/ftComponent'
 
 function ViewStudent() {
   // const { student } = useContext(AuthContext);
