@@ -66,13 +66,9 @@ function ModalTeacherComponent({
   }
 
   useEffect(() => {
-    if (!addTeacher.isSuccess || !putTeacher.isSuccess) return
+    if (!addTeacher.isSuccess && !putTeacher.isSuccess) return
     handleClose()
-    dispatch(addMessage())
-    // dispatch(showMessage());
-    // setTimeout(() => {
-    //   dispatch(hideMessage());
-    // }, 4500);
+    dispatch(addMessage("Já registrado com Sucesso"))
   }, [addTeacher.isSuccess, putTeacher.isSuccess])
 
   return (

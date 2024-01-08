@@ -79,9 +79,9 @@ function ModalStudentComponet({
   }
 
   useEffect(() => {
-    if (!addStudent.isSuccess || !putStudent.isSuccess) return
+    if (!addStudent.isSuccess && !putStudent.isSuccess) return
     handleClose()
-    dispatch(addMessage())
+    dispatch(addMessage("Já registrado com Sucesso"))
   }, [addStudent.isSuccess, putStudent.isSuccess])
 
   return (

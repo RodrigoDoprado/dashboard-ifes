@@ -83,11 +83,7 @@ function ModalSubjectComponent({
   useEffect(() => {
     if (!addSubject.isSuccess && !putSubject.isSuccess) return
     handleClose()
-    dispatch(addMessage())
-    // dispatch(showMessage());
-    // setTimeout(() => {
-    //   dispatch(hideMessage());
-    // }, 4500);
+    dispatch(addMessage("Já registrado com Sucesso"))
   }, [addSubject.isSuccess, putSubject.isSuccess])
 
   return (

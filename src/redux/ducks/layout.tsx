@@ -1,25 +1,40 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createAction, createReducer } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-const INITIAL_STATE = {
-  // showMessage: false,
-  messages: [],
+interface messages{
+  text:string,
+  // type:string
 }
 
-export const addMessage = createAction('ADD_MESSAGE')
-export const removeMessage = createAction('REMOVE_MESSAGE')
-// export const showMessage = createAction('SHOW_MESSAGE');
-// export const hideMessage = createAction('HIDE_MESSAGE');
+const INITIAL_STATE: messages[] = []
 
-export default createReducer(INITIAL_STATE, {
-  // [showMessage.type]: (state: any) => ({ ...state, showMessage: true }),
-  // [hideMessage.type]: (state: any) => ({ ...state, showMessage: false }),
-  [addMessage.type]: (state: any, action: any) => ({
-    ...state,
-    messages: [...state.messages, action.playload],
-  }),
-  [removeMessage.type]: (state: any, action: any) => ({
-    ...state,
-    messages: state.messages.filter((mg: any) => mg != action.playload),
-  }),
+const sliceMessage = createSlice({
+  name:"message",
+  initialState: INITIAL_STATE,
+  reducers:{
+    addMessage(state,{payload}:PayloadAction<string>){
+      return[...state,{text:payload}]
+    },
+    removeMessage(state,{payload}:PayloadAction<string>){
+      return state.map(mg=>mg.text === payload?{...mg}:mg )
+    }
+  }
 })
+
+export default sliceMessage.reducer
+export const {addMessage}=sliceMessage.actions
+export const {removeMessage}=sliceMessage.actions
+export const useMessage =(state:any)=>{
+  return state.layoutMessage as messages[]
+}
+
+// export default createReducer(INITIAL_STATE, {
+//   [addMessage.type]: (state: any, action: any) => ({
+//     ...state,
+//     messages: [...state.messages, action.playload],
+//   }),
+//   [removeMessage.type]: (state: any, action: any) => ({
+//     ...state,
+//     messages: state.messages.filter((mg: any) => mg != action.playload),
+//   }),
+// })

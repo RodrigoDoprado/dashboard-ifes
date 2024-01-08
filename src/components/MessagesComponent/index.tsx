@@ -11,6 +11,8 @@ function MessagesComponent({ message }: any) {
   useEffect(() => {
     setTimeout(() => {
       dispatch(removeMessage(message))
+      // eslint-disable-next-line no-self-assign
+      window.location.href = window.location.href
     }, 4500)
   }, [dispatch, message])
 

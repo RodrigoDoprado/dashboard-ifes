@@ -76,11 +76,7 @@ function ModalCourseComponent({
   useEffect(() => {
     if (!addCourse.isSuccess && !putCourse.isSuccess) return
     handleClose()
-    dispatch(addMessage())
-    // dispatch(showMessage());
-    // setTimeout(() => {
-    //   dispatch(hideMessage());
-    // }, 4500);
+    dispatch(addMessage("Já registrado com Sucesso"))
   }, [addCourse.isSuccess, putCourse.isSuccess])
 
   return (

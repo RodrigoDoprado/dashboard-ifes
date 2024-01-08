@@ -27,7 +27,7 @@ function Student() {
   useEffect(() => {
     if (!deleteStudent.isSuccess) return
     handleClose()
-    dispatch(addMessage())
+    dispatch(addMessage("Já registrado com Sucesso"))
   }, [deleteStudent.isSuccess])
 
   return (

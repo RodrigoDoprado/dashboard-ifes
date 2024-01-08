@@ -58,11 +58,7 @@ function ModalPeriodComponet({ idInteface, titleInteface, couserInteface }: data
   useEffect(() => {
     if (!addPeriod.isSuccess && !putPeriod.isSuccess) return
     handleClose()
-    dispatch(addMessage())
-    // dispatch(showMessage());
-    // setTimeout(() => {
-    //   dispatch(hideMessage());
-    // }, 4500);
+    dispatch(addMessage("Já registrado com Sucesso"))
   }, [addPeriod.isSuccess, putPeriod.isSuccess])
 
   return (
